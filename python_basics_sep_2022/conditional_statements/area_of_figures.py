@@ -21,6 +21,6 @@ else:
     print("Wrong data!")
     wrong_input = False
 if wrong_input:
-    print (f"{area:.3f}")
+    print(f"{area:.3f}")
 
 
