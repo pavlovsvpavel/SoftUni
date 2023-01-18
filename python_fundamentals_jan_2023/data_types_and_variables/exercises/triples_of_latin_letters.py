@@ -7,4 +7,3 @@ for i in range(ord("a"), (ord("a") + count_letters)):
         for j in range(ord("a"), (ord("a") + count_letters)):
             letter_3 = chr(j)
             print(f"{letter_1}{letter_2}{letter_3}")
-
