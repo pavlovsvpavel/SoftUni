@@ -3,9 +3,7 @@ count_snowballs = int(input())
 
 value_snowball = 0
 highest_value = - maxsize
-highest_weight = 0
-highest_time = 0
-highest_quality = 0
+best_result = []
 
 for i in range(count_snowballs):
     weight = int(input())
@@ -14,8 +12,8 @@ for i in range(count_snowballs):
     value_snowball = int((weight / time) ** quality)
     if value_snowball > highest_value:
         highest_value = value_snowball
-        highest_weight = weight
-        highest_time = time
-        highest_quality = quality
+        best_result = f"{weight} : {time} = {highest_value} ({quality})"
+    else:
+        continue
 
-print(f"{highest_weight} : {highest_time} = {highest_value} ({highest_quality})")
+print(best_result)
