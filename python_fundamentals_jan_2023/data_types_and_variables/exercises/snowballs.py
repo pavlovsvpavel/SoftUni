@@ -13,7 +13,5 @@ for i in range(count_snowballs):
     if value_snowball > highest_value:
         highest_value = value_snowball
         best_result = f"{weight} : {time} = {highest_value} ({quality})"
-    else:
-        continue
 
 print(best_result)
