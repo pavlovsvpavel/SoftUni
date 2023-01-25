@@ -14,7 +14,7 @@ while True:
                 continue
 
     elif "Required" in command_list:
-        if 0 < int(command_list[2]) < (len(gifts_list) - 1):
+        if 0 < int(command_list[2]) < len(gifts_list):
             gifts_list = gifts_list[:int(command_list[2])] + [command_list[1]] + gifts_list[int(command_list[2]) + 1:]
 
     elif "JustInCase" in command_list:
