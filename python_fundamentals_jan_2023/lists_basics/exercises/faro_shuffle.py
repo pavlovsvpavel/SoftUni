@@ -1,3 +1,5 @@
+# https://en.wikipedia.org/wiki/Faro_shuffle
+
 cards_deck = input().split(" ")
 shuffles = int(input())
 
