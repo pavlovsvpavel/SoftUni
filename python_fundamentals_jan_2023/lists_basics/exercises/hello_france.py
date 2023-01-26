@@ -1,6 +1,6 @@
 items_collection = input().split("|")
 budget = float(input())
-
+ticket_price = 150
 item_list = []
 amount_of_sold_items = 0
 new_prices_list = []
@@ -33,7 +33,7 @@ total_amount = budget + amount_of_sold_items
 print(*new_prices_list, sep=" ")
 print(f"Profit: {profit:.2f}")
 
-if total_amount >= 150:
+if total_amount >= ticket_price:
     print(f"Hello, France!")
 else:
     print(f"Not enough money.")
