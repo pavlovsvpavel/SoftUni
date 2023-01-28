@@ -26,12 +26,9 @@ if line_1[0] == line_2[1] == line_3[2]:
 elif line_1[2] == line_2[1] == line_3[0]:
     cross_winner = [line_1[2] + line_2[1] + line_3[0]]
 
-if row_winner and column_winner and cross_winner:
-    winner = []
-else:
-    winner = row_winner + column_winner + cross_winner
+winner = row_winner + column_winner + cross_winner
 
-if not winner:
+if not winner or winner[0] == 0:
     print("Draw!")
 elif winner[0] == 3:
     print("First player won")
