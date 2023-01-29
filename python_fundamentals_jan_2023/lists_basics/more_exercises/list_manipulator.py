@@ -67,18 +67,14 @@ while True:
             for i in my_list:
                 if i % 2 != 0:
                     even_odd_list.append(i)
-                if len(even_odd_list) == numbers_count:
-                    break
 
         elif idx_3 == "even":
             for i in my_list:
                 if i % 2 == 0:
                     even_odd_list.append(i)
-                if len(even_odd_list) == numbers_count:
-                    break
 
         if even_odd_list:
-            print(even_odd_list)
+            print(even_odd_list[:numbers_count])
         else:
             print("[]")
 
@@ -94,15 +90,11 @@ while True:
             for i in my_list:
                 if i % 2 != 0:
                     even_odd_list.append(i)
-                if len(even_odd_list) == numbers_count:
-                    break
 
         elif idx_3 == "even":
             for i in my_list:
                 if i % 2 == 0:
                     even_odd_list.append(i)
-                if len(even_odd_list) == numbers_count:
-                    break
 
         if even_odd_list:
             print(even_odd_list[-numbers_count:])
