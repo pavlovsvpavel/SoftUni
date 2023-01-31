@@ -1,11 +1,13 @@
 def characters_range(char_1, char_2):
-    for i in range(char_1 + 1, char_2):
-        i = chr(i)
-        print(i, end=" ")
-    return
+    list_characters = []
+    for i in range(ord(char_1) + 1, ord(char_2)):
+        list_characters.append(chr(i))
+
+    return list_characters
 
 
-first_char = ord(input())
-second_car = ord(input())
+first_char = input()
+second_char = input()
 
-characters_range(first_char, second_car)
+result = characters_range(first_char, second_char)
+print(" ".join(result))
