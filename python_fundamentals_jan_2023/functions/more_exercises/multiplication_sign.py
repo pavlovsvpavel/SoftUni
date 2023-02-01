@@ -1,7 +1,7 @@
 def calc(n1, n2, n3):
     lst_numbers = [n1, n2, n3]
     result = ""
-    if 0 in lst_numbers:
+    if n1 == 0 or n2 == 0 or n3 == 0:
         result = "zero"
     elif min(lst_numbers) > 0:
         result = "positive"
