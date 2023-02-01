@@ -8,8 +8,7 @@ def rectangle_or_square(a, b):
     :return: Checks and return the type of figure which the coordinates are forming
     """
     inputs_list = [abs(a), abs(b)]
-    coordinates_list = list(map(abs, inputs_list))
-    if coordinates_list[0] == coordinates_list[1]:
+    if inputs_list[0] == inputs_list[1]:
         return "square"
     else:
         return "rectangle"
