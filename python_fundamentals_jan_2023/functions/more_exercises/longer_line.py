@@ -59,13 +59,10 @@ def coordinates(a, b, c, d):
     initial_list = [a, b, c, d]
     diagonal = min(all_diagonals)
     index = all_diagonals.index(diagonal)
-    result_1 = []
-    for i in range(index * 2, (index * 2 + 1) + 1):
-        result_1.append(math.floor(initial_list[i]))
+    result_1 = [math.floor(initial_list[i]) for i in range(index * 2, (index * 2 + 1) + 1)]
     index -= 1
-    for k in range(index * 2, (index * 2 + 1) + 1):
-        result_1.append(math.floor(initial_list[k]))
-    print(f"{result_1[0], result_1[1]}({result_1[2]}, {result_1[3]})")
+    result_2 = [math.floor(initial_list[x]) for x in range(index * 2, (index * 2 + 1) + 1)]
+    print(f"{result_1[0], result_1[1]}({result_2[0]}, {result_2[1]})")
     return
 
 
