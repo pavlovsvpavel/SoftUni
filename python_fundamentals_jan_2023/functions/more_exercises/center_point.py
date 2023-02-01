@@ -2,6 +2,11 @@ import math
 
 
 def rectangle_or_square(a, b):
+    """
+    :param a: x coordinate of point
+    :param b: y coordinate of point
+    :return: Checks and return the type of figure which the coordinates are forming
+    """
     inputs_list = [abs(a), abs(b)]
     coordinates_list = list(map(abs, inputs_list))
     if coordinates_list[0] == coordinates_list[1]:
@@ -11,6 +16,11 @@ def rectangle_or_square(a, b):
 
 
 def diagonals_calculation(a, b):
+    """
+    :param a: x coordinate of point
+    :param b: y coordinate of point
+    :return: calculates the diagonal of the figure
+    """
     if rectangle_or_square(x1, y1) == "rectangle" or rectangle_or_square(x2, y2) == "rectangle":
         diagonal = math.sqrt(math.pow(a, 2) + math.pow(b, 2))
         return all_diagonals.append(diagonal)
@@ -20,6 +30,14 @@ def diagonals_calculation(a, b):
 
 
 def coordinates(a, b, c, d):
+    """
+    :param a: x coordinate of first point
+    :param b: y coordinate of first point
+    :param c: x coordinate of second point
+    :param d: y coordinate of second point
+    :return: The smallest diagonal which means that the point is closer to the center of coordinate system.
+    The result is printing the point coordinates
+    """
     initial_list = [a, b, c, d]
     diagonal = min(all_diagonals)
     index = all_diagonals.index(diagonal)
