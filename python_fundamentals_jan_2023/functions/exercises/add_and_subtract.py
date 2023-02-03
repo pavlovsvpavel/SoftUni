@@ -7,8 +7,7 @@ def subtract(res, n3):
 
 
 def add_and_subtract(n1, n2, n3):
-    sum_of_n1_and_n_2 = sum_numbers(n1, n2)
-    result = subtract(sum_of_n1_and_n_2, n3)
+    result = subtract(sum_numbers(n1, n2), n3)
     return result
 
 
