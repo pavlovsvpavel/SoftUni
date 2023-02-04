@@ -1,5 +1,5 @@
 def shoot_func(lst, idx, pwr):
-    if idx < len(lst):
+    if 0 <= idx < len(lst):
         lst[idx] -= pwr
         if lst[idx] <= 0:
             lst.pop(idx)
@@ -34,14 +34,14 @@ while True:
     elif single_command == "Add":
         index_2 = int(command_list[1])
         value = int(command_list[2])
-        if index_2 < len(targets_list):
+        if 0 <= index_2 < len(targets_list):
             targets_list = add_values_func(targets_list, index_2, value)
         else:
             errors.append("Invalid placement!")
     elif single_command == "Strike":
         index_3 = int(command_list[1])
         radius = int(command_list[2])
-        if 0 < (index_3 - radius) < len(targets_list):
+        if (index_3 - radius) >= 0 and (index_3 + radius) < len(targets_list):
             targets_list = strike_func(targets_list, index_3, radius)
         else:
             errors.append("Strike missed!")
