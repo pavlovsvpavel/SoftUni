@@ -24,30 +24,29 @@ def win_lose(lst):
 
 elements = input()
 command = input()
-elements_lst = [x for x in elements.split(" ")]
+ele_lst = [x for x in elements.split(" ")]
 moves = 0
 
 while command != "end":
     command_lst = [int(x) for x in command.split(" ")]
 
-    if cheat_check(command_lst, elements_lst):
+    if cheat_check(command_lst, ele_lst):
         moves += 1
-        elements_lst = elements_lst[:(len(elements_lst) // 2)] + 2 * [f"-{moves}a"] + elements_lst[
-                                                                                        (len(elements_lst) // 2):]
+        ele_lst = ele_lst[:(len(ele_lst) // 2)] + 2 * [f"-{moves}a"] + ele_lst[(len(ele_lst) // 2):]
         print("Invalid input! Adding additional elements to the board")
-    elif check_for_match(elements_lst):
+    elif check_for_match(ele_lst):
         moves += 1
-        print(f"Congrats! You have found matching elements - {check_for_match(elements_lst)}!")
-        elements_lst = list(filter(lambda x: x != check_for_match(elements_lst), elements_lst))
+        print(f"Congrats! You have found matching elements - {check_for_match(ele_lst)}!")
+        ele_lst = list(filter(lambda x: x != check_for_match(ele_lst), ele_lst))
     else:
         moves += 1
         print("Try again!")
-    if win_lose(elements_lst):
+    if win_lose(ele_lst):
         print(f"You have won in {moves} turns!")
         break
 
     command = input()
 
-if not win_lose(elements_lst):
+if not win_lose(ele_lst):
     print("Sorry you lose :(")
-    print(" ".join(elements_lst))
+    print(" ".join(ele_lst))
