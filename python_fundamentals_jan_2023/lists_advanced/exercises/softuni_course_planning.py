@@ -12,15 +12,17 @@ def insert(lst, title, idx):
 
 def remove(lst, title):
     if title in lst:
-        rem_index = lst.index(title)
+        # rem_index = lst.index(title)
         lst.remove(title)
-    if f"Exercise-{title}" in lst:
-        rem_index_exe = lst.index(f"Exercise-{title}")
-        lst.remove(f"Exercise-{title}")
+    if f"{title}-Exercise" in lst:
+        # rem_index_exe = lst.index(f"{title}-Exercise")
+        lst.remove(f"{title}-Exercise")
     return lst
 
 
 def swap(lst, title_1, title_2):
+    if title_1 not in lst or title_2 not in lst:
+        return lst
     idx_1 = lst.index(title_1)
     idx_2 = lst.index(title_2)
     title_1_exe = f"{title_1}-Exercise"
@@ -40,7 +42,8 @@ def swap(lst, title_1, title_2):
     return lst
 
 
-def add_exe(lst, title, exe_title):
+def add_exe(lst, title):
+    exe_title = f"{title}-Exercise"
     if title not in lst:
         lst.insert(len(lst), title)
     title_idx = lst.index(title)
@@ -73,7 +76,6 @@ while True:
         swap(lessons, lesson_title_1, lesson_title_2)
     elif current_command == "Exercise":
         lesson_title = command_list[1]
-        exercise_title = f"{lesson_title}-Exercise"
-        add_exe(lessons, lesson_title, exercise_title)
+        add_exe(lessons, lesson_title)
 
 [print(f"{i}.{lessons[i - 1]}") for i in range(1, len(lessons) + 1)]
