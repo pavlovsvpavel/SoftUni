@@ -32,13 +32,11 @@ def swap(lst, title_1, title_2):
         element = lst.pop(rem_index_exe)
         new_idx_1 = lst.index(title_1)
         lst.insert(new_idx_1 + 1, title_1_exe)
-        # lst[rem_index_exe], lst[idx_1] = lst[idx_1], lst[rem_index_exe]
     if title_2_exe in lst:
         rem_index_exe = lst.index(f"{title_2}-Exercise")
         element = lst.pop(rem_index_exe)
         new_idx_2 = lst.index(title_2)
         lst.insert(new_idx_2 + 1, title_2_exe)
-        # lst[rem_index_exe], lst[idx_2] = lst[idx_2], lst[rem_index_exe]
     return lst
 
 
@@ -79,6 +77,3 @@ while True:
         add_exe(lessons, lesson_title, exercise_title)
 
 [print(f"{i}.{lessons[i - 1]}") for i in range(1, len(lessons) + 1)]
-
-
-
