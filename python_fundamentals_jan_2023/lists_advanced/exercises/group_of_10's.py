@@ -4,9 +4,9 @@ num_list = list(map(int, numbers))
 start = 1
 end = 10
 
-while True:
-    if not num_list:
-        break
+while num_list:
+    # if not num_list:
+    #     break
 
     current_group = []
     for num in range(start, end + 1):
