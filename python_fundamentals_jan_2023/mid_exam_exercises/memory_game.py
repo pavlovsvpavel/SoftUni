@@ -1,6 +1,6 @@
-def check_for_match(lst):
-    if lst[command_lst[0]] == lst[command_lst[1]]:
-        element = lst[command_lst[0]]
+def check_for_match(lst, com_lst):
+    if lst[com_lst[0]] == lst[com_lst[1]]:
+        element = lst[com_lst[0]]
         return element
 
 
@@ -33,9 +33,9 @@ while command != "end":
     if cheat_check(command_lst, ele_lst):
         ele_lst = ele_lst[:(len(ele_lst) // 2)] + 2 * [f"-{moves}a"] + ele_lst[(len(ele_lst) // 2):]
         print("Invalid input! Adding additional elements to the board")
-    elif check_for_match(ele_lst):
-        print(f"Congrats! You have found matching elements - {check_for_match(ele_lst)}!")
-        ele_lst = list(filter(lambda x: x != check_for_match(ele_lst), ele_lst))
+    elif check_for_match(ele_lst, command_lst):
+        print(f"Congrats! You have found matching elements - {check_for_match(ele_lst, command_lst)}!")
+        ele_lst = list(filter(lambda x: x != check_for_match(ele_lst, command_lst), ele_lst))
     else:
         print("Try again!")
     if win_lose(ele_lst):
