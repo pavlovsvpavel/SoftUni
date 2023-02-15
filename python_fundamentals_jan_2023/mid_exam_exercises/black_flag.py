@@ -10,7 +10,6 @@ for day in range(1, days + 1):
     if day % 5 == 0:
         total_plunder -= total_plunder * 0.3
 
-
 percentage_of_expected_plunder = total_plunder / expected_plunder * 100
 
 if total_plunder >= expected_plunder:
