@@ -1,8 +1,8 @@
 def indices_check(lst, num):
-    if num >= len(lst) or num < 0:
-        return False
-    else:
+    if 0 <= num <= len(lst) - 1:
         return True
+    else:
+        return False
 
 
 pirate_ship = [int(x) for x in input().split(">")]
