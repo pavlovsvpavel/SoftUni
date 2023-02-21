@@ -17,7 +17,7 @@ while True:
     input_line = input()
     if input_line == "Stop":
         break
-    sender, receiver, content = [x for x in input_line.split(" ")]
+    sender, receiver, content = input_line.split(" ")
     email = Email(sender, receiver, content)
     emails.append(email)
 
