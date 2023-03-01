@@ -7,12 +7,13 @@ while True:
 
     items = command.split(": ")
     product = items[0]
-    quantity = items[1]
+    quantity = int(items[1])
 
-    if product not in products:
-        products[product] = 0
+    # if product not in products:
+    #     products[product] = 0
+    # products[product] += int(quantity)
 
-    products[product] += int(quantity)
+    products[product] = products.get(product, 0) + quantity
 
 print("Products in stock:")
 for product, quantity in products.items():
