@@ -1,16 +1,16 @@
-def add_user(user, side):
-    for users in force_book.values():
+def add_user(my_dict, user, side):
+    for users in my_dict.values():
         if user in users:
             return
-    force_book[side] = force_book.get(side, []) + [user]
+    my_dict[side] = my_dict.get(side, []) + [user]
 
 
-def switch_user(side, user):
-    for sides, users in force_book.items():
+def switch_user(my_dict, side, user):
+    for sides, users in my_dict.items():
         if user in users:
-            force_book[sides].remove(user)
+            my_dict[sides].remove(user)
             break
-    force_book[side] = force_book.get(side, []) + [user]
+    my_dict[side] = my_dict.get(side, []) + [user]
     print(f"{user} joins the {side} side!")
 
 
@@ -23,10 +23,10 @@ while True:
 
     if "|" in command:
         side, user = command.split(" | ")
-        add_user(user, side)
+        add_user(force_book, user, side)
     elif "->" in command:
         user, side = command.split(" -> ")
-        switch_user(side, user)
+        switch_user(force_book, side, user)
 
 for side, names in force_book.items():
     if names:
