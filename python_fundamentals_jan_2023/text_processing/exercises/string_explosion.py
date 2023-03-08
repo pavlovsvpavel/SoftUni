@@ -1,17 +1,19 @@
 string = list(input())
 explosion_left = 0
-counter = string.count(">")
 
-for pos, el in enumerate(string, 1):
+for pos, el in enumerate(string):
     if el == ">":
-        counter -= 1
-        current_explosion = int(string[pos])
-        string.pop(pos)
-        explosion_left += current_explosion - 1
-        if explosion_left > 0 and string[pos] != ">":
-            for _ in range(explosion_left):
-                string.pop(pos)
-                explosion_left = 0
-    if counter == 0:
-        break
+        current_explosion = int(string[pos + 1])
+        if current_explosion > 0:
+            for idx in range(current_explosion + explosion_left):
+                if explosion_left > 0:
+                    explosion_left = 0
+                if pos == len(string) - 1:
+                    break
+                if string[pos + 1] != ">":
+                    string.pop(pos + 1)
+                else:
+                    explosion_left = current_explosion - 1
+                    break
+
 print("".join(string))
