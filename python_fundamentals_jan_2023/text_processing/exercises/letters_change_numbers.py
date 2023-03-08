@@ -1,7 +1,9 @@
 main_string = [x.strip() for x in input().split(" ")]
 
-alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
-            "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+alphabet = [
+    "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
+    "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
+]
 total_result = 0
 for el in main_string:
     el_length = len(el)
