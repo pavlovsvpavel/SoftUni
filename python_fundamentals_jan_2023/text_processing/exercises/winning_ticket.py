@@ -1,5 +1,15 @@
-tickets_collection = [x.strip() for x in input().split(", ")]
+def find_symbols(string, symbol):
+    symbols_count = 0
+    for pos, el in enumerate(string):
+        if el == symbol:
+            symbols_count += 1
+            if pos + 1 < len(string):
+                if string[pos + 1] != symbol:
+                    break
+    return symbols_count
 
+
+tickets_collection = [x.strip() for x in input().split(", ")]
 special_symbols = ['@', '#', '$', '^']
 
 for ticket in tickets_collection:
@@ -8,33 +18,20 @@ for ticket in tickets_collection:
         print("invalid ticket")
         continue
     half_ticket = ticket_chars // 2
-    left_side = 0
-    left_half = ticket[:half_ticket]
-    right_side = 0
-    right_half = ticket[half_ticket:]
     match_symbol = ""
     for special in special_symbols:
         if special in ticket:
             match_symbol = special
 
-    for pos, el in enumerate(left_half):
-        if el == match_symbol:
-            left_side += 1
-            if pos + 1 < len(left_half):
-                if left_half[pos + 1] != match_symbol:
-                    break
+    left_half = ticket[:half_ticket]
+    left_count = find_symbols(left_half, match_symbol)
+    right_half = ticket[half_ticket:]
+    right_count = find_symbols(right_half, match_symbol)
 
-    for pos, el in enumerate(right_half):
-        if el == match_symbol:
-            right_side += 1
-            if pos + 1 < len(right_half):
-                if right_half[pos + 1] != match_symbol:
-                    break
-
-    if min(left_side, right_side) >= 10:
-        print(f'ticket "{ticket}" - {min(left_side, right_side)}{match_symbol} Jackpot!')
-    elif 6 <= min(left_side, right_side) < 10:
-        print(f'ticket "{ticket}" - {min(left_side, right_side)}{match_symbol}')
+    if min(left_count, right_count) >= 10:
+        print(f'ticket "{ticket}" - {min(left_count, right_count)}{match_symbol} Jackpot!')
+    elif 6 <= min(left_count, right_count) < 10:
+        print(f'ticket "{ticket}" - {min(left_count, right_count)}{match_symbol}')
     else:
         print(f'ticket "{ticket}" - no match')
 
