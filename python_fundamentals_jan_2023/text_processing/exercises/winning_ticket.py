@@ -14,7 +14,7 @@ special_symbols = ['@', '#', '$', '^']
 
 for ticket in tickets_collection:
     ticket_chars = len(ticket)
-    if ticket_chars < 20:
+    if ticket_chars != 20:
         print("invalid ticket")
         continue
     half_ticket = ticket_chars // 2
@@ -28,10 +28,11 @@ for ticket in tickets_collection:
     right_half = ticket[half_ticket:]
     right_count = find_symbols(right_half, match_symbol)
 
-    if min(left_count, right_count) >= 10:
-        print(f'ticket "{ticket}" - {min(left_count, right_count)}{match_symbol} Jackpot!')
-    elif 6 <= min(left_count, right_count) < 10:
-        print(f'ticket "{ticket}" - {min(left_count, right_count)}{match_symbol}')
+    winnings = min(left_count, right_count)
+    if winnings == 10:
+        print(f'ticket "{ticket}" - {winnings}{match_symbol} Jackpot!')
+    elif winnings >= 6:
+        print(f'ticket "{ticket}" - {winnings}{match_symbol}')
     else:
         print(f'ticket "{ticket}" - no match')
 
