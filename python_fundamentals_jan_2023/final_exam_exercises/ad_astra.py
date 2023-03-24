@@ -19,5 +19,6 @@ for el in valid_input:
 days = total_calories // 2000
 print(f"You have food to last you for: {days} days!")
 
-for item in items_list:
-    print(item)
+print("\n".join(items_list))
+# for item in items_list:
+#     print(item)
