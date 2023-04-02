@@ -4,7 +4,7 @@ count_passwords = int(input())
 for _ in range(count_passwords):
     password = input()
 
-    pattern = r"(\S+)>([\d]{3,}\|[a-z]{3,}\|[A-Z]{3,}\|\S+)<\1"
+    pattern = r"^(\S+)\>([\d]{3,}\|[a-z]{3,}\|[A-Z]{3,}\|\S+)\<\1$"
 
     matches = re.findall(pattern, password)
     if matches:
