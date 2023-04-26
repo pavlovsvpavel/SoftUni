@@ -1,4 +1,4 @@
-numbers = tuple(map(lambda x: float(x), input().split(" ")))
+numbers = tuple(map(float, input().split(" ")))
 
 occurrences = {}
 for number in numbers:
