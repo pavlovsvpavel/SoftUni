@@ -30,8 +30,7 @@ for el in expression:
     if el not in operators:
         numbers.append(int(el))
     else:
-        numbers.append(calculations(numbers, el))
-        numbers.rotate()
+        numbers.appendleft(calculations(numbers, el))
         numbers = removing_elements(numbers)
 
 print(numbers[0])
