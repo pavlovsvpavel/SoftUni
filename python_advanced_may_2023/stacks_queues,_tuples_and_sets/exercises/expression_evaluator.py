@@ -2,31 +2,17 @@ from collections import deque
 from math import floor
 
 
-def multiply(nums):
+def calculations(nums, operator):
     result = nums[0]
     for i in range(1, len(nums)):
-        result *= nums[i]
-    return result
-
-
-def add(nums):
-    result = nums[0]
-    for i in range(1, len(nums)):
-        result += nums[i]
-    return result
-
-
-def subtract(nums):
-    result = nums[0]
-    for i in range(1, len(nums)):
-        result -= nums[i]
-    return result
-
-
-def divide(nums):
-    result = nums[0]
-    for i in range(1, len(nums)):
-        result /= nums[i]
+        if operator == "*":
+            result *= nums[i]
+        elif operator == "+":
+            result += nums[i]
+        elif operator == "-":
+            result -= nums[i]
+        elif operator == "/":
+            result /= nums[i]
     return floor(result)
 
 
@@ -44,21 +30,8 @@ for el in expression:
     if el not in operators:
         numbers.append(int(el))
     else:
-        if el == "*":
-            numbers.append(multiply(numbers))
-            numbers.rotate()
-            numbers = removing_elements(numbers)
-        elif el == "-":
-            numbers.append(subtract(numbers))
-            numbers.rotate()
-            numbers = removing_elements(numbers)
-        elif el == "+":
-            numbers.append(add(numbers))
-            numbers.rotate()
-            numbers = removing_elements(numbers)
-        elif el == "/":
-            numbers.append(divide(numbers))
-            numbers.rotate()
-            numbers = removing_elements(numbers)
+        numbers.append(calculations(numbers, el))
+        numbers.rotate()
+        numbers = removing_elements(numbers)
 
 print(numbers[0])
