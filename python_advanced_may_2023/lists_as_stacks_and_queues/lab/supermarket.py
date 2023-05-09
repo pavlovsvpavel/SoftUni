@@ -13,4 +13,3 @@ while True:
             print(f"{queue.popleft()}")
     else:
         queue.append(name)
-
