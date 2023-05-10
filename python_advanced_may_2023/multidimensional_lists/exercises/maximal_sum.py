@@ -1,3 +1,5 @@
+import numpy as np
+
 def read_matrix():
     rows, cols = [int(x) for x in input().split(" ")]
     current_matrix = []
@@ -21,12 +23,21 @@ def submatrix_data(matrix, size, current_row, current_col):
     return data
 
 
-def print_matrix(numbers, n):
-    result = ''
-    for i in range(len(numbers)):
-        result += f"{numbers[i]} "
-        if (i + 1) % n == 0:
-            result += '\n'
+# def print_matrix(numbers, n):
+#     result = ''
+#     for i in range(len(numbers)):
+#         result += f"{numbers[i]} "
+#         if (i + 1) % n == 0:
+#             result += '\n'
+#     return result
+
+
+def print_matrix2(numbers, n):
+    result = ""
+    arr = np.array(numbers)
+    table = arr.reshape(n, n)
+    for line in table:
+        result += f'{" ".join(map(str, line))}\n'
     return result
 
 
@@ -45,4 +56,5 @@ for row in range(len(matrix)):
             max_submatrix_elements = submatrix_elements
 
 print(f"Sum = {max_submatrix_sum}")
-print(print_matrix(max_submatrix_elements, submatrix_size))
+# print(print_matrix(max_submatrix_elements, submatrix_size))
+print(print_matrix2(max_submatrix_elements, submatrix_size))
