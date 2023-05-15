@@ -18,12 +18,13 @@ secondary_colors = {
 }
 found_colors = []
 while data:
-    if len(data) == 1:
-        left_color = data.pop()
-        if left_color in all_colors:
-            found_colors.append(left_color)
-        continue
-    first, last = data.popleft(), data.pop()
+    # if len(data) == 1:
+    #     left_color = data.pop()
+    #     if left_color in all_colors:
+    #         found_colors.append(left_color)
+    #     continue
+    first, last = data.popleft(), data.pop() if data else ""  # if no data to pop return empty string
+
     if first + last in all_colors:
         found_colors.append(first + last)
     elif last + first in all_colors:
