@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def read_matrix():
     rows, cols = [int(x) for x in input().split(" ")]
     current_matrix = []
