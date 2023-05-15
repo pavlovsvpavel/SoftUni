@@ -2,8 +2,7 @@ from collections import deque
 
 
 def print_func(lst):
-    if lst:
-        return ", ".join(map(str, lst))
+    return ", ".join(map(str, lst)) or 'empty'
 
 
 chocolates = [int(x) for x in input().split(", ")]
@@ -33,11 +32,7 @@ if milkshakes == 5:
     print("Great! You made all the chocolate milkshakes needed!")
 else:
     print("Not enough milkshakes.")
-if chocolates:
-    print(f"Chocolate: {print_func(chocolates)}")
-else:
-    print("Chocolate: empty")
-if cups_of_milk:
-    print(f"Milk: {print_func(cups_of_milk)}")
-else:
-    print("Milk: empty")
+
+print(f"Chocolate: {print_func(chocolates)}")
+print(f"Milk: {print_func(cups_of_milk)}")
+
