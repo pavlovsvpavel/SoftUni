@@ -26,7 +26,7 @@ for bomb in bombs_coordinates:
 
     damage = matrix[row][col]
     matrix[row][col] = 0
-    
+
     for direction in functions.keys():
         current_cell_coord = functions[direction](row, col)
         current_row = current_cell_coord[0]
