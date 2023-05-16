@@ -8,22 +8,25 @@ matrix = [[int(x) for x in input().split()] for _ in range(rows)]
 bombs_coordinates = input().split(" ")
 
 functions = {
-    "up_left": lambda x, y: (x-1, y-1),
-    "up": lambda x, y: (x-1, y),
-    "up_right": lambda x, y: (x-1, y+1),
-    "left": lambda x, y: (x, y-1),
-    "right": lambda x, y: (x, y+1),
-    "down_left": lambda x, y: (x+1, y-1),
-    "down": lambda x, y: (x+1, y),
-    "down_right": lambda x, y: (x+1, y+1),
+    "up_left": lambda x, y: (x - 1, y - 1),
+    "up": lambda x, y: (x - 1, y),
+    "up_right": lambda x, y: (x - 1, y + 1),
+    "left": lambda x, y: (x, y - 1),
+    "right": lambda x, y: (x, y + 1),
+    "down_left": lambda x, y: (x + 1, y - 1),
+    "down": lambda x, y: (x + 1, y),
+    "down_right": lambda x, y: (x + 1, y + 1),
 }
 
 for bomb in bombs_coordinates:
     row, col = map(int, bomb.split(","))
+
     if matrix[row][col] <= 0:
         continue
+
     damage = matrix[row][col]
     matrix[row][col] = 0
+    
     for direction in functions.keys():
         current_cell_coord = functions[direction](row, col)
         current_row = current_cell_coord[0]
