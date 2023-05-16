@@ -8,14 +8,21 @@ def read_matrix_func():
     return current_matrix
 
 
-def sum_of_submatrix(matrix):
-    result = 0
-    for i in range(3):
-        for j in range(3):
-            result += matrix[i][j]
-
-
 matrix = read_matrix_func()
-submatrix_size = 2
-sum_of_submatrix(matrix)
+max_sum = float("-inf")
+submatrix = []
+for row in range(len(matrix) - 1):
+    for col in range(len(matrix[0]) - 1):
+        current_element = matrix[row][col]
+        next_element = matrix[row][col + 1]
+        below_element = matrix[row + 1][col]
+        diagonal_element = matrix[row + 1][col + 1]
+        sum_of_elements = current_element + next_element + below_element + diagonal_element
 
+        if max_sum < sum_of_elements:
+            max_sum = sum_of_elements
+            submatrix = [[current_element, next_element], [below_element, diagonal_element]]
+
+print(*submatrix[0])
+print(*submatrix[1])
+print(max_sum)
