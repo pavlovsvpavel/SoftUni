@@ -7,9 +7,10 @@ def indices_check(matrix, row_idx, col_idx, move):
     }
     row_idx, col_idx = movements[move](row_idx, col_idx)
 
-    if row_idx < 0 or col_idx < 0 or row_idx >= len(matrix) or col_idx >= len(matrix[0]):
-        return False
-    return row_idx, col_idx
+    if 0 <= row_idx < len(matrix) and 0 <= col_idx < len(matrix[0]):
+        return row_idx, col_idx
+
+    return False
 
 
 def find_coal(matrix, row_idx, col_idx):
