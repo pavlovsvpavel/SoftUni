@@ -1,12 +1,3 @@
-def print_matrix(numbers, n):
-    result = ''
-    for k in range(len(numbers)):
-        result += f"{numbers[k]} "
-        if (k + 1) % n == 0:
-            result += '\n'
-    return result
-
-
 rows, cols = [int(x) for x in input().split(" ")]
 
 all_palindromes = []
@@ -23,10 +14,10 @@ for i in range(start_letter, start_letter + rows):
         palindromes.append(letters)
 
         if len(palindromes) % cols == 0:
-            all_palindromes.extend(palindromes)
+            all_palindromes.append(palindromes)
             start_letter += 1
             break
 
-print(print_matrix(all_palindromes, cols))
+[print(*inner_list, sep=" ") for inner_list in all_palindromes]
 
 
