@@ -1,8 +1,3 @@
-def print_matrix_as_text(matrix):
-    for i in matrix:
-        print(" ".join(map(str, i)))
-
-
 rows = int(input())
 matrix = [[int(x) for x in input().split()] for _ in range(rows)]
 bombs_coordinates = input().split(" ")
@@ -49,4 +44,4 @@ sum_alive_cells = sum(alive_cells)
 
 print(f"Alive cells: {len(alive_cells)}")
 print(f"Sum: {sum_alive_cells}")
-print_matrix_as_text(matrix)
+[print(*inner_list, sep=" ") for inner_list in matrix]
