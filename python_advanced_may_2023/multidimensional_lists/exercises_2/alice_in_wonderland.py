@@ -44,7 +44,7 @@ while tea_bags < 10:
 
     matrix[curr_row][curr_col] = "*"
     alice_coords = curr_row, curr_col
-    
+
 if tea_bags >= 10:
     print(f"She did it! She went to the party.")
 
