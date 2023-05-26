@@ -1,0 +1,1 @@
+new_file = open("words.txt", "w")
