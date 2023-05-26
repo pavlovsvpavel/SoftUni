@@ -26,14 +26,14 @@ while True:
     if email == "End":
         break
 
-    symbol_counter = [el for el in email if el == "@"]
+    symbol_counter = email.count("@")
     name_validator = bool(re.search(name_pattern, email))
     domain_validator = bool(re.search(domain_pattern, email))
 
     if not name_validator:
         raise NameTooShortError("Name must be more than 4 characters")
 
-    elif len(symbol_counter) > 1:
+    elif symbol_counter > 1:
         raise MustContainOnlyOneAtSymbolError("Email must contain only one '@' symbol")
 
     elif not symbol_counter:
