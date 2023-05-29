@@ -13,6 +13,7 @@ for (root, dirs, files) in os.walk(path):
         file_path = os.path.join(root, file)
         size = os.stat(file_path).st_size / 1024
 
+        # Minimum size set to 1 KB for files with fewer data
         if 0 < size < 1:
             size = 1
 
