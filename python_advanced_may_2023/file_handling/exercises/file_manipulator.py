@@ -14,8 +14,8 @@ while True:
     )
 
     if command == "Create":
-        file = open(f"files/{file_name}", "w")
-        file.close()
+        with open(f"files/{file_name}", "w") as file:
+            pass
 
     elif command == "Add":
         with open(f"files/{file_name}", "a") as file:
