@@ -3,6 +3,8 @@ import re
 from collections import defaultdict
 
 path = input(r"Enter path to folder: ")
+file_name_for_report = input("Enter file name: ")
+output_file = os.path.join(path, file_name_for_report + ".txt")
 
 dict_files = defaultdict(list)
 pattern = r"\.[a-z]+$"
@@ -21,7 +23,7 @@ for (root, dirs, files) in os.walk(path):
 
 sorted_dict = dict(sorted(dict_files.items(), key=lambda x: (x[0], x[1])))
 
-with open(f"{path}/report.txt", "a") as report:
+with open(output_file, "a") as report:
     for key, values in sorted_dict.items():
         report.write(f"{key}\n")
         for c_file in sorted_dict[key]:

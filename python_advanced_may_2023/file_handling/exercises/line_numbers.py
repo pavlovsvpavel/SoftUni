@@ -1,4 +1,18 @@
 import re
+import os
+
+directory_name = input("Enter directory name for output files: ")
+file_name = input("Enter name for output file: ")
+
+absolute_path = os.path.abspath(os.path.dirname(__file__))
+new_directory_path = os.path.join(absolute_path, directory_name)
+output_file_path = os.path.join(new_directory_path, file_name + ".txt")
+
+try:
+    os.mkdir(new_directory_path)
+
+except FileExistsError:
+    pass
 
 punctuations_pattern = r"[^\w\s]"
 letters_pattern = r"[^\W\s]"
@@ -12,5 +26,5 @@ with open("files/text.txt", "r") as file:
         new_line = f"Line {line_num}: {line.strip()} ({letters_count})({punctuations_count})\n"
         new_text.append(new_line)
 
-with open("files/output.txt", "a") as output_file:
+with open(output_file_path, "w") as output_file:
     output_file.writelines(new_text)
