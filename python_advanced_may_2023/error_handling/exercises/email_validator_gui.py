@@ -11,6 +11,11 @@ def change_on_hover(button, on_hover, on_leave):
     button.bind("<Leave>", func=lambda e: button.config(background=on_leave))
 
 
+def enter(event):
+    email_validation()
+    input_field.delete(0, "end")
+
+
 def email_validation():
     global message_label
 
@@ -49,22 +54,23 @@ def email_validation():
 
 app = tk.Tk()
 app.title("Email Validator")
-app.geometry("300x130")
+app.geometry("370x170")
 
 input_field_text = tk.Label(font="calibri", text="Please enter your email:")
 input_field_text.place(x=15, y=8)
 
 input_field = tk.Entry(app, font="calibri")
-input_field.place(x=15, y=35)
+input_field.bind("<Return>", enter)
+input_field.place(x=15, y=40)
 
 validation_button = tk.Button(app, font="calibri", text="Check", height=1, padx=15, command=email_validation)
-validation_button.place(x=200, y=30)
+validation_button.place(x=250, y=31)
 change_on_hover(validation_button, "DeepSkyBlue", "SystemButtonFace")
 
 message_label = tk.Label(app, font="calibri")
-message_label.place(x=15, y=85)
+message_label.place(x=15, y=100)
 
 user_email = tk.Label(app, font=("calibri", 12), fg="black")
-user_email.place(x=15, y=65)
+user_email.place(x=15, y=80)
 
 app.mainloop()
