@@ -1,12 +1,27 @@
 from collections import deque
 
+
+def check_for_match(resources, dictionary):
+    for item, res in dictionary.items():
+        res_needed = dictionary[item][0]
+
+        if resources == res_needed:
+            return item, 1
+
+        elif resources > res_needed and item == "MedKit":
+            diff = resources - res_needed
+            return item, diff
+
+    return 0, 0
+
+
 textiles = deque(int(x) for x in input().split())
 medicaments = deque(int(x) for x in input().split())
 
 items = {
-    "Patch": 0,
-    "Bandage": 0,
-    "MedKit": 0,
+    "Patch": [30, 0],
+    "Bandage": [40, 0],
+    "MedKit": [100, 0],
 }
 
 while textiles and medicaments:
@@ -15,19 +30,14 @@ while textiles and medicaments:
 
     elements_sum = current_textile + current_medicament
 
-    if elements_sum == 30:
-        items["Patch"] += 1
+    item_name, value = check_for_match(elements_sum, items)
 
-    elif elements_sum == 40:
-        items["Bandage"] += 1
+    if value == 1:
+        items[item_name][1] += value
 
-    elif elements_sum == 100:
-        items["MedKit"] += 1
-
-    elif elements_sum > 100:
-        items["MedKit"] += 1
-        medicament = medicaments.pop() + elements_sum - 100
-        medicaments.append(medicament)
+    elif value > 1:
+        items[item_name][1] += 1
+        medicaments.append(medicaments.pop() + value)
 
     else:
         medicaments.append(current_medicament + 10)
@@ -42,7 +52,8 @@ elif not medicaments:
 else:
     print("Textiles are empty.")
 
-for item_name, count in sorted(items.items(), key=lambda x: (-x[1], x[0])):
+for item_name, values in sorted(items.items(), key=lambda x: (-x[1][1], x[0])):
+    count = values[1]
     if count > 0:
         print(f"{item_name} - {count}")
 
