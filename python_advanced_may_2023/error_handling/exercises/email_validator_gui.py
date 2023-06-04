@@ -35,14 +35,14 @@ def email_validation():
         message = "Email is valid!"
         color = "green"
 
+    elif not symbol_counter:
+        message = "Email must contain '@'!"
+
     elif not name_validator:
         message = "Name must be more than 4 characters!"
 
     elif symbol_counter > 1:
         message = "Email must contain only one '@' symbol!"
-
-    elif not symbol_counter:
-        message = "Email must contain '@'!"
 
     elif not domain_validator:
         message = "Domain must be one of the following:\n.com, .bg, .org, .net!"
