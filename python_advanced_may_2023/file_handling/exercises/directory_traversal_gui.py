@@ -27,8 +27,9 @@ def change_message():
     run_button["state"] = "disabled"
 
 
-def reload():
+def clear_content():
     run_button["state"] = "active"
+    open_file["state"] = "disabled"
     message_label["text"] = ""
     progress_bar.stop()
     path_field.delete(0, END)
@@ -37,13 +38,14 @@ def reload():
 
 def file_open(file):
     if not os.path.exists(file):
-        message_label["text"] = "No such file"
+        message_label["text"] = "No such file!"
     else:
         os.system(r'start ' + file)
 
 
 def validation():
     if run():
+        open_file["state"] = "active"
         progress_steps()
 
 
@@ -72,7 +74,7 @@ def run():
             dict_files[f_extension[0]].append(f"{file} - size: {size:,.0f} KB")
 
     if not dict_files:
-        message_label["text"] = "No such directory"
+        message_label["text"] = "No such file or directory!"
         return
 
     sorted_dict = dict(sorted(dict_files.items(), key=lambda x: (x[0], x[1])))
@@ -89,11 +91,11 @@ def run():
 output_file = ""
 
 app = Tk()
-app.title("Directory traversal")
+app.title("Directory Traversal")
 app.geometry("300x220")
 app.resizable(width=False, height=False)
 
-path_field_text = Label(app, font="calibri", text="Enter path to folder:")
+path_field_text = Label(app, font="calibri", text="Enter full path to folder:")
 path_field_text.grid(row=0, column=0, sticky="w", padx=10)
 
 path_field = Entry(app, font="calibri", width=30)
@@ -101,7 +103,6 @@ path_field.grid(row=1, column=0, sticky="w", padx=10)
 
 file_field_text = Label(app, font="calibri", text="Enter name for output file:")
 file_field_text.grid(row=2, column=0, sticky="w", padx=10)
-
 
 file_field = Entry(app, font="calibri", width=25)
 file_field.grid(row=3, column=0, sticky="w", padx=10)
@@ -113,10 +114,23 @@ run_button = Button(app, font="calibri", text="Run", width=5, padx=15,
                     command=validation
                     )
 run_button.place(x=10, y=130)
-change_on_hover(run_button, "blue", "SystemButtonFace")
+change_on_hover(run_button, "grey", "SystemButtonFace")
 
 message_label = Label(app, font="calibri", fg="red")
 message_label.place(x=10, y=100)
+
+clear_button = Button(app, font="calibri", text="Clear", width=5, padx=15,
+                      command=clear_content
+                      )
+clear_button.place(x=110, y=130)
+change_on_hover(clear_button, "grey", "SystemButtonFace")
+
+open_file = Button(app, font="calibri", text="Open file", width=5, padx=15,
+                   command=lambda: file_open(output_file)
+                   )
+open_file.place(x=210, y=130)
+change_on_hover(open_file, "grey", "SystemButtonFace")
+open_file["state"] = "disabled"
 
 s = ttk.Style()
 s.theme_use('alt')
@@ -126,17 +140,5 @@ progress_bar = ttk.Progressbar(app, orient=HORIZONTAL, length=280,
                                style="blue.Horizontal.TProgressbar"
                                )
 progress_bar.place(x=10, y=180)
-
-clear_button = Button(app, font="calibri", text="Clear", width=5, padx=15,
-                      command=reload
-                      )
-clear_button.place(x=110, y=130)
-change_on_hover(clear_button, "red", "SystemButtonFace")
-
-open_file = Button(app, font="calibri", text="Open file", width=5, padx=15,
-                   command=lambda: file_open(output_file)
-                   )
-open_file.place(x=210, y=130)
-change_on_hover(open_file, "green2", "SystemButtonFace")
 
 app.mainloop()
