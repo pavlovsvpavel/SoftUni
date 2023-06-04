@@ -113,19 +113,25 @@ run_button = Button(app, font="calibri", text="Run", width=5, padx=15,
                     command=validation
                     )
 run_button.place(x=10, y=130)
-change_on_hover(run_button, "DeepSkyBlue", "SystemButtonFace")
+change_on_hover(run_button, "blue", "SystemButtonFace")
 
 message_label = Label(app, font="calibri", fg="red")
 message_label.place(x=10, y=100)
 
-progress_bar = ttk.Progressbar(app, orient=HORIZONTAL, length=280, mode="determinate")
+s = ttk.Style()
+s.theme_use('alt')
+s.configure("blue.Horizontal.TProgressbar", background='blue')
+progress_bar = ttk.Progressbar(app, orient=HORIZONTAL, length=280,
+                               mode="determinate",
+                               style="blue.Horizontal.TProgressbar"
+                               )
 progress_bar.place(x=10, y=180)
 
 clear_button = Button(app, font="calibri", text="Clear", width=5, padx=15,
                       command=reload
                       )
 clear_button.place(x=110, y=130)
-change_on_hover(clear_button, "yellow", "SystemButtonFace")
+change_on_hover(clear_button, "red", "SystemButtonFace")
 
 open_file = Button(app, font="calibri", text="Open file", width=5, padx=15,
                    command=lambda: file_open(output_file)
