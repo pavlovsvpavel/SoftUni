@@ -19,7 +19,7 @@ def enter(event):
 def email_validation():
     global message_label
 
-    name_pattern = r"^[\w\.]{5,}"
+    name_pattern = r"^[\w\.\-]{5,}"
     domain_pattern = r"\.com$|\.bg$|\.net$|\.org$"
     message = ""
     color = "red"
@@ -54,17 +54,17 @@ def email_validation():
 
 app = tk.Tk()
 app.title("Email Validator")
-app.geometry("370x170")
+app.geometry("350x170")
 
 input_field_text = tk.Label(font="calibri", text="Please enter your email:")
 input_field_text.place(x=15, y=8)
 
 input_field = tk.Entry(app, font="calibri")
 input_field.bind("<Return>", enter)
-input_field.place(x=15, y=40)
+input_field.place(x=15, y=40, height=25, width=200)
 
 validation_button = tk.Button(app, font="calibri", text="Check", height=1, padx=15, command=email_validation)
-validation_button.place(x=250, y=31)
+validation_button.place(x=240, y=35)
 change_on_hover(validation_button, "DeepSkyBlue", "SystemButtonFace")
 
 message_label = tk.Label(app, font="calibri")
