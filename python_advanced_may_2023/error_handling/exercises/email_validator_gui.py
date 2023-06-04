@@ -19,7 +19,7 @@ def enter(event):
 def email_validation():
     global message_label
 
-    name_pattern = r"\w{5,}"
+    name_pattern = r"^[\w\.]{5,}"
     domain_pattern = r"\.com$|\.bg$|\.net$|\.org$"
     message = ""
     color = "red"

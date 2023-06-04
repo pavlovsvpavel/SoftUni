@@ -17,7 +17,7 @@ class MustContainOnlyOneAtSymbolError(Exception):
     pass
 
 
-name_pattern = r"\w{5,}"
+name_pattern = r"^[\w\.]{5,}"
 domain_pattern = r"\.com$|\.bg$|\.net$|\.org$"
 
 while True:

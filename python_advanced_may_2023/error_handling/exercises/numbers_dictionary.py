@@ -6,9 +6,10 @@ while True:
     if line == "Search":
         break
 
+    number_as_string = line
+    number = int(input())
+
     try:
-        number_as_string = line
-        number = int(input())
         numbers_dictionary[number_as_string] = number
     except ValueError:
         print("The variable number must be an integer")
