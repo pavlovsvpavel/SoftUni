@@ -8,8 +8,12 @@ output_file = os.path.join(path, file_name_for_report + ".txt")
 
 dict_files = defaultdict(list)
 pattern = r"\.[a-z]+$"
+SEARCH_LEVEL = 1  # specify how many levels to search
+count_levels = -1
 
 for (root, dirs, files) in os.walk(path):
+    count_levels += 1
+
     for file in files:
         f_extension = re.findall(pattern, file)
         file_path = os.path.join(root, file)
@@ -20,6 +24,9 @@ for (root, dirs, files) in os.walk(path):
             size = 1
 
         dict_files[f_extension[0]].append(f"{file} - size: {size:,.0f} KB")
+
+    if count_levels == SEARCH_LEVEL:
+        break
 
 sorted_dict = dict(sorted(dict_files.items(), key=lambda x: (x[0], x[1])))
 
