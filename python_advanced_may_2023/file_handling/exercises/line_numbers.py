@@ -18,7 +18,7 @@ punctuations_pattern = r"[^\w\s]"
 letters_pattern = r"[^\W\s]"
 new_text = []
 
-with open("files/text.txt", "r") as file:
+with open("text.txt", "r") as file:
     for line_num, line in enumerate(file, 1):
         punctuations_count = len(re.findall(punctuations_pattern, line))
         letters_count = len(re.findall(letters_pattern, line))
