@@ -1,6 +1,6 @@
-#### :green_circle: [Programming Basics Certificate](https://softuni.bg/certificates/details/143737/bdea256b)
-#### :green_circle: [Programming Fundamentals Certificate](https://softuni.bg/certificates/details/166982/a031e9aa)
-#### :green_circle: [Programming Fundamentals Certificate](https://softuni.bg/certificates/details/173742/8f18b2d4)
+#### :green_circle: [Python Basics Certificate](https://softuni.bg/certificates/details/143737/bdea256b)
+#### :green_circle: [Python Fundamentals Certificate](https://softuni.bg/certificates/details/166982/a031e9aa)
+#### :green_circle: [Python Advanced Certificate](https://softuni.bg/certificates/details/173742/8f18b2d4)
 
 
 ### [SoftUni](https://about.softuni.bg/) is one of the largest and most respected educational institutions, providing training and career support in the fields of software engineering, digital marketing and design.
