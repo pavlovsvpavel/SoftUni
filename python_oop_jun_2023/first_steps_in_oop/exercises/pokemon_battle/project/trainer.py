@@ -1,10 +1,12 @@
+from typing import List
+
 from project.pokemon import Pokemon
 
 
 class Trainer:
     def __init__(self, name: str):
         self.name = name
-        self.pokemons = []
+        self.pokemons: List[Pokemon] = []
 
     def add_pokemon(self, pokemon_name: Pokemon):
         if pokemon_name not in self.pokemons:
@@ -39,4 +41,3 @@ print(trainer.add_pokemon(second_pokemon))
 print(trainer.release_pokemon("Pikachu"))
 print(trainer.release_pokemon("Pikachu"))
 print(trainer.trainer_data())
-
