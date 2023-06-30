@@ -9,7 +9,7 @@ class Pizza:
         self.name = name
         self.dough = dough
         self.max_number_of_toppings = max_number_of_toppings
-        self.toppings: Dict[str: int] = {}
+        self.toppings: Dict[str: float] = {}
 
     @property
     def name(self):
@@ -51,6 +51,6 @@ class Pizza:
         self.toppings[topping.topping_type] = self.toppings.get(topping.topping_type, 0) + topping.weight
 
     def calculate_total_weight(self) -> float:
-        total_weight_toppings = sum(topping for topping in self.toppings.values())
+        total_weight_toppings = sum(self.toppings.values())
 
         return self.__dough.weight + total_weight_toppings

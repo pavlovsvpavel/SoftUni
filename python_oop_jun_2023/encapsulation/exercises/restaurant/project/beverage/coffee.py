@@ -10,9 +10,5 @@ class Coffee(HotBeverage):
         self.__caffeine = caffeine
 
     @property
-    def __caffeine(self):
-        return self.caffeine
-
-    @__caffeine.setter
-    def __caffeine(self, value):
-        self.caffeine = value
+    def caffeine(self):
+        return self.__caffeine
