@@ -25,12 +25,14 @@ class PhotoAlbum:
 
     def display(self) -> str:
         result = ["-----------"]
+
         for row in self.photos:
+
             if len(row) == 0:
                 result.append("\n-----------\n")
                 continue
 
-            row_photos = ["[]" for el in row]
+            row_photos = ["[]" for _ in row]
 
             result.append(" ".join(row_photos))
 
