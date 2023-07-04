@@ -15,8 +15,7 @@ class Gym:
         self.plans: List[ExercisePlan] = []
         self.subscriptions: List[Subscription] = []
 
-    @staticmethod
-    def add_to_list(element, lst) -> None:
+    def add_to_list(self, element, lst) -> None:
         if element not in lst:
             lst.append(element)
 
@@ -43,15 +42,11 @@ class Gym:
 
         current_id = c_subscription.id
 
-        result = [
-            [subscription for subscription in self.subscriptions if subscription.id == current_id],
-            [customer for customer in self.customers if customer.id == current_id],
-            [trainer for trainer in self.trainers if trainer.id == current_id],
-            [equipment for equipment in self.equipment if equipment.id == current_id],
-            [plan for plan in self.plans if plan.id == current_id],
-        ]
+        f_result = []
 
-        return "\n".join(''.join(map(str, el)) for el in result)
+        for obj in (self.subscriptions, self.customers, self.trainers, self.equipment, self.plans):
+            for el in obj:
+                if el.id == current_id:
+                    f_result.append(el)
 
-
-
+        return "\n".join(map(str, f_result))
