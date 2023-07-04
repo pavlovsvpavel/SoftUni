@@ -6,13 +6,11 @@ class ExercisePlan:
         self.equipment_id = equipment_id
         self.duration = duration
         self.id = ExercisePlan.id
+        ExercisePlan.id += 1
 
     @staticmethod
     def get_next_id() -> int:
-        next_id = ExercisePlan.id
-        ExercisePlan.id += 1
-
-        return next_id
+        return ExercisePlan.id
 
     @classmethod
     def from_hours(cls, trainer_id: int, equipment_id: int, hours: int):

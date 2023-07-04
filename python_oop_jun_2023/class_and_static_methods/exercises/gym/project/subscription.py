@@ -7,13 +7,11 @@ class Subscription:
         self.trainer_id = trainer_id
         self.exercise_id = exercise_id
         self.id = Subscription.id
+        Subscription.id += 1
 
     @staticmethod
     def get_next_id() -> int:
-        next_id = Subscription.id
-        Subscription.id += 1
-
-        return next_id
+        return Subscription.id
 
     def __repr__(self) -> str:
         return f"Subscription <{self.id}> on {self.date}"

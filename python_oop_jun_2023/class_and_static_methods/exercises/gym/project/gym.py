@@ -42,11 +42,15 @@ class Gym:
 
         current_id = c_subscription.id
 
-        f_result = []
+        result = []
 
-        for obj in (self.subscriptions, self.customers, self.trainers, self.equipment, self.plans):
-            for el in obj:
-                if el.id == current_id:
-                    f_result.append(el)
+        for lst in (self.subscriptions, self.customers, self.trainers, self.equipment, self.plans):
+            for obj in lst:
+                if obj.id == current_id:
+                    result.append(obj)
 
-        return "\n".join(map(str, f_result))
+        return "\n".join(map(str, result))
+
+
+
+

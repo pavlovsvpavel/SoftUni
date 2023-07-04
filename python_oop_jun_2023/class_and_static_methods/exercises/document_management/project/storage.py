@@ -11,13 +11,13 @@ class Storage:
         self.topics: List[Topic] = []
         self.documents: List[Document] = []
 
-    @staticmethod
-    def add_elements(element, lst):
+    @classmethod
+    def add_elements(cls, element, lst):
         if element not in lst:
             lst.append(element)
 
     def add_category(self, category: Category) -> None:
-        return self.add_elements(category, self.categories)
+        return Storage.add_elements(category, self.categories)
 
     def add_topic(self, topic: Topic) -> None:
         return self.add_elements(topic, self.topics)
@@ -50,8 +50,8 @@ class Storage:
 
         c_document.file_name = new_file_name
 
-    @staticmethod
-    def delete_elements(current_id, lst):
+    @classmethod
+    def delete_elements(cls, current_id, lst):
         try:
             c_id = next(filter(lambda x: x.id == current_id, lst))
         except StopIteration:
@@ -60,7 +60,7 @@ class Storage:
         lst.remove(c_id)
 
     def delete_category(self, category_id: int) -> None:
-        self.delete_elements(category_id, self.categories)
+        Storage.delete_elements(category_id, self.categories)
 
     def delete_topic(self, topic_id: int) -> None:
         self.delete_elements(topic_id, self.topics)

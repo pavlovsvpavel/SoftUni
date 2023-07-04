@@ -20,11 +20,11 @@ class MovieWorld:
         return 10
 
     def add_customer(self, customer: Customer) -> None:
-        if len(self.customers) < self.customer_capacity():
+        if len(self.customers) < MovieWorld.customer_capacity():
             self.customers.append(customer)
 
     def add_dvd(self, dvd: DVD) -> None:
-        if len(self.dvds) < self.dvd_capacity():
+        if len(self.dvds) < MovieWorld.dvd_capacity():
             self.dvds.append(dvd)
 
     def rent_dvd(self, customer_id: int, dvd_id: int) -> str:
