@@ -25,13 +25,17 @@ class WarRobot(Robot):
         return 12
 
 
+def number_of_robot_sensors(robot):
+    print(robot.sensors_amount())
+
+
 basic_robot = Robot('Robo')
 da_vinci = MedicalRobot('Da Vinci')
 moley = ChefRobot('Moley')
 griffin = WarRobot('Griffin')
 
-print(basic_robot.sensors_amount())
-print(da_vinci.sensors_amount())
-print(moley.sensors_amount())
-print(griffin.sensors_amount())
+number_of_robot_sensors(basic_robot)
+number_of_robot_sensors(da_vinci)
+number_of_robot_sensors(moley)
+number_of_robot_sensors(griffin)
 
