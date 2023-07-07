@@ -1,18 +1,18 @@
-from typing import List, Optional
+from typing import List
 
 
 class Account:
     def __init__(self, owner: str, amount: int = 0) -> None:
         self.owner = owner
         self.amount = amount
-        self._transactions: List = []
+        self._transactions: List[int] = []
 
     @property
-    def balance(self):
+    def balance(self) -> int:
         return sum(self._transactions) + self.amount
 
     def handle_transaction(self, transaction_amount: int) -> str:
-        current_balance = transaction_amount + sum(self._transactions) + self.balance
+        current_balance = transaction_amount + self.balance
 
         if current_balance < 0:
             raise ValueError("sorry cannot go in debt!")
@@ -21,7 +21,7 @@ class Account:
 
         return f"New balance: {self.balance}"
 
-    def add_transaction(self, amount: int) -> Optional[str]:
+    def add_transaction(self, amount: int) -> str:
         if not isinstance(amount, int):
             raise ValueError("please use int for amount")
 
@@ -45,20 +45,11 @@ class Account:
     def __gt__(self, other):
         return self.balance > other.balance
 
-    def __lt__(self, other):
-        return self.balance < other.balance
-
     def __ge__(self, other):
         return self.balance >= other.balance
 
-    def __le__(self, other):
-        return self.balance <= other.balance
-
     def __eq__(self, other):
         return self.balance == other.balance
-
-    def __ne__(self, other):
-        return self.balance != other.balance
 
     def __add__(self, other):
         new_account = Account(f"{self.owner}&{other.owner}", self.amount + other.amount)
