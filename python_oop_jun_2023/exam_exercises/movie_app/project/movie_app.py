@@ -10,7 +10,7 @@ class MovieApp:
         self.movies_collection: List[Movie] = []
         self.users_collection: List[User] = []
 
-    def __take_username_as_object(self, username: str):
+    def __username_as_object(self, username: str):
         for user in self.users_collection:
             if user.username == username:
                 return user
@@ -28,26 +28,25 @@ class MovieApp:
         return username == movie_owner
 
     @staticmethod
-    def __check_for_uploaded_movie(user: User, movie_title: str) -> bool:
-        for movie in user.movie_owned:
-            if movie_title == movie.title:
-                return True
+    def __check_for_uploaded_movie(movie: Movie, uploaded_movies) -> bool:
+        if movie in uploaded_movies:
+            return True
 
         return False
 
     @staticmethod
-    def __check_for_liked_movie(user: User, movie_title: str) -> bool:
-        for movie in user.movie_liked:
-            if movie_title == movie.title:
-                return True
+    def __check_for_liked_movie(movie: Movie, liked_movies) -> bool:
+        if movie in liked_movies:
+            return True
 
         return False
 
     def register_user(self, username: str, age: int) -> str:
         new_user = User(username, age)
 
-        if new_user in self.users_collection:
-            raise Exception("User already exists!")
+        for user in self.users_collection:
+            if user.username == username:
+                raise Exception("User already exists!")
 
         self.users_collection.append(new_user)
 
@@ -59,11 +58,11 @@ class MovieApp:
         if not current_user:
             raise Exception("This user does not exist!")
 
-        if self.__check_for_uploaded_movie(current_user, movie.title):
-            raise Exception("Movie already added to the collection!")
-
         if not self.__check_ownership(username, movie.owner.username):
             raise Exception(f"{username} is not the owner of the movie {movie.title}!")
+
+        if self.__check_for_uploaded_movie(movie, self.movies_collection):
+            raise Exception("Movie already added to the collection!")
 
         self.movies_collection.append(movie)
         current_user.movie_owned.append(movie)
@@ -71,12 +70,11 @@ class MovieApp:
         return f"{username} successfully added {movie.title} movie."
 
     def edit_movie(self, username: str, movie: Movie, **kwargs) -> str:
+        if not self.__check_for_uploaded_movie(movie, self.movies_collection):
+            raise Exception(f"The movie {movie.title} is not uploaded!")
 
         if not self.__check_ownership(username, movie.owner.username):
             raise Exception(f"{username} is not the owner of the movie {movie.title}!")
-
-        if not self.__check_for_uploaded_movie(self.__take_username_as_object(username), movie.title):
-            raise Exception(f"The movie {movie.title} is not uploaded!")
 
         for key, value in kwargs.items():
             setattr(movie, key, value)
@@ -84,36 +82,36 @@ class MovieApp:
         return f"{username} successfully edited {movie.title} movie."
 
     def delete_movie(self, username: str, movie: Movie) -> str:
+        if not self.__check_for_uploaded_movie(movie, self.movies_collection):
+            raise Exception(f"The movie {movie.title} is not uploaded!")
+
         if not self.__check_ownership(username, movie.owner.username):
             raise Exception(f"{username} is not the owner of the movie {movie.title}!")
 
-        if not self.__check_for_uploaded_movie(self.__take_username_as_object(username), movie.title):
-            raise Exception(f"The movie {movie.title} is not uploaded!")
-
         self.movies_collection.remove(movie)
-        self.__take_username_as_object(username).movie_owned.remove(movie)
+        self.__username_as_object(username).movie_owned.remove(movie)
 
         return f"{username} successfully deleted {movie.title} movie."
 
     def like_movie(self, username: str, movie: Movie) -> str:
 
-        if self.__check_ownership(username, movie.owner):
+        if self.__check_ownership(username, movie.owner.username):
             raise Exception(f"{username} is the owner of the movie {movie.title}!")
 
-        if self.__check_for_liked_movie(self.__take_username_as_object(username), movie.title):
+        if self.__check_for_liked_movie(movie, self.__username_as_object(username).movie_liked):
             raise Exception(f"{username} already liked the movie {movie.title}!")
 
         movie.likes += 1
-        self.__take_username_as_object(username).movie_liked.append(movie)
+        self.__username_as_object(username).movie_liked.append(movie)
 
         return f"{username} liked {movie.title} movie."
 
     def dislike_movie(self, username: str, movie: Movie) -> str:
-        if not self.__check_for_liked_movie(self.__take_username_as_object(username), movie.title):
+        if not self.__check_for_liked_movie(movie, self.__username_as_object(username).movie_liked):
             raise Exception(f"{username} has not liked the movie {movie.title}!")
 
         movie.likes -= 1
-        self.__take_username_as_object(username).movie_liked.remove(movie)
+        self.__username_as_object(username).movie_liked.remove(movie)
 
         return f"{username} disliked {movie.title} movie."
 
@@ -124,18 +122,18 @@ class MovieApp:
         return '\n'.join(movie.details() for movie in sorted(self.movies_collection, key=lambda x: (-x.year, x.title)))
 
     def __str__(self) -> str:
-        result = []
+        result = ["All users: "]
 
-        result.append("All users: ")
         if not self.users_collection:
-            result.append("No users.")
-
-        result.append(f"{', '.join(user.username for user in self.users_collection)}\n")
+            result[0] += "No users."
+        else:
+            result[0] += ', '.join(u.username for u in self.users_collection)
 
         result.append("All movies: ")
+
         if not self.movies_collection:
-            result.append("No movies.")
+            result[1] += "No movies."
+        else:
+            result[1] += ', '.join(u.title for u in self.movies_collection)
 
-        result.append(f"{', '.join(movie.title for movie in self.movies_collection)}")
-
-        return "".join(result)
+        return "\n".join(result)
