@@ -34,12 +34,14 @@ class MovieApp:
 
         return False
 
-    @staticmethod
-    def __check_for_liked_movie(movie: Movie, liked_movies) -> bool:
-        if movie in liked_movies:
-            return True
+    def __check_for_liked_movie(self, username, movie_title) -> bool:
+        for user in self.users_collection:
+            if user.username == username:
+                for movie in user.movies_liked:
+                    if movie.title == movie_title:
+                        return True
 
-        return False
+                return False
 
     def register_user(self, username: str, age: int) -> str:
         new_user = User(username, age)
@@ -58,11 +60,11 @@ class MovieApp:
         if not current_user:
             raise Exception("This user does not exist!")
 
-        if not self.__check_ownership(username, movie.owner.username):
-            raise Exception(f"{username} is not the owner of the movie {movie.title}!")
-
         if self.__check_for_uploaded_movie(movie, self.movies_collection):
             raise Exception("Movie already added to the collection!")
+
+        if not self.__check_ownership(username, movie.owner.username):
+            raise Exception(f"{username} is not the owner of the movie {movie.title}!")
 
         self.movies_collection.append(movie)
         current_user.movies_owned.append(movie)
@@ -98,7 +100,7 @@ class MovieApp:
         if self.__check_ownership(username, movie.owner.username):
             raise Exception(f"{username} is the owner of the movie {movie.title}!")
 
-        if self.__check_for_liked_movie(movie, self.__username_as_object(username).movies_liked):
+        if self.__check_for_liked_movie(username, movie.title):
             raise Exception(f"{username} already liked the movie {movie.title}!")
 
         movie.likes += 1
@@ -107,7 +109,7 @@ class MovieApp:
         return f"{username} liked {movie.title} movie."
 
     def dislike_movie(self, username: str, movie: Movie) -> str:
-        if not self.__check_for_liked_movie(movie, self.__username_as_object(username).movies_liked):
+        if not self.__check_for_liked_movie(username, movie.title):
             raise Exception(f"{username} has not liked the movie {movie.title}!")
 
         movie.likes -= 1
@@ -122,18 +124,13 @@ class MovieApp:
         return '\n'.join(movie.details() for movie in sorted(self.movies_collection, key=lambda x: (-x.year, x.title)))
 
     def __str__(self) -> str:
-        result = ["All users: "]
-
-        if not self.users_collection:
-            result[0] += "No users."
+        if len(self.users_collection) == 0:
+            users = 'No users.'
         else:
-            result[0] += ', '.join(u.username for u in self.users_collection)
-
-        result.append("All movies: ")
-
-        if not self.movies_collection:
-            result[1] += "No movies."
+            users = ', '.join([user.username for user in self.users_collection])
+        if len(self.movies_collection) == 0:
+            movies = 'No movies.'
         else:
-            result[1] += ', '.join(u.title for u in self.movies_collection)
+            movies = ', '.join([movie.title for movie in self.movies_collection])
 
-        return "\n".join(result)
+        return f'All users: {users}\nAll movies: {movies}'

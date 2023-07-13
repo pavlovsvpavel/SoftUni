@@ -1,6 +1,5 @@
 from abc import ABC, abstractmethod
 
-from project.age_restriction import Validation
 from project.user import User
 
 
@@ -44,16 +43,6 @@ class Movie(ABC):
             raise ValueError("The owner must be an object of type User!")
 
         self.__owner = value
-
-    @property
-    def age_restriction(self):
-        return self.__age_restriction
-
-    @age_restriction.setter
-    def age_restriction(self, value):
-        Validation.age_restriction(value, self)
-
-        self.__age_restriction = value
 
     @abstractmethod
     def details(self):
