@@ -5,8 +5,8 @@ class User:
     def __init__(self, username: str, age: int) -> None:
         self.username = username
         self.age = age
-        self.movie_liked: List[object] = []
-        self.movie_owned: List[object] = []
+        self.movies_liked: List[object] = []
+        self.movies_owned: List[object] = []
 
     @property
     def username(self):
@@ -33,13 +33,13 @@ class User:
     def __str__(self) -> str:
         result = [f"Username: {self.username}, Age: {self.age}"]
 
-        if self.movie_liked:
-            result.append(f"Liked movies:\n{chr(10).join(m.details() for m in self.movie_liked)}")
+        if self.movies_liked:
+            result.append(f"Liked movies:\n{chr(10).join(m.details() for m in self.movies_liked)}")
         else:
             result.append("No movies liked.")
 
-        if self.movie_owned:
-            result.append(f"Owned movies:\n{chr(10).join(m.details() for m in self.movie_owned)}")
+        if self.movies_owned:
+            result.append(f"Owned movies:\n{chr(10).join(m.details() for m in self.movies_owned)}")
         else:
             result.append("No movies owned.")
 

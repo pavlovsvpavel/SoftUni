@@ -65,7 +65,7 @@ class MovieApp:
             raise Exception("Movie already added to the collection!")
 
         self.movies_collection.append(movie)
-        current_user.movie_owned.append(movie)
+        current_user.movies_owned.append(movie)
 
         return f"{username} successfully added {movie.title} movie."
 
@@ -89,7 +89,7 @@ class MovieApp:
             raise Exception(f"{username} is not the owner of the movie {movie.title}!")
 
         self.movies_collection.remove(movie)
-        self.__username_as_object(username).movie_owned.remove(movie)
+        self.__username_as_object(username).movies_owned.remove(movie)
 
         return f"{username} successfully deleted {movie.title} movie."
 
@@ -98,20 +98,20 @@ class MovieApp:
         if self.__check_ownership(username, movie.owner.username):
             raise Exception(f"{username} is the owner of the movie {movie.title}!")
 
-        if self.__check_for_liked_movie(movie, self.__username_as_object(username).movie_liked):
+        if self.__check_for_liked_movie(movie, self.__username_as_object(username).movies_liked):
             raise Exception(f"{username} already liked the movie {movie.title}!")
 
         movie.likes += 1
-        self.__username_as_object(username).movie_liked.append(movie)
+        self.__username_as_object(username).movies_liked.append(movie)
 
         return f"{username} liked {movie.title} movie."
 
     def dislike_movie(self, username: str, movie: Movie) -> str:
-        if not self.__check_for_liked_movie(movie, self.__username_as_object(username).movie_liked):
+        if not self.__check_for_liked_movie(movie, self.__username_as_object(username).movies_liked):
             raise Exception(f"{username} has not liked the movie {movie.title}!")
 
         movie.likes -= 1
-        self.__username_as_object(username).movie_liked.remove(movie)
+        self.__username_as_object(username).movies_liked.remove(movie)
 
         return f"{username} disliked {movie.title} movie."
 
