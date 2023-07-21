@@ -50,11 +50,14 @@ class IntegerListTests(unittest.TestCase):
         self.i = IntegerList(2, 4, 6, 8, 10, "asd", True, 2.2)
 
     def test_init(self):
-        result = self.i.get_data()
-        self.assertEqual([2, 4, 6, 8, 10], result)
+        expected = [2, 4, 6, 8, 10]
+        result = self.i._IntegerList__data
+        self.assertEqual(expected, result)
 
     def test_get_data_func(self):
-        self.assertEqual([2, 4, 6, 8, 10], self.i.get_data())
+        expected = [2, 4, 6, 8, 10]
+        result = self.i.get_data()
+        self.assertEqual(expected, result)
 
     def test_add_func_error(self):
         with self.assertRaises(ValueError) as error:
@@ -85,13 +88,13 @@ class IntegerListTests(unittest.TestCase):
         self.assertEqual("Index is out of range", str(error.exception))
 
     def test_insert_func_error(self):
-        with self.subTest():
+        with self.subTest("IndexError should be raised"):
             with self.assertRaises(IndexError) as error:
                 self.i.insert(10, 20)
 
             self.assertEqual("Index is out of range", str(error.exception))
 
-        with self.subTest():
+        with self.subTest("ValueError should be raised"):
             with self.assertRaises(ValueError) as error:
                 self.i.insert(4, 5.5)
 

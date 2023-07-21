@@ -128,11 +128,14 @@ class CarTests(unittest.TestCase):
         self.assertEqual("Fuel amount cannot be zero or negative!", str(error.exception))
 
     def test_successful_refuel(self):
-        with self.subTest():
+        with self.subTest("Fuel is not added correctly to total fuel amount"):
             self.car.refuel(20)
             self.assertEqual(20, self.car.fuel_amount)
 
-        with self.subTest():
+            self.car.refuel(20)
+            self.assertEqual(40, self.car.fuel_amount)
+
+        with self.subTest("Fuel can't be more than fuel capacity"):
             self.car.refuel(100)
             self.assertEqual(60, self.car.fuel_amount)
 

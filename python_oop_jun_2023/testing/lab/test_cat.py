@@ -25,6 +25,13 @@ class Cat:
 
 
 class CatTests(unittest.TestCase):
+    def test_correct_initialization(self):
+        cat = Cat("Sisi")
+        self.assertEqual("Sisi", cat.name)
+        self.assertFalse(cat.sleepy)
+        self.assertFalse(cat.fed)
+        self.assertEqual(0, cat.size)
+
     def test_cat_size_increase(self):
         cat = Cat("Sisi")
         expected_result = cat.size + 1
