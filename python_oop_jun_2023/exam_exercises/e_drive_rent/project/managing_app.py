@@ -32,17 +32,33 @@ class ManagingApp:
         return False
 
     def __check_for_existing_route_length(self, start, end, length):
-        for r in self.routes:
-            if r.start_point == start and r.end_point == end:
-                if r.length < length:
-                    return f"{start}/{end} shorter route had already been added to our platform."
-
-                if r.length == length:
+        for route in self.routes:
+            if route.start_point == start and route.end_point == end:
+                if route.length == length:
                     return f"{start}/{end} - {length} km had already been added to our platform."
 
-                r.is_locked = True
+                if route.length < length:
+                    return f"{start}/{end} shorter route had already been added to our platform."
+
+                route.is_locked = True
+                break
 
         return False
+
+    def __user_as_object(self, driving_license) -> User:
+        for user in self.users:
+            if user.driving_license_number == driving_license:
+                return user
+
+    def __vehicle_as_object(self, license_plate) -> BaseVehicle:
+        for vehicle in self.vehicles:
+            if vehicle.license_plate_number == license_plate:
+                return vehicle
+
+    def __route_as_object(self, route_id) -> Route:
+        for route in self.routes:
+            if route.route_id == route_id:
+                return route
 
     def register_user(self, first_name: str, last_name: str, driving_license_number: str) -> str:
         if self.__check_for_existing_driving_license(driving_license_number):
@@ -80,21 +96,6 @@ class ManagingApp:
 
         return message
 
-    def __user_as_object(self, driving_license) -> User:
-        for user in self.users:
-            if user.driving_license_number == driving_license:
-                return user
-
-    def __vehicle_as_object(self, license_plate) -> BaseVehicle:
-        for vehicle in self.vehicles:
-            if vehicle.license_plate_number == license_plate:
-                return vehicle
-
-    def __route_as_object(self, route_id) -> Route:
-        for route in self.routes:
-            if route.route_id == route_id:
-                return route
-
     def make_trip(self, driving_license_number: str, license_plate_number: str,
                   route_id: int, is_accident_happened: bool) -> str:
 
@@ -123,19 +124,27 @@ class ManagingApp:
         return f"{current_vehicle.__str__()}"
 
     def repair_vehicles(self, count: int) -> str:
-        sorted_vehicles = sorted(self.vehicles, key=lambda x: (x.brand, x.model))
         vehicles_for_repair = []
+        repaired_vehicles = 0
 
-        for vehicle in sorted_vehicles:
-            if vehicle.is_damaged and len(vehicles_for_repair) < count:
+        for vehicle in self.vehicles:
+            if vehicle.is_damaged:
                 vehicles_for_repair.append(vehicle)
-                vehicle.change_status()
-                vehicle.recharge()
 
-        return f"{len(vehicles_for_repair)} vehicles were successfully repaired!"
+        for damaged_vehicle in sorted(vehicles_for_repair, key=lambda x: (x.brand, x.model)):
+            if repaired_vehicles == count:
+                break
+
+            damaged_vehicle.change_status()
+            damaged_vehicle.recharge()
+            repaired_vehicles += 1
+
+        return f"{repaired_vehicles} vehicles were successfully repaired!"
 
     def users_report(self) -> str:
-        result = ["*** E-Drive-Rent ***",
-                  '\n'.join(user.__str__() for user in sorted(self.users, key=lambda x: (-x.rating)))]
+        result = ["*** E-Drive-Rent ***"]
+
+        for user in sorted(self.users, key=lambda x: (-x.rating)):
+            result.append(user.__str__())
 
         return '\n'.join(result)

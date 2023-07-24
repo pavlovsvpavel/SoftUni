@@ -11,4 +11,4 @@ class CargoVan(BaseVehicle):
     def drive(self, mileage: float):
         reduce_percentage = round(mileage / CargoVan.MAX_MILEAGE * 100)
 
-        self.battery_level -= (reduce_percentage - CargoVan.ADDITIONAL_LOAD_BATTERY_DECREASE)
+        self.battery_level -= (reduce_percentage + CargoVan.ADDITIONAL_LOAD_BATTERY_DECREASE)
