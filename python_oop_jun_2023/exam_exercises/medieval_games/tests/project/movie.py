@@ -44,9 +44,9 @@ class Movie:
                f"Cast: {', '.join(self.actors)}"
 
 
-movie = Movie("Mission Impossible", 2023, 9.5)
-movie.add_actor("Ivan")
-print(movie)
+# movie = Movie("Mission Impossible", 2023, 9.5)
+# movie.add_actor("Ivan")
+# print(movie)
 
 
 

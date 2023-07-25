@@ -1,5 +1,4 @@
 import unittest
-
 from project.movie import Movie
 
 
@@ -12,17 +11,17 @@ class MovieTests(unittest.TestCase):
         self.assertEqual(7.5, m.rating)
         self.assertEqual([], m.actors)
 
-    def test_for_invalid_name_with_empty_string_raise_error(self):
-        with self.assertRaises(ValueError) as error:
+    def test_for_invalid_name_with_empty_string_raises_error(self):
+        with self.assertRaises(ValueError) as ve:
             Movie("", 2023, 7.5)
 
-        self.assertEqual("Name cannot be an empty string!", str(error.exception))
+        self.assertEqual("Name cannot be an empty string!", str(ve.exception))
 
-    def test_for_invalid_year_lower_than_1887_raise_error(self):
-        with self.assertRaises(ValueError) as error:
+    def test_for_invalid_year_lower_than_1887_raises_error(self):
+        with self.assertRaises(ValueError) as ve:
             Movie("Mission Impossible", 1000, 7.5)
 
-        self.assertEqual("Year is not valid!", str(error.exception))
+        self.assertEqual("Year is not valid!", str(ve.exception))
 
     def test_for_adding_actor_in_actors_list(self):
         m = Movie("Mission Impossible", 2023, 7.5)
