@@ -6,12 +6,26 @@ from project.supply.supply import Supply
 
 
 class Controller:
+    VALID_TYPES = [
+        "Food",
+        "Drink"
+    ]
+
     def __init__(self):
         self.players: List[Player] = []
         self.supplies: List[Supply] = []
 
+    def __valid_player(self, player_name: str):
+        try:
+            current_player = next(filter(lambda x: x.name == player_name, self.players))
+        except StopIteration:
+            return
+
+        return current_player
+
     def add_player(self, *players) -> str:
         added_players = []
+
         for player in players:
             if player not in self.players:
                 self.players.append(player)
@@ -23,28 +37,20 @@ class Controller:
         for supply in supplies:
             self.supplies.append(supply)
 
-    def __valid_player(self, player_name: str):
-        try:
-            current_player = next(filter(lambda x: x.name == player_name, self.players))
-        except StopIteration:
-            return
-
-        return current_player
-
     def sustain(self, player_name: str, sustenance_type: str):
         current_player = self.__valid_player(player_name)
 
-        if sustenance_type not in ["Food", "Drink"] or not current_player:
+        if sustenance_type not in Controller.VALID_TYPES or not current_player:
             return
+
+        if not current_player.need_sustenance:
+            return f"{player_name} have enough stamina."
 
         try:
             pos, current_supply = [(pos, s) for pos, s in enumerate(self.supplies)
                                    if s.__class__.__name__ == sustenance_type][-1]
         except IndexError:
             raise Exception(f"There are no {sustenance_type.lower()} supplies left!")
-
-        if current_player.stamina == 100:
-            return f"{player_name} have enough stamina."
 
         if current_player.stamina + current_supply.energy > 100:
             current_player.stamina = 100
@@ -74,7 +80,7 @@ class Controller:
         if messages:
             return "\n".join(messages)
 
-        players = deque(p for p in sorted([first_p, second_p], key=lambda x: x.stamina))
+        players = deque(sorted([first_p, second_p], key=lambda x: x.stamina))
 
         counter = 0
 
@@ -94,7 +100,7 @@ class Controller:
             counter += 1
             players.rotate()
 
-        winner = [p for p in sorted([first_p, second_p], key=lambda x: -x.stamina)][0]
+        winner = sorted([first_p, second_p], key=lambda x: -x.stamina)[0]
 
         return f"Winner: {winner.name}"
 
@@ -104,10 +110,10 @@ class Controller:
             p.stamina = self.__stamina_check(p.stamina - reduce_stamina)
 
         for p in self.players:
-            for sustain in ["Food", "Drink"]:
+            for sustain in Controller.VALID_TYPES:
                 self.sustain(p.name, sustain)
 
-    def __str__(self):
+    def __str__(self) -> str:
         result = []
         for p in self.players:
             result.append(str(p))

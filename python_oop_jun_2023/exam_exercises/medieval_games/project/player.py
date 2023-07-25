@@ -18,7 +18,7 @@ class Player:
         if value == "":
             raise ValueError("Name not valid!")
 
-        elif value in Player.players_names:
+        if value in Player.players_names:
             raise Exception(f"Name {value} is already used!")
 
         self.__name = value
