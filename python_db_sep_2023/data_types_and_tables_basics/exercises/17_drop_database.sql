@@ -1,0 +1,1 @@
+DROP DATABASE minions_db WITH (FORCE); /* deletes database even with active connections */

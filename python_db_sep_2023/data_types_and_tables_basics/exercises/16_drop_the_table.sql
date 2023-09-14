@@ -1,1 +1,1 @@
-DROP TABLE minions_birthdays
+DROP TABLE minions_birthdays;

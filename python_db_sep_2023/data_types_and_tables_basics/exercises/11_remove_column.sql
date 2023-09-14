@@ -1,2 +1,2 @@
 ALTER TABLE minions_info
-DROP COLUMN age
+DROP COLUMN age;

@@ -1,3 +1,3 @@
-TRUNCATE TABLE minions_info
+TRUNCATE TABLE minions_info;
 			
 
