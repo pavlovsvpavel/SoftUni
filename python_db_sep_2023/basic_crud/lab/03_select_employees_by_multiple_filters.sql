@@ -5,7 +5,8 @@ SELECT
 	job_title,
 	department_id,
 	salary
-FROM employees
+FROM
+    employees
 WHERE
 	department_id = 4
 	AND
