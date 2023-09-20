@@ -4,6 +4,6 @@ SELECT
 FROM
     users
 WHERE
-    LOWER(companion_full_name) LIKE '%and%'
+    companion_full_name ILIKE '%aNd%'
     AND
     email NOT LIKE '%@gmail';
