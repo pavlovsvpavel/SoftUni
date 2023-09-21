@@ -4,7 +4,7 @@ SELECT
         WHEN AVG(salary) > 45800 THEN 'Good'
         WHEN AVG(salary) BETWEEN 27500 AND 45800 THEN 'Medium'
         ELSE 'Need Improvement'
-        END AS "Category"
+    END AS "Category"
 FROM
     employees
 GROUP BY
