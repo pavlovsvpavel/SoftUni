@@ -1,4 +1,4 @@
 SELECT
-    COUNT(id) AS "Count"
+    COUNT(*) AS "Count"
 FROM
     wizard_deposits;
