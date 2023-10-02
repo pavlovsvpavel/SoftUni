@@ -1,6 +1,6 @@
 SELECT
     a.country,
-    COUNT(*) AS booking_count
+    COUNT(b.booking_id) AS booking_count
 FROM
     apartments AS a
 INNER JOIN

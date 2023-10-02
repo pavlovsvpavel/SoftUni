@@ -1,11 +1,11 @@
 SELECT
     COUNT(*) AS countries_without_mountains
 FROM
-    countries
+    countries AS c
 LEFT JOIN
-    mountains_countries
+    mountains_countries AS mc
     ON
-    countries.country_code = mountains_countries.country_code
+    c.country_code = mc.country_code
 WHERE
     mountain_id IS NULL
 ;

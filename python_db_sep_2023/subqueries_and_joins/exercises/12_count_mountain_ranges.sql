@@ -1,6 +1,6 @@
 SELECT
     m_c.country_code,
-    COUNT(*) AS mountain_range_count
+    COUNT(m.mountain_range) AS mountain_range_count
 FROM
     mountains_countries AS m_c
 INNER JOIN

@@ -1,5 +1,5 @@
 SELECT
-    COUNT(c.*)
+    COUNT(*)
 FROM
     customers AS c
 INNER JOIN
