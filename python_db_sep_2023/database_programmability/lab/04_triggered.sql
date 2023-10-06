@@ -23,7 +23,7 @@ $$
             OLD.department_id,
             OLD.salary
         );
-        RETURN NULL;
+        RETURN OLD;
     END;
 $$
 LANGUAGE plpgsql;
