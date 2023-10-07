@@ -12,7 +12,7 @@ WHERE
     AND
     at.animal_type <> 'Birds'
     AND
-    AGE('2022-01-01', a.birthdate) < interval '5 years'
+    AGE('2022-01-01', a.birthdate) < INTERVAL '5 years'
 ORDER BY
     a.name
 ;

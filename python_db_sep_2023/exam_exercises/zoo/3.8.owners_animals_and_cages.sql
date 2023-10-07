@@ -21,11 +21,6 @@ WHERE
         WHERE
             at.animal_type = 'Mammals'
         )
-GROUP BY
-    o.name,
-    o.phone_number,
-    ac.cage_id,
-    a.name
 ORDER BY
     o.name,
     a.name DESC
