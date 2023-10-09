@@ -22,7 +22,8 @@ BEGIN
                     level_of_bill,
                     make,
                     condition,
-                    category_name)
+                    category_name
+                )
     SELECT
     a.name AS address_name,
     cl.full_name,

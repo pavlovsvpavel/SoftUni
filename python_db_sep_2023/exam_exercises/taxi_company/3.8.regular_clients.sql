@@ -6,7 +6,7 @@ FROM
     clients AS cl
 INNER JOIN
     courses AS c
-ON
+    ON
     cl.id = c.client_id
 WHERE
     SUBSTRING(cl.full_name FROM 2 FOR 1 ) = 'a'

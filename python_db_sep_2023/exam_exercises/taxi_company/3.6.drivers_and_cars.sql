@@ -5,14 +5,14 @@ SELECT
     c.model,
     c.mileage
 FROM
-    drivers As d
+    drivers AS d
 INNER JOIN
     cars_drivers AS cd
-ON
+    ON
     d.id = cd.driver_id
-LEFT JOIN
+INNER JOIN
     cars AS c
-ON
+    ON
     c.id = cd.car_id
 WHERE
     c.mileage IS NOT NULL

@@ -8,12 +8,10 @@ FROM
     cars AS c
 LEFT JOIN
     courses AS co
-ON
+    ON
     c.id = co.car_id
 GROUP BY
-    c.id,
-    c.make,
-    c.mileage
+    c.id
 HAVING
     COUNT(co.id) <> 2
 ORDER BY
