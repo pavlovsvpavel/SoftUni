@@ -1,5 +1,10 @@
 from django.db import models
 
+STATUS = [
+    ('Pending', 'Pending'),
+    ('Comleted', 'Completed'),
+    ('Cancelled', 'Cancelled')
+]
 
 class Shoe(models.Model):
     brand = models.CharField(max_length=25)
@@ -61,3 +66,41 @@ class Course(models.Model):
 
     def __str__(self):
         return f"{self.title} - {self.lecturer}"
+
+
+class Person(models.Model):
+    name = models.CharField(max_length=40)
+    age = models.PositiveIntegerField()
+    age_group = models.CharField(max_length=20, default='No age group')
+
+    def __str__(self):
+        return f"Name {self.name}"
+
+
+class Item(models.Model):
+    name = models.CharField(max_length=100)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    quantity = models.PositiveIntegerField(default=0)
+    rarity = models.CharField(max_length=20, default='empty')
+
+
+class Smartphone(models.Model):
+    brand = models.CharField(max_length=100)
+    price = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    category = models.CharField(max_length=20, default='empty')
+
+
+class Order(models.Model):
+    product_name = models.CharField(max_length=30)
+    customer_name = models.CharField(max_length=100)
+    order_date = models.DateField()
+    status = models.CharField(max_length=30, choices=STATUS)
+    amount = models.PositiveIntegerField(default=0)
+    product_price = models.DecimalField(max_digits=10, decimal_places=2)
+    total_price = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    warranty = models.CharField(max_length=30, default='No warranty')
+    delivery = models.DateField(null=True, blank=True)
+
+    def __str__(self):
+        return f"Order #{self.id} - {self.customer_name}"
+
