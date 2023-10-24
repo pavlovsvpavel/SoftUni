@@ -1,10 +1,5 @@
 from django.db import models
 
-STATUS = [
-    ('Pending', 'Pending'),
-    ('Comleted', 'Completed'),
-    ('Cancelled', 'Cancelled')
-]
 
 class Shoe(models.Model):
     brand = models.CharField(max_length=25)
@@ -59,7 +54,7 @@ class Supplier(models.Model):
 class Course(models.Model):
     title = models.CharField(max_length=90)
     lecturer = models.CharField(max_length=90)
-    description = models. TextField(max_length=200)
+    description = models.TextField(max_length=200)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     start_date = models.DateField(auto_now_add=True)
     is_published = models.BooleanField(default=True)
@@ -91,6 +86,12 @@ class Smartphone(models.Model):
 
 
 class Order(models.Model):
+    STATUS = [
+        ('Pending', 'Pending'),
+        ('Completed', 'Completed'),
+        ('Cancelled', 'Cancelled')
+    ]
+
     product_name = models.CharField(max_length=30)
     customer_name = models.CharField(max_length=100)
     order_date = models.DateField()
@@ -103,4 +104,3 @@ class Order(models.Model):
 
     def __str__(self):
         return f"Order #{self.id} - {self.customer_name}"
-
