@@ -45,7 +45,7 @@ class HotelRoom(models.Model):
     ]
 
     room_number = models.PositiveIntegerField()
-    room_type = models.CharField(choices=ROOM_TYPES)
+    room_type = models.CharField(choices=ROOM_TYPES, max_length=20)
     capacity = models.PositiveIntegerField()
     amenities = models.TextField()
     price_per_night = models.DecimalField(max_digits=8, decimal_places=2)
