@@ -5,9 +5,10 @@ import django
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "orm_skeleton.settings")
 django.setup()
 
-from main_app.models import Pet, Artifact, Location, Car, Task, HotelRoom
+from main_app.models import Pet, Artifact, Location, Car, Task, HotelRoom, Character
 
 
+# Problem 1
 def create_pet(name: str, species: str):
     Pet.objects.create(
         name=name,
@@ -21,7 +22,7 @@ def create_pet(name: str, species: str):
 # print(create_pet('Whiskers', 'Cat'))
 # print(create_pet('Rocky', 'Hamster'))
 
-
+# Problem 2
 def create_artifact(name: str, origin: str, age: int, description: str, is_magical: bool):
     Artifact.objects.create(
         name=name,
@@ -44,7 +45,7 @@ def delete_all_artifacts():
 #                       'A magical amulet believed to bring good fortune', True))
 # delete_all_artifacts()
 
-
+# Problem 3
 # def create_locations():
 #     LOCATIONS = [
 #         {
@@ -110,7 +111,7 @@ def delete_first_location():
 # print(get_capitals())
 # delete_first_location()
 
-
+# Problem 4
 # def create_cars():
 #     CARS = [
 #         {
@@ -161,7 +162,7 @@ def delete_last_car():
 # print(get_recent_cars())
 # delete_last_car()
 
-
+# Problem 5
 # def create_tasks():
 #     Task.objects.create(
 #         title='Simple Task',
@@ -206,34 +207,34 @@ def encode_and_replace(text: str, task_title: str):
 # encode_and_replace("Zdvk#wkh#glvkhv$", "Simple Task")
 # print(Task.objects.get(title='Simple Task').description)
 
-
-def create_rooms():
-    ROOMS = [
-        {
-            'room_number': 101,
-            'room_type': 'Standard',
-            'capacity': 2,
-            'amenities': 'Tv',
-            'price_per_night': 100.00
-        },
-        {
-            'room_number': 201,
-            'room_type': 'Deluxe',
-            'capacity': 3,
-            'amenities': 'Wi-Fi',
-            'price_per_night': 200.00
-        },
-        {
-            'room_number': 501,
-            'room_type': 'Standard',
-            'capacity': 6,
-            'amenities': 'Jacuzzi',
-            'price_per_night': 400.00
-        }
-    ]
-
-    for room in ROOMS:
-        HotelRoom.objects.create(**room)
+# Problem 6
+# def create_rooms():
+#     ROOMS = [
+#         {
+#             'room_number': 101,
+#             'room_type': 'Standard',
+#             'capacity': 2,
+#             'amenities': 'Tv',
+#             'price_per_night': 100.00
+#         },
+#         {
+#             'room_number': 201,
+#             'room_type': 'Deluxe',
+#             'capacity': 3,
+#             'amenities': 'Wi-Fi',
+#             'price_per_night': 200.00
+#         },
+#         {
+#             'room_number': 501,
+#             'room_type': 'Standard',
+#             'capacity': 6,
+#             'amenities': 'Jacuzzi',
+#             'price_per_night': 400.00
+#         }
+#     ]
+#
+#     for room in ROOMS:
+#         HotelRoom.objects.create(**room)
 
 
 def get_deluxe_rooms():
@@ -286,3 +287,90 @@ def delete_last_room():
 # reserve_first_room()
 # print(HotelRoom.objects.get(room_number=101).is_reserved)
 # delete_last_room()
+
+# Problem 7
+# character1 = Character.objects.create(
+#     name="Gandalf",
+#     class_name="Mage",
+#     level=10,
+#     strength=15,
+#     dexterity=20,
+#     intelligence=25,
+#     hit_points=100,
+#     inventory="Staff of Magic, Spellbook",
+# )
+#
+# character2 = Character.objects.create(
+#     name="Hector",
+#     class_name="Warrior",
+#     level=12,
+#     strength=30,
+#     dexterity=15,
+#     intelligence=10,
+#     hit_points=150,
+#     inventory="Sword of Troy, Shield of Protection",
+# )
+
+
+def update_characters():
+    for c_character in Character.objects.all():
+        if c_character.class_name == 'Mage':
+            c_character.level += 3
+            c_character.intelligence -= 7
+
+        elif c_character.class_name == 'Warrior':
+            c_character.hit_points /= 2
+            c_character.dexterity += 4
+
+        elif c_character.class_name in ['Assassin', 'Scout']:
+            c_character.inventory = 'The inventory is empty'
+
+        c_character.save()
+
+
+def fuse_characters(first_character: Character, second_character: Character):
+    inventory = ''
+    if first_character.class_name in ['Mage', 'Scout']:
+        inventory = 'Bow of the Elven Lords, Amulet of Eternal Wisdom'
+    elif first_character.class_name in ['Warrior', 'Assassin']:
+        inventory = 'Dragon Scale Armor, Excalibur'
+
+    Character.objects.create(
+        name=f"{first_character.name} {second_character.name}",
+        class_name='Fusion',
+        level=(first_character.level + second_character.level) // 2,
+        strength=int((first_character.strength + second_character.strength) * 1.2),
+        dexterity=int((first_character.dexterity + second_character.dexterity) * 1.4),
+        intelligence=int((first_character.intelligence + second_character.intelligence) * 1.5),
+        hit_points=(first_character.strength + second_character.strength),
+        inventory=inventory
+    )
+
+    first_character.delete()
+    second_character.delete()
+
+
+def grand_dexterity():
+    Character.objects.all().update(dexterity=30)
+
+
+def grand_intelligence():
+    Character.objects.all().update(intelligence=40)
+
+
+def grand_strength():
+    Character.objects.all().update(strength=50)
+
+
+def delete_characters():
+    Character.objects.filter(inventory__icontains='The inventory is empty').delete()
+
+
+
+# fuse_characters(character1, character2)
+# fusion = Character.objects.filter(class_name='Fusion').get()
+# print(fusion.name)
+# print(fusion.class_name)
+# print(fusion.level)
+# print(fusion.intelligence)
+# print(fusion.inventory)
