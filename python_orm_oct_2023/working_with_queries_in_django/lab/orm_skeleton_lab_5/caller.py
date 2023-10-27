@@ -141,7 +141,9 @@ def delete_review_by_id(review_id):
 def filter_authors_by_nationalities(nationality):
     result = []
 
-    for author in Author.objects.filter(nationality=nationality).order_by('first_name', 'last_name'):
+    for author in (Author.objects.filter(nationality=nationality).order_by(
+            'first_name', 'last_name')):
+
         if author.biography:
             result.append(f"{author.biography}")
         else:
@@ -162,7 +164,9 @@ def filter_authors_by_nationalities(nationality):
 
 # Problem 6
 def filter_authors_by_birth_year(*args):
-    filtered_authors = Author.objects.filter(birth_date__year__range=(args[0], args[1])).order_by('-birth_date')
+    filtered_authors = (Author.objects.
+                        filter(birth_date__year__range=(args[0], args[1])).
+                        order_by('-birth_date'))
 
     result = [
         f"{author.birth_date}: {author}"
@@ -187,7 +191,6 @@ def change_reviewer_name(old_name, new_name):
     Review.objects.filter(reviewer_name=old_name).update(reviewer_name=new_name)
 
     return Review.objects.all()
-
 
 # print("Change Alice Johnson to A.J.:")
 # print(change_reviewer_name("Alice Johnson", "A.J."))
