@@ -1,6 +1,7 @@
 import os
 import django
 from django.db.models import Q
+from django.db.models.functions import Lower
 
 # Set up Django
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "orm_skeleton.settings")
@@ -443,8 +444,10 @@ def set_new_duration_times():
 
 
 def delete_workouts():
-    # Workout.objects.exclude(workout_type__in=['Strength', 'Calisthenics']).delete()
-    Workout.objects.exclude(Q(workout_type='Strength') | Q(workout_type='Calisthenics')).delete()
+    Workout.objects.exclude(workout_type__in=['Strength', 'Calisthenics']).delete()
+    # Workout.objects.exclude(Q(workout_type='Strength') | Q(workout_type='Calisthenics')).delete()
+    # (Workout.objects.annotate(workout_type_lower=Lower('workout_type')).
+    #  exclude(workout_type_lower__in=['strength', 'calisthenics']).delete())
 
 
 # # Create two Workout instances
