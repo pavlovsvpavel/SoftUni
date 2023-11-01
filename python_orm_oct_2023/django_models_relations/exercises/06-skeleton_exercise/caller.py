@@ -2,12 +2,13 @@ import os
 from datetime import timedelta, date
 
 import django
+from django.utils.timezone import now
 
 # Set up Django
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "orm_skeleton.settings")
 django.setup()
 
-from main_app.models import Author, Artist, Song, Product, Review, Driver, DrivingLicense
+from main_app.models import Author, Artist, Song, Product, Review, Driver, DrivingLicense, Owner, Car, Registration
 
 
 # Problem 1
@@ -231,4 +232,42 @@ def get_drivers_with_expired_licenses(due_date):
 # for driver in drivers_with_expired_licenses:
 #     print(f"{driver.first_name} {driver.last_name} has to renew their driving license!")
 
+
+# Problem 5
+def register_car_by_owner(owner: Owner):
+    try:
+        not_used_registration = Registration.objects.filter(car_id__isnull=True).first()
+        not_used_car = Car.objects.filter(owner_id__isnull=True).first()
+
+        if not_used_registration and not_used_car:
+            not_used_car.owner_id = owner.id
+
+            not_used_registration.car_id = not_used_car.id
+            not_used_registration.registration_date = date.today()
+
+            not_used_car.save()
+            not_used_registration.save()
+
+            return (f"Successfully registered {not_used_car.model} to "
+                    f"{owner.name} with registration number {not_used_registration.registration_number}.")
+        else:
+            return "No cars for this owner"
+
+    except Exception as e:
+        return str(e)
+
+# Create instances of the Owner model
+# owner1 = Owner.objects.create(name='Ivelin Milchev')
+# owner2 = Owner.objects.create(name='Alice Smith')
+
+# # Create instances of the Car model and associate them with owners
+# car1 = Car.objects.create(model='Citroen C5', year=2004)
+# car2 = Car.objects.create(model='Honda Civic', year=2021)
+#
+# # Create instances of the Registration model for the cars
+# registration1 = Registration.objects.create(registration_number='TX0044XA')
+# registration2 = Registration.objects.create(registration_number='XYZ789')
+#
+# print(register_car_by_owner(owner1))
+# print(register_car_by_owner(owner2))
 
