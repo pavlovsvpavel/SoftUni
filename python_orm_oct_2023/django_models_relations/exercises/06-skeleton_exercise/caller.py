@@ -136,12 +136,14 @@ def remove_song_from_artist(artist_name: str, song_title: str):
 
 # Problem 3
 def calculate_average_rating_for_product_by_name(product_name: str):
-    avg_rating = 0
+    ratings = (Review.objects.filter(product__name=product_name).
+               values_list('rating', flat=True))
 
-    for c_product in Product.objects.all():
-        if c_product.name == product_name:
-            all_reviews = c_product.review_set.all().values_list('rating', flat=True)
-            avg_rating = sum(all_reviews) / len(all_reviews)
+    try:
+        avg_rating = sum(ratings) / len(ratings)
+
+    except ZeroDivisionError:
+        avg_rating = 0
 
     return avg_rating
 
@@ -153,21 +155,18 @@ def get_reviews_with_high_ratings(threshold: int):
 
 
 def get_products_with_no_reviews():
-    result = []
+    products = (Product.objects.filter(review__product_id__isnull=True).
+                order_by('-name'))
 
-    for c_product in Product.objects.all().order_by('-name'):
-        reviews = c_product.review_set.all()
-        if not reviews:
-            result.append(c_product)
-
-    return result
+    return products
 
 
 def delete_products_without_reviews():
-    for c_product in Product.objects.all():
-        reviews = c_product.review_set.all()
-        if not reviews:
-            c_product.delete()
+    get_products_with_no_reviews().delete()
+    # for c_product in Product.objects.all():
+    #     reviews = c_product.review_set.all()
+    #     if not reviews:
+    #         c_product.delete()
 
 
 # # Create some products
@@ -184,11 +183,13 @@ def delete_products_without_reviews():
 # # # Run the function to get products without reviews
 # products_without_reviews = get_products_with_no_reviews()
 # print(f"Products without reviews: {', '.join([p.name for p in products_without_reviews])}")
+
+
 # # Run the function to delete products without reviews
 # delete_products_without_reviews()
 # print(f"Products left: {Product.objects.count()}")
 #
-# # Calculate and print the average rating
+# Calculate and print the average rating
 # print(calculate_average_rating_for_product_by_name("Laptop"))
 # print(get_reviews_with_high_ratings(2))
 
@@ -235,31 +236,26 @@ def get_drivers_with_expired_licenses(due_date):
 
 # Problem 5
 def register_car_by_owner(owner: Owner):
-    try:
-        not_used_registration = Registration.objects.filter(car_id__isnull=True).first()
-        not_used_car = Car.objects.filter(owner_id__isnull=True).first()
 
-        if not_used_registration and not_used_car:
-            not_used_car.owner_id = owner.id
+    registration = Registration.objects.filter(car_id__isnull=True).first()
+    car = Car.objects.filter(registration__isnull=True).first()
 
-            not_used_registration.car_id = not_used_car.id
-            not_used_registration.registration_date = date.today()
+    if registration and car:
+        car.owner_id = owner.id
+        car.registration = registration
+        registration.registration_date = date.today()
 
-            not_used_car.save()
-            not_used_registration.save()
+        car.save()
+        registration.save()
 
-            return (f"Successfully registered {not_used_car.model} to "
-                    f"{owner.name} with registration number {not_used_registration.registration_number}.")
-        else:
-            return "No cars for this owner"
+        return (f"Successfully registered {car.model} to "
+                f"{owner.name} with registration number {registration.registration_number}.")
 
-    except Exception as e:
-        return str(e)
 
 # Create instances of the Owner model
 # owner1 = Owner.objects.create(name='Ivelin Milchev')
 # owner2 = Owner.objects.create(name='Alice Smith')
-
+#
 # # Create instances of the Car model and associate them with owners
 # car1 = Car.objects.create(model='Citroen C5', year=2004)
 # car2 = Car.objects.create(model='Honda Civic', year=2021)
@@ -270,4 +266,3 @@ def register_car_by_owner(owner: Owner):
 #
 # print(register_car_by_owner(owner1))
 # print(register_car_by_owner(owner2))
-
