@@ -31,11 +31,13 @@ def show_all_authors_with_their_books():
 
 
 def delete_all_authors_without_books():
-    for c_author in Author.objects.all():
-        all_books = c_author.book_set.all()
+    # for c_author in Author.objects.all():
+    #     all_books = c_author.book_set.all()
+    #
+    #     if not all_books:
+    #         c_author.delete()
 
-        if not all_books:
-            c_author.delete()
+    Author.objects.filter(book__isnull=True).delete()
 
 
 # Create authors
@@ -73,34 +75,46 @@ def delete_all_authors_without_books():
 
 # Problem 2
 def add_song_to_artist(artist_name: str, song_title: str):
-    artist = None
-    song = None
-    for c_artist in Artist.objects.all():
-        if c_artist.name == artist_name:
-            artist = c_artist
+    # artist = None
+    # song = None
+    # for c_artist in Artist.objects.all():
+    #     if c_artist.name == artist_name:
+    #         artist = c_artist
+    #
+    # for c_song in Song.objects.all():
+    #     if c_song.title == song_title:
+    #         song = c_song
 
-    for c_song in Song.objects.all():
-        if c_song.title == song_title:
-            song = c_song
+    artist = Artist.objects.get(name=artist_name)
+    song = Song.objects.get(title=song_title)
 
     artist.songs.add(song)
 
 
 def get_songs_by_artist(artist_name: str):
-    for c_artist in Artist.objects.all():
-        if c_artist.name == artist_name:
-            return c_artist.songs.order_by('-id')
+    artist = Artist.objects.get(name=artist_name)
+
+    return artist.songs.order_by('-id')
+
+    # for c_artist in Artist.objects.all():
+    #     if c_artist.name == artist_name:
+    #         return c_artist.songs.order_by('-id')
 
 
 def remove_song_from_artist(artist_name: str, song_title: str):
-    for c_artist in Artist.objects.all():
-        if c_artist.name == artist_name:
-            for c_song in c_artist.songs.all():
-                if c_song.title == song_title:
-                    c_song.delete()
+    artist = Artist.objects.get(name=artist_name)
+    song = Song.objects.get(title=song_title)
+
+    artist.songs.remove(song)
+
+    # for c_artist in Artist.objects.all():
+    #     if c_artist.name == artist_name:
+    #         for c_song in c_artist.songs.all():
+    #             if c_song.title == song_title:
+    #                 c_song.delete()
 
 
-# # Create artists
+# Create artists
 # artist1 = Artist.objects.create(name="Daniel Di Angelo")
 # artist2 = Artist.objects.create(name="Indila")
 #
@@ -113,7 +127,7 @@ def remove_song_from_artist(artist_name: str, song_title: str):
 # add_song_to_artist("Daniel Di Angelo", "Lose Face")
 # add_song_to_artist("Daniel Di Angelo", "Loyalty")
 # add_song_to_artist("Indila", "Tourner Dans Le Vide")
-#
+# #
 # # Get all songs by a specific artist
 # songs = get_songs_by_artist("Daniel Di Angelo")
 # for song in songs:
@@ -136,8 +150,7 @@ def remove_song_from_artist(artist_name: str, song_title: str):
 
 # Problem 3
 def calculate_average_rating_for_product_by_name(product_name: str):
-    ratings = (Review.objects.filter(product__name=product_name).
-               values_list('rating', flat=True))
+    ratings = Review.objects.filter(product__name=product_name).values_list('rating', flat=True)
 
     try:
         avg_rating = sum(ratings) / len(ratings)
@@ -155,8 +168,7 @@ def get_reviews_with_high_ratings(threshold: int):
 
 
 def get_products_with_no_reviews():
-    products = (Product.objects.filter(review__product_id__isnull=True).
-                order_by('-name'))
+    products = Product.objects.filter(reviews__isnull=True).order_by('-name')
 
     return products
 
@@ -164,7 +176,7 @@ def get_products_with_no_reviews():
 def delete_products_without_reviews():
     get_products_with_no_reviews().delete()
     # for c_product in Product.objects.all():
-    #     reviews = c_product.review_set.all()
+    #     reviews = c_product.reviews.all()
     #     if not reviews:
     #         c_product.delete()
 
@@ -190,7 +202,7 @@ def delete_products_without_reviews():
 # print(f"Products left: {Product.objects.count()}")
 #
 # Calculate and print the average rating
-# print(calculate_average_rating_for_product_by_name("Laptop"))
+print(calculate_average_rating_for_product_by_name("Laptop"))
 # print(get_reviews_with_high_ratings(2))
 
 
@@ -236,26 +248,24 @@ def get_drivers_with_expired_licenses(due_date):
 
 # Problem 5
 def register_car_by_owner(owner: Owner):
-
-    registration = Registration.objects.filter(car_id__isnull=True).first()
+    registration = Registration.objects.filter(car__isnull=True).first()
     car = Car.objects.filter(registration__isnull=True).first()
 
-    if registration and car:
-        car.owner_id = owner.id
-        car.registration = registration
-        registration.registration_date = date.today()
+    car.owner = owner
+    car.registration = registration
+    car.save()
 
-        car.save()
-        registration.save()
+    registration.registration_date = date.today()
+    registration.car = car
+    registration.save()
 
-        return (f"Successfully registered {car.model} to "
-                f"{owner.name} with registration number {registration.registration_number}.")
-
+    return (f"Successfully registered {car.model} to "
+            f"{owner.name} with registration number {registration.registration_number}.")
 
 # Create instances of the Owner model
 # owner1 = Owner.objects.create(name='Ivelin Milchev')
 # owner2 = Owner.objects.create(name='Alice Smith')
-#
+
 # # Create instances of the Car model and associate them with owners
 # car1 = Car.objects.create(model='Citroen C5', year=2004)
 # car2 = Car.objects.create(model='Honda Civic', year=2021)
@@ -263,6 +273,6 @@ def register_car_by_owner(owner: Owner):
 # # Create instances of the Registration model for the cars
 # registration1 = Registration.objects.create(registration_number='TX0044XA')
 # registration2 = Registration.objects.create(registration_number='XYZ789')
-#
+
 # print(register_car_by_owner(owner1))
 # print(register_car_by_owner(owner2))

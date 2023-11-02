@@ -55,7 +55,8 @@ class Review(models.Model):
         to='Product',
         on_delete=models.CASCADE,
         null=True,
-        blank=True
+        blank=True,
+        related_name='reviews'
     )
 
 
@@ -95,7 +96,8 @@ class Car(models.Model):
         to='Owner',
         on_delete=models.CASCADE,
         null=True,
-        blank=True
+        blank=True,
+        related_name='cars'
     )
 
 
@@ -112,5 +114,5 @@ class Registration(models.Model):
         to='Car',
         on_delete=models.CASCADE,
         blank=True,
-        null=True
+        null=True,
     )
