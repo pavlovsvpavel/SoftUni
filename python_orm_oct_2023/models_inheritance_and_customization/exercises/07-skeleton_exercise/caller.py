@@ -1,11 +1,14 @@
 import os
+from datetime import date
+
 import django
+from django.core.exceptions import ValidationError
 
 # Set up Django
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "orm_skeleton.settings")
 django.setup()
 
-from main_app.models import Mage, Necromancer, UserProfile, Message, Student
+from main_app.models import Mage, Necromancer, UserProfile, Message, Student, CreditCard, Hotel, Room
 
 # Problem 1
 # Create instances
@@ -60,22 +63,81 @@ from main_app.models import Mage, Necromancer, UserProfile, Message, Student
 
 
 # Problem 3
-# Test cases
-student1 = Student(name="John", student_id=12345)
-student1.save()
+# # Test cases
+# student1 = Student(name="John", student_id=12345)
+# student1.save()
+#
+# student2 = Student(name="Alice", student_id=45.23)
+# student2.save()
+#
+# student3 = Student(name="Bob", student_id="789")
+# student3.save()
+#
+# # Retrieving student IDs from the database
+# retrieved_student1 = Student.objects.get(name="John")
+# retrieved_student2 = Student.objects.get(name="Alice")
+# retrieved_student3 = Student.objects.get(name="Bob")
+#
+# print(retrieved_student1.student_id)
+# print(retrieved_student2.student_id)
+# print(retrieved_student3.student_id)
 
-student2 = Student(name="Alice", student_id=45.23)
-student2.save()
 
-student3 = Student(name="Bob", student_id="789")
-student3.save()
+# Problem 4
+# # Create CreditCard instances with card owner names and card numbers
+# credit_card1 = CreditCard.objects.create(card_owner="Krasimir", card_number="1234567890123450")
+# credit_card2 = CreditCard.objects.create(card_owner="Pesho", card_number="9876543210987654")
+# credit_card3 = CreditCard.objects.create(card_owner="Vankata", card_number="4567890123456789")
+#
+# # Save the instances to the database
+# credit_card1.save()
+# credit_card2.save()
+# credit_card3.save()
+#
+# # Retrieve the CreditCard instances from the database
+# credit_cards = CreditCard.objects.all()
+#
+# # Display the card owner names and masked card numbers
+# for credit_card in credit_cards:
+#     print(f"Card Owner: {credit_card.card_owner}")
+#     print(f"Card Number: {credit_card.card_number}")
 
-# Retrieving student IDs from the database
-retrieved_student1 = Student.objects.get(name="John")
-retrieved_student2 = Student.objects.get(name="Alice")
-retrieved_student3 = Student.objects.get(name="Bob")
+# Problem 5
+# Create a Hotel instance
+hotel = Hotel.objects.create(name="Hotel ABC", address="123 Main St")
 
-print(retrieved_student1.student_id)
-print(retrieved_student2.student_id)
-print(retrieved_student3.student_id)
+# Create Room instances associated with the hotel
+room1 = Room.objects.create(
+    hotel=hotel,
+    number="101",
+    capacity=2,
+    total_guests=1,
 
+    price_per_night=100.00
+)
+
+# # Create SpecialReservation instances
+# special_reservation1 = SpecialReservation(
+#     room=room1,
+#     start_date=date(2023, 1, 1),
+#     end_date=date(2023, 1, 5)
+# )
+#
+# print(special_reservation1.save())
+#
+# special_reservation2 = SpecialReservation(
+#     room=room1,
+#     start_date=date(2023, 1, 10),
+#     end_date=date(2023, 1, 12)
+# )
+#
+# print(special_reservation2.save())
+#
+# print(special_reservation1.calculate_total_cost())
+# print(special_reservation1.reservation_period())
+#
+# # Example of extending a SpecialReservation
+# try:
+#     special_reservation1.extend_reservation(5)
+# except ValidationError as e:
+#     print(e)

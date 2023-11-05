@@ -1,3 +1,5 @@
+from django.core import validators
+from django.core.exceptions import ValidationError
 from django.db import models
 
 
@@ -120,3 +122,48 @@ class Student(models.Model):
     student_id = StudentIDField()
 
 
+class MaskedCreditCardField(models.CharField):
+    MAX_LENGTH_CARD_NUMBER = 16
+
+    def to_python(self, value):
+        if not isinstance(value, str):
+            raise ValidationError('The card number must be a string')
+
+        if not value.isdigit():
+            raise ValidationError('The card number must contain only digits')
+
+        if len(value) != self.MAX_LENGTH_CARD_NUMBER:
+            raise ValidationError('The card number must be exactly 16 characters long')
+
+        last_four_card_digits = value[-4:]
+
+        return f"****-****-****-{last_four_card_digits}"
+
+
+class CreditCard(models.Model):
+    card_owner = models.CharField(max_length=100)
+    card_number = MaskedCreditCardField(max_length=20)
+
+
+class Hotel(models.Model):
+    name = models.CharField(max_length=100),
+    address = models.CharField(max_length=200),
+
+
+def to_python(value):
+    return int(value)
+
+
+class Room(models.Model):
+
+    number = models.CharField(max_length=100, unique=True)
+    capacity = int(models.PositiveIntegerField())
+    total_guests = models.PositiveIntegerField(
+        validators=[validators.MaxValueValidator(
+            capacity, message='Total guests are more than the capacity of the room')]
+    )
+    price_per_night = models.DecimalField(max_digits=10, decimal_places=2)
+
+
+    def __str__(self):
+        return f'Room {self.number} created successfully'
