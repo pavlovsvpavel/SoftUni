@@ -8,7 +8,8 @@ from django.core.exceptions import ValidationError
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "orm_skeleton.settings")
 django.setup()
 
-from main_app.models import Mage, Necromancer, UserProfile, Message, Student, CreditCard, Hotel, Room
+from main_app.models import Mage, Necromancer, UserProfile, Message, Student, CreditCard, Hotel, Room, \
+    SpecialReservation
 
 # Problem 1
 # Create instances
@@ -103,19 +104,19 @@ from main_app.models import Mage, Necromancer, UserProfile, Message, Student, Cr
 #     print(f"Card Number: {credit_card.card_number}")
 
 # Problem 5
-# Create a Hotel instance
-hotel = Hotel.objects.create(name="Hotel ABC", address="123 Main St")
-
-# Create Room instances associated with the hotel
-room1 = Room.objects.create(
-    hotel=hotel,
-    number="101",
-    capacity=2,
-    total_guests=1,
-
-    price_per_night=100.00
-)
-
+# # Create a Hotel instance
+# hotel = Hotel.objects.create(name="Hotel ABC", address="123 Main St")
+#
+# # Create Room instances associated with the hotel
+# room1 = Room.objects.create(
+#     hotel=hotel,
+#     number="101",
+#     capacity=2,
+#     total_guests=1,
+#
+#     price_per_night=100.00
+# )
+#
 # # Create SpecialReservation instances
 # special_reservation1 = SpecialReservation(
 #     room=room1,

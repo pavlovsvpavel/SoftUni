@@ -1,4 +1,6 @@
-from django.core import validators
+import sys
+from datetime import timedelta
+
 from django.core.exceptions import ValidationError
 from django.db import models
 
@@ -146,24 +148,113 @@ class CreditCard(models.Model):
 
 
 class Hotel(models.Model):
-    name = models.CharField(max_length=100),
-    address = models.CharField(max_length=200),
-
-
-def to_python(value):
-    return int(value)
+    name = models.CharField(
+        max_length=100
+    )
+    address = models.CharField(
+        max_length=200
+    )
 
 
 class Room(models.Model):
-
-    number = models.CharField(max_length=100, unique=True)
-    capacity = int(models.PositiveIntegerField())
-    total_guests = models.PositiveIntegerField(
-        validators=[validators.MaxValueValidator(
-            capacity, message='Total guests are more than the capacity of the room')]
+    hotel = models.ForeignKey(
+        to='Hotel',
+        on_delete=models.CASCADE
     )
+    number = models.CharField(max_length=100, unique=True)
+    capacity = models.PositiveIntegerField()
+    total_guests = models.PositiveIntegerField()
     price_per_night = models.DecimalField(max_digits=10, decimal_places=2)
 
+    def save(self, *args, **kwargs):
+        if self.total_guests > self.capacity:
+            raise ValidationError('Total guests are more than the capacity of the room')
 
-    def __str__(self):
+        super(Room, self).save(*args, **kwargs)
+
         return f'Room {self.number} created successfully'
+
+
+class BaseReservation(models.Model):
+    room = models.ForeignKey(
+        to='Room',
+        on_delete=models.CASCADE
+    )
+    start_date = models.DateField()
+    end_date = models.DateField()
+
+    class Meta:
+        abstract = True
+
+    def reservation_period(self):
+        period_in_days = self.end_date.day - self.start_date.day
+
+        return period_in_days
+
+    def calculate_total_cost(self):
+        total_cost = self.room.price_per_night * self.reservation_period()
+
+        return round(total_cost, 1)
+
+
+def check_for_existing_reservation(current_room: Room, res_type: str, start_date, end_date):
+    reservation_type = getattr(sys.modules[__name__], res_type)
+    res_room = reservation_type.objects.filter(
+        room__number=current_room.number,
+        start_date__lte=end_date,
+        end_date__gte=start_date
+    )
+
+    return res_room
+
+
+class RegularReservation(BaseReservation):
+    def save(self, *args, **kwargs):
+        if self.start_date >= self.end_date:
+            raise ValidationError('Start date cannot be after or in the same end date')
+
+        if check_for_existing_reservation(
+                self.room,
+                __class__.__name__,
+                self.start_date,
+                self.end_date):
+
+            raise ValidationError(f"Room {self.room.number} cannot be reserved")
+
+        super(RegularReservation, self).save(*args, **kwargs)
+
+        return f"Regular reservation for room {self.room.number}"
+
+
+class SpecialReservation(BaseReservation):
+    def save(self, *args, **kwargs):
+        if self.start_date >= self.end_date:
+            raise ValidationError('Start date cannot be after or in the same end date')
+
+        if check_for_existing_reservation(
+                self.room,
+                __class__.__name__,
+                self.start_date,
+                self.end_date):
+
+            raise ValidationError(f"Room {self.room.number} cannot be reserved")
+
+        super(SpecialReservation, self).save(*args, **kwargs)
+
+        return f"Special reservation for room {self.room.number}"
+
+    def extend_reservation(self, days: int):
+        new_end_date = self.end_date + timedelta(days)
+
+        if check_for_existing_reservation(
+                self.room,
+                __class__.__name__,
+                self.start_date,
+                self.end_date):
+
+            raise ValidationError("Error during extending reservation")
+
+        self.end_date = new_end_date
+        self.save()
+
+        return f"Extended reservation for room {self.room.number} with {days} days"
