@@ -127,6 +127,11 @@ class Student(models.Model):
 class MaskedCreditCardField(models.CharField):
     MAX_LENGTH_CARD_NUMBER = 16
 
+    def __init__(self, *args, **kwargs):
+        kwargs['max_length'] = 20
+
+        super().__init__(*args, **kwargs)
+
     def to_python(self, value):
         if not isinstance(value, str):
             raise ValidationError('The card number must be a string')
@@ -144,7 +149,7 @@ class MaskedCreditCardField(models.CharField):
 
 class CreditCard(models.Model):
     card_owner = models.CharField(max_length=100)
-    card_number = MaskedCreditCardField(max_length=20)
+    card_number = MaskedCreditCardField()
 
 
 class Hotel(models.Model):
