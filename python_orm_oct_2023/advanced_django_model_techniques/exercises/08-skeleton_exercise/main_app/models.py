@@ -1,22 +1,9 @@
-import re
 from decimal import Decimal
 
-from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator, RegexValidator, EmailValidator, URLValidator, MinLengthValidator
 from django.db import models
 from django.contrib.postgres.search import SearchVectorField
-
-
-# def check_name(value):
-#     regex = '^[a-zA-Z ]+$'
-#
-#     if not re.search(regex, value):
-#         raise ValidationError('Name can only contain letters and spaces')
-
-
-def check_phone_number(value):
-    if not value.startswith('+359') or len(value) != 13:
-        raise ValidationError("Phone number must start with a '+359' followed by 9 digits")
+from main_app.validators import check_phone_number
 
 
 class Customer(models.Model):
