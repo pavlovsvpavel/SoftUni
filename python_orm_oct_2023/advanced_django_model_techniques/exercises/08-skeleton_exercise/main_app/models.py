@@ -4,6 +4,7 @@ from decimal import Decimal
 from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator, RegexValidator, EmailValidator, URLValidator, MinLengthValidator
 from django.db import models
+from django.contrib.postgres.search import SearchVectorField
 
 
 # def check_name(value):
@@ -177,3 +178,15 @@ class FlashHero(Hero):
         self.save()
 
         return f"{self.name} as Flash Hero runs at lightning speed, saving the day"
+
+
+class Document(models.Model):
+    class Meta:
+        indexes = [
+            models.Index(fields=['search_vector']
+                         )
+        ]
+
+    title = models.CharField(max_length=200)
+    content = models.TextField()
+    search_vector = SearchVectorField(null=True)
