@@ -12,19 +12,19 @@ django.setup()
 from main_app.models import Customer, Book, Product, DiscountedProduct, SpiderHero, FlashHero, Document
 
 # Problem 1
-# customer = Customer(
-#     name="Svetlin Nakov1",
-#     age=1,
-#     email="nakov@example",
-#     phone_number="+35912345678",
-#     website_url="htsatps://nakov.com/"
-# )
-#
-# try:
-#     customer.full_clean()
-#     customer.save()
-# except ValidationError as e:
-#     print('\n'.join(e.messages))
+customer = Customer(
+    name="Svetlin Nakov1",
+    age=1,
+    email="nakov@example",
+    phone_number="+35912345678",
+    website_url="htsatps://nakov.com/"
+)
+
+try:
+    customer.full_clean()
+    customer.save()
+except ValidationError as e:
+    print('\n'.join(e.messages))
 
 
 # Problem 2
