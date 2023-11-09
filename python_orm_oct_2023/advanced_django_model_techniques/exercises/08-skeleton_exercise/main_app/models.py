@@ -17,7 +17,9 @@ class Customer(models.Model):
     )
 
     email = models.EmailField(
-        validators=[EmailValidator()]
+        error_messages={'invalid': 'Enter a valid email address'}
+
+        # validators=[EmailValidator()]
     )
 
     phone_number = models.CharField(
@@ -26,7 +28,8 @@ class Customer(models.Model):
     )
 
     website_url = models.URLField(
-        validators=[URLValidator()]
+        error_messages={'invalid': 'Enter a valid URL'}
+        # validators=[URLValidator()]
     )
 
 
