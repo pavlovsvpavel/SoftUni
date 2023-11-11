@@ -1,12 +1,12 @@
 import os
 import django
-from django.db.models import Q, Avg, Count
+from django.db.models import Q, Avg, Count, F
 
 # Set up Django
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "orm_skeleton.settings")
 django.setup()
 
-from main_app.models import Director, Actor
+from main_app.models import Director, Actor, Movie
 
 
 # Problem 3
@@ -75,4 +75,72 @@ def get_top_actor():
             f"starring in movies: {', '.join(top_actor_movies)}, "
             f"movies average rating: {top_actor.movies_avg_rating:.1f}")
 
+
 # print(get_top_actor())
+
+
+# Problem 5
+def get_actors_by_movies_count():
+    actors = (Actor.objects.
+              annotate(count_movies=Count('actor_movies')).
+              order_by('-count_movies', 'full_name'))
+
+    top_three_actors = actors[:3]
+
+    if not top_three_actors or not top_three_actors[0].count_movies:
+        return ""
+
+    result = []
+    for actor in top_three_actors:
+        result.append(f"{actor.full_name}, participated in {actor.count_movies} movies")
+
+    return '\n'.join(result)
+
+
+# print(get_actors_by_movies_count())
+
+
+def get_top_rated_awarded_movie():
+    movies = (Movie.objects.
+              select_related('starring_actor').
+              prefetch_related('actors').
+              filter(is_awarded=True).
+              order_by('-rating', 'title').
+              first())
+
+    if movies is None:
+        return ""
+
+    if movies.starring_actor:
+        starring_actor = movies.starring_actor.full_name
+
+    else:
+        starring_actor = "N/A"
+
+    cast = []
+    for actor in movies.actors.all().order_by('full_name'):
+        cast.append(actor.full_name)
+
+    return (f"Top rated awarded movie: {movies.title}, "
+            f"rating: {movies.rating:.1f}. "
+            f"Starring actor: {starring_actor}. "
+            f"Cast: {', '.join(cast)}")
+
+
+# print(get_top_rated_awarded_movie())
+
+
+def increase_rating():
+    query = Q(is_classic=True) & Q(rating__lt=10.0)
+
+    movies = Movie.objects.filter(query)
+
+    if not movies:
+        return "No ratings increased."
+
+    updated_movies = movies.update(rating=F('rating') + 0.1)
+
+    return f"Rating increased for {updated_movies} movies."
+
+
+# print(increase_rating())

@@ -7,7 +7,7 @@ class DirectorManager(models.Manager):
 
     def get_directors_by_movies_count(self):
         directors_movies = (
-            self.annotate(count_movies=Count('movies')).
+            self.annotate(count_movies=Count('director_movies')).
             order_by('-count_movies', 'full_name')
         )
 
@@ -114,7 +114,7 @@ class Movie(models.Model):
     director = models.ForeignKey(
         to='Director',
         on_delete=models.CASCADE,
-        related_name='movies'
+        related_name='director_movies'
     )
 
     starring_actor = models.ForeignKey(
@@ -126,7 +126,8 @@ class Movie(models.Model):
     )
 
     actors = models.ManyToManyField(
-        to='Actor'
+        to='Actor',
+        related_name='actor_movies'
     )
 
     def __str__(self):
