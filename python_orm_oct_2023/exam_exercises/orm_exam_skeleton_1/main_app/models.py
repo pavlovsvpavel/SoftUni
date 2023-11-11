@@ -1,5 +1,17 @@
 from django.core.validators import MinLengthValidator, MaxLengthValidator, MinValueValidator, MaxValueValidator
 from django.db import models
+from django.db.models import Count
+
+
+class DirectorManager(models.Manager):
+
+    def get_directors_by_movies_count(self):
+        directors_movies = (
+            self.annotate(count_movies=Count('movies')).
+            order_by('-count_movies', 'full_name')
+        )
+
+        return directors_movies
 
 
 class Person(models.Model):
@@ -33,6 +45,8 @@ class Director(Person):
         validators=[MinValueValidator(0, 'Years of experience cannot be negative.')],
         default=0
     )
+
+    objects = DirectorManager()
 
 
 class Actor(Person):
@@ -107,6 +121,7 @@ class Movie(models.Model):
         to='Actor',
         on_delete=models.SET_NULL,
         null=True,
+        blank=True,
         related_name='movies'
     )
 
@@ -116,4 +131,3 @@ class Movie(models.Model):
 
     def __str__(self):
         return self.title
-
