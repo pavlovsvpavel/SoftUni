@@ -82,8 +82,8 @@ from main_app.models import RealEstateListing, VideoGame, BillingInfo, Invoice, 
 # average_rating = VideoGame.objects.average_rating()
 # highest_rated = VideoGame.objects.highest_rated_game()
 # lowest_rated = VideoGame.objects.lowest_rated_game()
-
-# Print the results
+#
+# # Print the results
 # print(action_games)
 # print(recent_games)
 # print(average_rating)
@@ -125,22 +125,22 @@ from main_app.models import RealEstateListing, VideoGame, BillingInfo, Invoice, 
 # tech1 = Technology.objects.create(name="Python", description="A high-level programming language")
 # tech2 = Technology.objects.create(name="JavaScript", description="A scripting language for the web")
 # tech3 = Technology.objects.create(name="SQL", description="Structured Query Language")
-#
+# #
 # # Create instances of Project
 # project1 = Project.objects.create(name="Web App Project", description="Developing a web application")
 # project1.technologies_used.add(tech1, tech2)
 #
 # project2 = Project.objects.create(name="Database Project", description="Managing databases")
 # project2.technologies_used.add(tech3)
-#
+# #
 # # Create instances of Programmer
 # programmer1 = Programmer.objects.create(name="Alice")
 # programmer2 = Programmer.objects.create(name="Bob")
-#
+# #
 # # Associate projects with programmers
 # programmer1.projects.add(project1, project2)
 # programmer2.projects.add(project1)
-# # Execute the "get_programmers_with_technologies" method for a specific project
+# Execute the "get_programmers_with_technologies" method for a specific project
 # specific_project = Project.objects.get(name="Web App Project")
 # programmers_with_technologies = specific_project.get_programmers_with_technologies()
 #
@@ -193,9 +193,9 @@ from main_app.models import RealEstateListing, VideoGame, BillingInfo, Invoice, 
 # task1.save()
 # task2.save()
 # task3.save()
-#
-# # Now, you can run the defined methods
-
+# #
+# # # Now, you can run the defined methods
+# #
 # # 1. Get overdue high-priority tasks
 # overdue_high_priority = Task.overdue_high_priority_tasks()
 # print("Overdue High Priority Tasks:")
@@ -247,7 +247,7 @@ from main_app.models import RealEstateListing, VideoGame, BillingInfo, Invoice, 
 #     repetitions=20,
 # )
 #
-# # # Print the results
+# # Print the results
 # long_and_hard_exercises = Exercise.get_long_and_hard_exercises()
 # print("Long and hard exercises:")
 # for exercise in long_and_hard_exercises:
