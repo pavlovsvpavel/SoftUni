@@ -139,14 +139,13 @@ class Task(models.Model):
 
         return cls.objects.filter(query_filter)
 
-    @classmethod
-    def recent_completed_tasks(cls, days: int):
-        new_date = F('creation_date') - timedelta(days)
+    def recent_completed_tasks(self, days: int):
+        new_date = self.creation_date - timedelta(days)
 
         query = (Q(is_completed=True) &
                  Q(completion_date__gte=new_date))
 
-        return cls.objects.filter(query)
+        return Task.objects.filter(query)
 
 
 class Exercise(models.Model):

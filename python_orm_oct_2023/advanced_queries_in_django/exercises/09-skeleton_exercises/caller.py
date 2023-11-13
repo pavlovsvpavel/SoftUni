@@ -170,7 +170,7 @@ from main_app.models import RealEstateListing, VideoGame, BillingInfo, Invoice, 
 #     creation_date=date(2023, 1, 15),
 #     completion_date=date(2023, 1, 25)
 # )
-# #
+# # #
 # task2 = Task(
 #     title="Task 2",
 #     description="Description for Task 2",
@@ -179,7 +179,7 @@ from main_app.models import RealEstateListing, VideoGame, BillingInfo, Invoice, 
 #     creation_date=date(2023, 2, 1),
 #     completion_date=date(2023, 2, 10)
 # )
-#
+# #
 # task3 = Task(
 #     title="Task 3",
 #     description="Description for Task 3",
@@ -188,8 +188,8 @@ from main_app.models import RealEstateListing, VideoGame, BillingInfo, Invoice, 
 #     creation_date=date(2023, 1, 15),
 #     completion_date=date(2023, 1, 20)
 # )
-#
-# # Save the tasks to the database
+# #
+# # # Save the tasks to the database
 # task1.save()
 # task2.save()
 # task3.save()
@@ -214,7 +214,7 @@ from main_app.models import RealEstateListing, VideoGame, BillingInfo, Invoice, 
 # for task in search_results:
 #     print('- ' + task.title)
 #
-# # 4. Get recent completed tasks
+# 4. Get recent completed tasks
 # recent_completed = task1.recent_completed_tasks(days=5)
 # print("Recent Completed Tasks:")
 # for task in recent_completed:
