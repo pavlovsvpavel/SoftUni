@@ -115,7 +115,10 @@ def apply_discounts():
 
 
 def complete_order():
-    last_uncompleted_order = Order.objects.filter(is_completed=False).last()
+    last_uncompleted_order = (Order.objects.
+                              filter(is_completed=False).
+                              order_by('-creation_date').
+                              last())
 
     if not last_uncompleted_order:
         return ""
@@ -126,7 +129,7 @@ def complete_order():
     for product in last_uncompleted_order.products.all():
         product.in_stock -= 1
 
-        if product.in_stock <= 0:
+        if product.in_stock == 0:
             product.is_available = False
 
         product.save()

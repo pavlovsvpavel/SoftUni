@@ -58,9 +58,9 @@ def get_top_director():
 
 
 def get_top_actor():
-    all_actors = (Actor.objects.prefetch_related('movies').
+    all_actors = (Actor.objects.prefetch_related('actor_movies__starring_actor').
                   annotate(count_movies=Count('movies'), movies_avg_rating=Avg('movies__rating')).
-                  order_by('-movies_avg_rating', 'full_name'))
+                  order_by('-count_movies', 'full_name'))
 
     top_actor = all_actors.first()
 
@@ -101,28 +101,28 @@ def get_actors_by_movies_count():
 
 
 def get_top_rated_awarded_movie():
-    movies = (Movie.objects.
-              select_related('starring_actor').
-              prefetch_related('actors').
-              filter(is_awarded=True).
-              order_by('-rating', 'title').
-              first())
+    movie = (Movie.objects.
+             select_related('starring_actor').
+             prefetch_related('actors').
+             filter(is_awarded=True).
+             order_by('-rating', 'title').
+             first())
 
-    if movies is None:
+    if movie is None:
         return ""
 
-    if movies.starring_actor:
-        starring_actor = movies.starring_actor.full_name
+    if movie.starring_actor:
+        starring_actor = movie.starring_actor.full_name
 
     else:
         starring_actor = "N/A"
 
     cast = []
-    for actor in movies.actors.all().order_by('full_name'):
+    for actor in movie.actors.all().order_by('full_name'):
         cast.append(actor.full_name)
 
-    return (f"Top rated awarded movie: {movies.title}, "
-            f"rating: {movies.rating:.1f}. "
+    return (f"Top rated awarded movie: {movie.title}, "
+            f"rating: {movie.rating:.1f}. "
             f"Starring actor: {starring_actor}. "
             f"Cast: {', '.join(cast)}")
 
@@ -141,6 +141,5 @@ def increase_rating():
     updated_movies = movies.update(rating=F('rating') + 0.1)
 
     return f"Rating increased for {updated_movies} movies."
-
 
 # print(increase_rating())
