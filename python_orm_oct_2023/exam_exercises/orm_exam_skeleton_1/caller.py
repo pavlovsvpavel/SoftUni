@@ -83,11 +83,12 @@ def get_top_actor():
 def get_actors_by_movies_count():
     actors = (Actor.objects.
               annotate(count_movies=Count('actor_movies')).
+              filter(count_movies__gt=0).
               order_by('-count_movies', 'full_name'))
 
     top_three_actors = actors[:3]
 
-    if not top_three_actors or not top_three_actors[0].count_movies:
+    if not top_three_actors:
         return ""
 
     result = []
@@ -124,7 +125,7 @@ def get_top_rated_awarded_movie():
     return (f"Top rated awarded movie: {movie.title}, "
             f"rating: {movie.rating:.1f}. "
             f"Starring actor: {starring_actor}. "
-            f"Cast: {', '.join(cast)}")
+            f"Cast: {', '.join(cast)}.")
 
 
 # print(get_top_rated_awarded_movie())
