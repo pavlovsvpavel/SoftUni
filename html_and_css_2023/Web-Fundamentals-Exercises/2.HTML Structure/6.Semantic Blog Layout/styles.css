@@ -1,0 +1,55 @@
+a::after {
+    content: attr(href);
+}
+
+header {
+    border-radius: 3px;
+    padding: 8px 10px;
+    background-color: #dceaf4;
+    border: 1px solid #bfcacb;
+    margin: 5px;
+}
+
+header * {
+    display: inline;
+    vertical-align: middle;
+}
+
+nav ul {
+    margin: 0;
+    padding: 10px;
+}
+
+nav li a {
+    text-decoration: none;
+}
+
+nav li {
+    margin: 10px;
+}
+
+body {
+    background-color: #b7d7e8;
+}
+
+section h2 {
+    margin: 15px 10px;
+}
+
+article {
+    background-color: #e5f0f7;
+    display: table-cell;
+    border: 10px solid #b7d7e8;
+    width: 50%;
+    padding: 10px 15px;
+
+}
+
+footer {
+    background-color:#dceaf4;
+    border: 1px solid #bfcacb;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 3px;
+    margin: 5px;
+}
