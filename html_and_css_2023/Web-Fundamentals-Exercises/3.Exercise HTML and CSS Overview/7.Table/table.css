@@ -1,0 +1,39 @@
+@import "https://fonts.googleapis.com/css?family=Lato:300,400,900";
+
+body {
+    font-family: "Lato", sans-serif;
+}
+
+table {
+    color: #333333;
+    border: none;
+    margin: 0 auto; 
+}
+
+thead {
+    color: #ffffff;
+    background-color: #90b4d6;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+thead tr th strong {
+    padding: 5px 30px 5px 10px;
+    font-size: 18px;
+    margin: 0;
+    text-align: left;
+    background-color: #84b3ad;
+}
+
+tbody td {
+    padding: 5px 30px 5px 10px;
+    font-size: 18px;
+    margin: 0;
+    text-align: left;
+    background-color: #84b3ad;
+    width: 150px;
+}
+
+tbody tr:nth-child(even) td {
+    background-color: #689ad8;
+    }
