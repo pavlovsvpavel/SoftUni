@@ -1,3 +1,4 @@
+#### :green_circle: [Python ORM Certificate](https://softuni.bg/certificates/details/193771/beb381be)
 #### :green_circle: [PostgreSQL Certificate](https://softuni.bg/certificates/details/185963/6b802353)
 #### :green_circle: [Python OOP Certificate](https://softuni.bg/certificates/details/180798/8e18f138)
 #### :green_circle: [Python Advanced Certificate](https://softuni.bg/certificates/details/173742/8f18b2d4)
