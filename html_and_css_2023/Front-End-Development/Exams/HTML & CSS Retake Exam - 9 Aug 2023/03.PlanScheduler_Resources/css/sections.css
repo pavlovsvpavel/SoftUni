@@ -1,0 +1,43 @@
+.section-banner1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 13em;
+    margin-top: 5em;
+}
+
+.section-banner1 h1 {
+    max-width: 10em;
+    align-self: flex-start;
+}
+
+.section-banner1 p {
+    max-width: 33em;
+    align-self: flex-start;
+    color: #fff;
+    margin-top: 4em;
+    font-size: 1.1em;
+    margin-bottom: 1.5em;
+    font-weight: 700;
+}
+
+.section-banner1 a {
+    display: inline-block;
+    background-color: #000;
+    color: #fff;
+    border-radius: 0.3em;
+    padding: 1em 2em;
+    text-decoration: none;
+    align-self: flex-start;
+    font-size: 0.8em;
+}
+
+.section-banner2 {
+    display: flex;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
