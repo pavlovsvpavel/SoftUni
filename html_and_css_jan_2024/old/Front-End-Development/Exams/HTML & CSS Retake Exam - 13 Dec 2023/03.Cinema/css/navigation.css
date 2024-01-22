@@ -1,0 +1,21 @@
+.main-nav ul {
+    padding-bottom: 0;
+}
+
+.main-nav li {
+    list-style-type: none;
+    display: inline-block;
+}
+
+.main-nav li a {
+    padding: 1em 1.3em 1em 1.3em;
+    background-color: #ECECEC;
+    color: #666666;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.main-nav li a:hover {
+    background-color: #56DBB1;
+    color: black;
+}

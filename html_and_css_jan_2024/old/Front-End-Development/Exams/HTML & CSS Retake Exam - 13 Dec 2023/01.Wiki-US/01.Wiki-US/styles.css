@@ -1,0 +1,113 @@
+@import url("https://fonts.googleapis.com/css2?family=Agbalumo&display=swap");
+
+* {
+	padding: 0;
+	margin: 0;
+}
+
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+html {
+    font: 16px/1.5 Agbalumo;
+	box-sizing: border-box;
+}
+
+body {
+    max-width: 900px;
+    font: inherit;
+    margin: 0 auto;
+}
+
+h1 { font-size: 2.8em; }
+h2 { font-size: 2.2em; }
+h3 { font-size: 1.8em; }
+h4 { font-size: 1.4em; }
+h5 { font-size: 1.2em; }
+h6 { font-size: 1.0em; }
+
+.wrapper {
+    border: 3px solid black;
+    margin: 10px;
+}
+
+article {
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    padding-top: 30px;
+    text-align: center;
+    background-color: #D5EBEA;
+}
+
+header h5 {
+    font-weight: normal;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    margin: 0 40px 0 20px;
+}
+
+main {
+    display: flex;
+    gap: 20px;
+    margin: 40px 20px 40px 20px;
+    background-color: white;
+}
+
+.picture-info {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    align-items: center;
+    flex-shrink: 2;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+img {
+    margin: 10px;
+    width: 300px;
+    height: auto;
+}
+
+.picture-info p {
+    font-size: 12px;
+    padding: 10px;
+    text-indent: 40px;
+}
+
+.details p {
+    font-size: 17px;
+    text-indent: 30px;
+}
+
+footer h4 {
+    display: inline-block;
+    background-color: black;
+    color: white;
+    padding: 0px 50px 0 50px;
+    text-align: center;
+}
+
+footer span {
+    font-weight: bold;
+}
+
+footer ul {
+    background-color: #D5EBEA;
+    list-style-type: none;
+    padding: 10px 0 10px 30px;
+}
+
+footer ul li {
+    padding: 5px 0 5px 0;
+}
