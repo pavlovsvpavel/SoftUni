@@ -1,10 +1,14 @@
 html {
-    font: 16px/1.5 Helvetica, sans-serif;
+    font: 16px/2 Helvetica, sans-serif;
     box-sizing: border-box;
 }
 
-main {
-    max-width: 874px;
+body {
+    padding: 2em;
+}
+
+.site {
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -13,24 +17,30 @@ main {
     background-color: #1881B6;
     border: 3px solid black;
     border-radius: 10px;
-    margin: 20px;
-    gap: 20px;
-    flex-direction: row;
     align-items: center;
+
 }
 
-.text {
-    padding-left: 40px;
-    padding-top: 40px;
+.card{
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+    padding-left: 2em;
 }
 
-.image {
-    margin: 0 20px 0 0;
+.card:last-of-type {
+    flex: 1;
+    margin: 2em;
+    padding: 0;
+
 }
 
-.image img {
+
+.card img {
+    display: block;
+    height: 350px;
     width: 100%;
-    height: auto;
+    object-fit: cover;
 
 }
 
@@ -40,39 +50,42 @@ h3 {
 
 h2 {
     color: #fff;
-    font-weight: 200;
+    font-weight: 400;
     font-size: 2.1em;
-    margin-top: 20px;
-    margin-bottom: 20px;
 }
 
 p {
     text-indent: 40px;
     text-align: justify;
+    padding-bottom: 2em;
+}
+
+.buttons a {
+    padding: 0;
+    
 }
 
 .buttons {
     display: flex;
     justify-content: center;
-    gap: 100px;
-    margin: 20px 0 40px 0;
+    gap: 5em;
     font-weight: bold;
 }
 
-.text .btn1 {
+.card .btn1 {
     background-color: #B6416D;
     border: 2px solid #000;
     border-radius: 5px;
-    padding: 5px 10px 5px 10px;
+    padding: 0.4em 1.3em;
     text-decoration: none;
     color: #fff;
 }
 
-.text .btn2 {
+.card .btn2 {
     background-color: transparent;
     border: 2px solid #000;
     border-radius: 5px;
-    padding: 5px 10px 5px 10px;
+    padding: 0.4em 1.3em;
     text-decoration: none;
     color: #000;
 }
