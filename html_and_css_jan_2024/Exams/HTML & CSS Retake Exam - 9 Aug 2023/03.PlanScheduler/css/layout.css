@@ -1,10 +1,10 @@
+@import url("https://use.fontawesome.com/releases/v6.5.1/css/all.css");
+
 .site {
     max-width: 1200px;
     margin: 0 auto;
     min-height: 100vh;
 }
-
-
 
 .site {
     display: flex;
@@ -14,7 +14,7 @@
 .site-header {
     display: flex;
     justify-content: space-between;
-    padding: 10px 50px;
+    padding: 10px 50px 5px 50px;
     background-color: #D9D9D9;
     height: 50px;
     align-items: center;
@@ -58,20 +58,28 @@
 
 .main-cards img {
     width: 30%;
+    height: auto;
+    object-fit: cover;
 }
 
 .pic-details {
     display: flex;
     flex-direction: column;
+    padding: 1em 0;
 }
 
-.pic-details h5, .pic-details p {
+.pic-details h5, 
+.pic-details p {
     color: #585857;
 }
 
 .pic-details p {
     padding-top: 2em;
     padding-bottom: 0;
+}
+
+.pic-details h5 {
+    font-size: 1em;
 }
 
 .pic-details h3 {
@@ -86,7 +94,6 @@
 }
 
 .main-pricing {
-    display: flex;
     background-color: #F5F5F5;
     padding: 0 4em 0 4em;
 }
@@ -94,47 +101,107 @@
     display: flex;
     gap: 1em;
     background-color: #fff;
-    justify-items: center;
-
+    padding: 3em 0;
+    padding: 2em 3em;
 }
 
 .pricing-plans {
     display: flex;
     flex-direction: column;
-    flex-shrink: 2;
+    flex: 1;
+    padding-top: 2em;
+}
 
+.pricing-plans p {
+    color: #585857;
+    padding-top: 3em;
+    font-size: 0.8em;
+}
+
+.price-card1, 
+.price-card2 {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 2em 0;
+}
+
+.price-card1 h2, 
+.price-card2 h2 {
+    padding: 0.5em 0;
+    margin: 0;
+    font-size: 3em;
+    font-weight: 300;
+}
+
+.price-card1 p, 
+.price-card2 p {
+    padding-bottom: 1em;
+}
+
+.price-card1 p:last-of-type, 
+.price-card2 p:last-of-type {
+    padding-bottom: 4em;
+    font-weight: bold;
+}
+
+.pricing span {
+    font-weight: bold;
 }
 
 .price-card1 {
     background-color: #FF7C4C;
     text-align: center;
-    flex-grow: 2;
+}
+
+.price-card1 a {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 0.3em;
+    background-color: #000;
+    padding: 1em 2.2em;
 }
 
 .price-card2 {
     background-color: #000;
     color: #fff;
-    flex-grow: 2;
+    text-align: center;
+}
+
+.price-card2 a {
+    display: inline-block;
+    text-decoration: none;
+    color: #000;
+    border-radius: 0.3em;
+    background-color: #fff;
+    padding: 1em 2.2em;
 }
 
 .site-footer {
-    /* margin-top: auto; */
+    background-color: #D9D9D9;
 }
 
 .site-footer ul {
     display: flex;
-    justify-content: center;
-    gap: 150px;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 2em 0;
 }
 
 .site-footer li {
     padding: 10px 20px;
 }
 
-.site-footer li,
-.site-footer a {
+.site-footer li {
     display: block;
-    text-decoration: none;
-    color: inherit;
-    background-color: #D9D9D9;
 }
+
+.site-footer li a {
+    color: #000;
+}
+
+.site-footer li a i{
+    font-size: 1.2em;
+}
+

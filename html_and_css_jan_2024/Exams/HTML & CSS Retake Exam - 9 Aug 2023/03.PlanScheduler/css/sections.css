@@ -4,7 +4,7 @@
     background: url(../images/background.jpg);
     background-size: 100% auto;
     background-repeat: no-repeat;
-    background-position: center -12em;
+    background-position: center -11em;
     height: 480px;
     padding-left: 13em;
     padding-top: 5em;
@@ -36,10 +36,22 @@
 
 .section-banner2 {
     display: flex;
+    justify-content: center;
+    gap: 1em;
+    padding: 0 3em;
+    margin-bottom: 1em;
 }
 
 .section-banner2 h2 {
     color: #FF7C4C;
+}
+
+.section-banner2 h4 {
+    font-weight: 400;
+}
+
+.section-banner2 p {
+    color: #585857;
 }
 
 .card {
@@ -51,4 +63,8 @@
 
 .card h4 {
     margin-top: 2em;
+}
+
+.card p {
+    font-size: 0.8em;
 }
