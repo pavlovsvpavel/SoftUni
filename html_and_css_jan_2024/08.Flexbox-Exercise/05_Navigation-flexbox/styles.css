@@ -1,0 +1,46 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    box-sizing: border-box;
+    font-family: Calibri, sans-serif;
+}
+
+body {
+    max-width: 1200px;
+    padding: 2em;
+    margin: 0 auto;
+}
+
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid black;
+    margin-bottom: 2em;
+    padding-bottom: 2em;
+}
+
+.site-header h1 {
+    text-transform: uppercase;
+}
+
+.navigation ul {
+    display: flex;
+    gap: 2em;
+}
+
+.navigation ul li {
+    display: inline-block;
+}
+
+.navigation ul li a {
+    text-decoration: none;
+    color: rgb(0, 153, 0);
+}
+
+.site-main p {
+    padding-top: 1em;
+}

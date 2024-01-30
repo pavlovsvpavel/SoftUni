@@ -1,0 +1,66 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 2em;
+}
+
+.container {
+    display: flex;
+    margin: 0 auto;
+    max-width: 65vw;
+    justify-content: center;
+}
+
+span {
+    border: 1px solid black;
+    display: block;
+}
+
+.week {
+    display: flex;
+    flex-direction: column;
+}
+
+.workweek, .weekend {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.workweek > span, .weekend > span {
+    padding-top: 10px;
+    height: 50px;
+}
+
+
+
+.days {
+    display: flex;
+}
+
+.days span {
+    height: 50px;
+    width: 100px;
+    padding-top: 10px;
+    flex: 1;
+}
+
+
+.notes {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+}
+
+.notes span {
+    flex-grow: 1;
+    text-align: center;
+    text-transform: uppercase;
+}
