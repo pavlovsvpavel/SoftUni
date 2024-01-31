@@ -1,0 +1,44 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    box-sizing: border-box;
+    font-family: Helvetica, sans-serif;
+}
+
+body {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: rgb(238, 238, 238);
+}
+
+.page {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header, main, footer {
+    padding: 1em 1.5em;
+}
+
+header {
+    border-bottom: 2px solid black;
+    text-transform: uppercase;
+}
+
+main {
+    margin-top: 2em;
+}
+
+main p {
+    padding: 0.8em 0;
+}
+
+footer {
+    background-color: rgb(102, 102, 102);
+    color: rgb(255, 255, 255);
+    margin-top: auto;
+}
