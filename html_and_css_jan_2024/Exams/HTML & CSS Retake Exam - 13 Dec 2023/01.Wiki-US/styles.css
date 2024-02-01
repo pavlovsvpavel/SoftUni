@@ -3,20 +3,16 @@
 * {
 	padding: 0;
 	margin: 0;
-}
-
-*, *:before, *:after {
-	box-sizing: inherit;
+    box-sizing: border-box;
 }
 
 html {
     font: 16px/1.5 Agbalumo;
-	box-sizing: border-box;
+
 }
 
 body {
-    max-width: 900px;
-    font: inherit;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -27,7 +23,15 @@ h4 { font-size: 1.4em; }
 h5 { font-size: 1.2em; }
 h6 { font-size: 1.0em; }
 
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
 .wrapper {
+    display: flex;
+    flex-direction: column;
     border: 3px solid black;
     margin: 10px;
 }
@@ -35,53 +39,51 @@ h6 { font-size: 1.0em; }
 article {
     display: flex;
     flex-direction: column;
+
 }
 
-header {
-    padding-top: 30px;
+.site-header {
+    display: flex;
+    flex-direction: column;
+    padding-top: 1.5em;
     text-align: center;
     background-color: #D5EBEA;
 }
 
-header h5 {
-    font-weight: normal;
+.site-header p {
+    display: inline-block;
     border-top: 2px solid black;
     border-bottom: 2px solid black;
-    margin: 0 40px 0 20px;
+    margin: 0 1em;
 }
 
-main {
+.site-main {
     display: flex;
     gap: 20px;
-    margin: 40px 20px 40px 20px;
+    margin: 2em 1em;
     background-color: white;
 }
 
-.picture-info {
+.card {
     display: flex;
     flex-direction: column;
     border: 2px solid black;
     align-items: center;
-    flex-shrink: 2;
+}
+
+.card img {
+    padding: 1em;
 }
 
 .details {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    margin-top: 20px;
-    margin-right: 20px;
+    justify-content: space-evenly;
 }
 
-img {
-    margin: 10px;
-    width: 300px;
-    height: auto;
-}
-
-.picture-info p {
+.card p {
     font-size: 12px;
-    padding: 10px;
+    padding: 1em;
     text-indent: 40px;
 }
 
@@ -90,24 +92,31 @@ img {
     text-indent: 30px;
 }
 
-footer h4 {
-    display: inline-block;
-    background-color: black;
-    color: white;
-    padding: 0px 50px 0 50px;
-    text-align: center;
+.site-footer {
+    display: flex;
+    flex-direction: column;    
 }
 
-footer span {
+.site-footer h4 {
+    display: flex;
+    background-color: black;
+    color: white;
+    align-self: flex-start;
+    padding: 0 3em;
+}
+
+.site-footer span {
     font-weight: bold;
 }
 
-footer ul {
+.site-footer ul {
+    display: flex;
+    flex-direction: column;
     background-color: #D5EBEA;
     list-style-type: none;
-    padding: 10px 0 10px 30px;
+    padding: 1em 1em 0 1em;
 }
 
-footer ul li {
-    padding: 5px 0 5px 0;
+.site-footer ul li {
+    padding-bottom: 0.5em;
 }

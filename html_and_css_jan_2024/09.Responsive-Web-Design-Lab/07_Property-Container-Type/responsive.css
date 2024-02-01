@@ -1,0 +1,5 @@
+@media (width <= 600px) {
+  .post {
+    container-type: inline-size;
+  }
+}

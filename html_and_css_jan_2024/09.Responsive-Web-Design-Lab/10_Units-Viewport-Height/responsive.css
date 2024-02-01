@@ -1,0 +1,10 @@
+@media (width <= 600px) {
+    body {
+        width: 80vw;
+    }
+
+    img {
+        width: 80vh;
+        height: 70vh;
+    }
+}
