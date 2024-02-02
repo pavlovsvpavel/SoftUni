@@ -1,0 +1,258 @@
+.header-hero-section {
+    display: flex;
+    background-color: #9BD2FE;
+    padding: 0;
+}
+
+.header-hero-section img {
+    height: 300px;
+    width: auto;
+    padding-right: 2em;
+}
+
+.hero-section-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 3em 3em;
+}
+
+.header-hero-section-buttons {
+    display: flex;
+    gap: 2em;
+}
+
+.header-hero-section-buttons p {
+
+    padding-bottom: 0;
+}
+
+.header-hero-section-buttons a,
+.site-main a {
+    display: inline-block;
+    text-decoration: none;
+    border: 1px solid #000;
+    border-radius: 0.3em;
+    font-weight: bold;
+    padding: 0.5em 2.5em;
+}
+    
+
+.header-hero-section-buttons p:nth-of-type(1) a {
+    background-color: #fff;
+    color: #000;
+}
+
+.header-hero-section-buttons p:nth-of-type(2) a,
+.email-form a {
+    background-color: #000;
+    color: #fff;
+}
+
+.main-info-cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.article-header-info-cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em 5em;
+}
+
+main .cards {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+main .card {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    flex: 0 1 30%;
+}
+
+main .card i {
+    font-size: 5em;
+    color: #9BD2FE;
+
+}
+
+main .card h4 {
+    padding: 1em 0;
+}
+
+.main-mission {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #9BD2FE;
+    padding: 2em 0;
+}
+
+.header-main-mission {
+    text-transform: uppercase;
+}
+
+.mission-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-mission i {
+    padding-right: 0.5em;
+}
+
+.mission-info ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    align-items: center;
+    list-style-type: none;
+    padding: 2em 20em;
+}
+
+.mission-info ul li {
+    flex: 0 1 50px;
+}
+
+.mission-info a {
+    background-color: #000;
+    color: #fff;
+}
+
+.main-animals {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-animals-cards-header {
+    text-align: center;
+    padding: 2em 0;
+}
+
+.main-animals-cards-header h2 {
+    font-weight: 800;
+}
+
+.main-animals-cards-header p {
+    padding: 0;
+}
+
+.animals-cards ul {
+    display: flex;
+    gap: 2em;
+    list-style-type: none;
+}
+
+.main-work {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2em 0;
+}
+
+.work-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+}
+
+.work-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    border-radius: 0.3em;
+    width: 70vw;
+}
+
+.work-card h4 {
+    background-color: #9BD2FE;
+    padding: 1em;
+}
+
+.work-card p {
+    font-weight: bold;
+    padding: 1em;
+}
+
+.footer-news-subscription {
+    display: flex;
+}
+
+.footer-news-subscription img {
+    max-width: 50%;
+    height: auto;
+    object-fit: cover;
+}
+
+.footer-news-subscription .email-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.footer-news-subscription .email-form {
+    padding: 5em;
+}
+
+.footer-news-subscription .email-form p {
+    padding: 0;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+}
+
+input[type=submit] {
+    display: inline-block;
+    text-decoration: none;
+    border: 1px solid #000;
+    border-radius: 0.3em;
+    font-weight: bold;
+    padding: 0.5em 4em;
+    background-color: #000;
+    color:#fff;
+    align-self: flex-start;
+    text-transform: uppercase;
+}
+
+input[type=email] {
+    align-self: flex-start;
+    border-radius: 0.3em;
+    border: 1px solid #ccc;
+    padding: 0.5em 1em;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 2em;
+    align-items: center;
+}
+
+.footer ul {
+    display: flex;
+    gap: 1em;
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer ul li a {
+    color: #000;
+}
+
+.footer p {
+    font-weight: 600;
+    padding: 0;
+}
+
