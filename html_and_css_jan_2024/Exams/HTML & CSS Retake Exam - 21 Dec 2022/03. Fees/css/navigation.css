@@ -1,0 +1,31 @@
+.site-header {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 4em;
+}
+
+.nav-bar img {
+    width: 100px;
+    height: auto;
+}
+
+.nav-bar ul {
+    display: flex;
+    list-style-type: none;
+    gap: 1em;
+    padding: 0;
+}
+
+.nav-bar ul li a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #555E84;
+    font-weight: bold;
+}
+
