@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font: 16px/1.5 "Open Sans";
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.container {
+    max-width: 1200px;
+    padding: 2em;
+    margin: 0 auto;
+}
+
+.page {
+    display: flex;
+    align-items: center;
+    border: 0.1em solid black;
+    background-color: #F5F6F7;
+    border-radius: 1.5em;
+    box-shadow: 0 10px 20px 5px rgb(0, 0, 0, 0.3);
+}
+
+.article-picture {
+    flex: 0 1 50%;
+}
+
+.article-picture img {
+    border-top-left-radius: 1.5em;
+    border-bottom-left-radius: 1.5em;
+    object-fit: cover;
+}
+
+.article-calculator header {
+    flex: 1 0 100%;
+}
+
+.article-calculator h1 {
+    text-align: center;
+    text-transform: uppercase;
+    padding-bottom: 1em;
+}
+
+.article-calculator {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 0 2em;
+    text-align: center;
+    flex: 1 0 auto;
+
+}
+
+.units-buttons ul {
+    display: flex;
+    gap: 6em;
+    list-style-type: none;
+    padding: 0 2em;
+
+}
+
+.units-buttons ul a {
+    display: block;
+    text-decoration: none;
+    color: #000;
+    background-color: #96D45C;
+    padding: 0.5em 0.8em;
+    border-radius: 0.5em;
+    border: 0.1em solid #000;
+}
+
+.units-buttons ul li {
+    flex: 0 1 50%;
+}
+
+.units-buttons ul li:nth-of-type(2) a {
+    background-color: #DCDCDB;
+}
+
+section .labels {
+    text-align: center;
+    display: block;
+    font-weight: bold;
+    padding-bottom: 1em;
+}
+
+.gender-fields,
+.height-fields {
+    display: flex;
+    gap: 1.5em;
+    align-items: center;
+    justify-content: center;
+}
+
+input[type=number], select {
+    border-radius: 5px;
+    padding: 0.3em 0;
+}
+
+.gender-fields input[type=number], select {
+    width: 30%;
+}
+
+.height-fields input[type=number] {
+    width: 45%;
+}
+
+.weight input[type=number] {
+    width: 90%;
+}
+
+footer {
+    padding-top: 3em;
+}
+
+footer a {
+    display: block;
+    background-color: #05A2D3;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    padding: 0.3em 0;
+    border-radius: 2em;
+    box-shadow: 0 5px 10px 1px rgb(0, 0, 0, 0.5);
+    font-weight: bold;
+}
+
+
+
