@@ -11,7 +11,11 @@ def login(request):
 
 
 def details_profile(request, pk):
-    return render(request, 'accounts/profile-details-page.html')
+    context = {
+
+    }
+
+    return render(request, 'accounts/profile-details-page.html', context)
 
 
 def edit_profile(request, pk):

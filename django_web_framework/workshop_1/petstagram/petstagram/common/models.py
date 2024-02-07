@@ -19,14 +19,17 @@ class Comment(models.Model):
 
     photo = models.ForeignKey(
         to=PetPhoto,
-        on_delete=models.DO_NOTHING,
+        on_delete=models.RESTRICT,
         null=True,
         blank=True,
     )
 
-    class Like(models.Model):
-        photo = models.ForeignKey(
-            to=PetPhoto,
-            on_delete=models.DO_NOTHING,
-        )
+    class Meta:
+        ordering = ("-created_at",)
 
+
+class PhotoLike(models.Model):
+    photo = models.ForeignKey(
+        to=PetPhoto,
+        on_delete=models.RESTRICT,
+    )
