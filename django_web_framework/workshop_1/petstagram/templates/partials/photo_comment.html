@@ -1,0 +1,7 @@
+<div class="addComments">
+    <form method="post" action="{% url "comment" pk=photo.pk %}">
+        {{ comment_form }}
+        {% csrf_token %}
+        <button type="submit">Post</button>
+    </form>
+</div>

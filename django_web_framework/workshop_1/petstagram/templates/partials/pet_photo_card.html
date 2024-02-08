@@ -28,6 +28,11 @@
                 {% if photo.location %}
                     <span>{{ photo.location }}</span>
                 {% endif %}
+                
+{#                TODO: Add check if user is creator of photo#}
+                {% if  True %}
+                    {% include "partials/pet_photo_edit_delete_buttons.html" %}
+                {% endif %}
             </h3>
         </div>
     </div>
@@ -77,25 +82,16 @@
         {% endfor %}
         
         <!-- Link to Photo Details Page -->
-        <a href={% url "photos_details" pk=photo.pk %}>
-            <h4 class="details">See details</h4>
-        </a>
-
+        {% if request.path == '/' or '/pets/' in request.path %}
+            <a href={% url "photos_details" pk=photo.pk %}>
+                <h4 class="details">See details</h4>
+            </a>
+        {% endif %}
         <!-- Date of Publication -->
         <h5 class="postTime">{{ photo.created_at|date:'d/m/Y' }}</h5>
         
         <!-- Start Add Comments Section -->
-        <div class="addComments">
-            <!-- Start Add Comments Form -->
-            <form method="post" action="#">
-                <label for="id_body">Body:</label>
-                <textarea name="body" cols="40" rows="10" placeholder="Add comment..." maxlength="300"
-                          required="" id="id_body"></textarea>
-                <button type="submit">Post</button>
-            </form>
-            <!-- End Add Comments Form -->
-        
-        </div>
+        {% include "partials/photo_comment.html" %}
         <!-- End Add Comments Section -->
     </div>
 </div>
