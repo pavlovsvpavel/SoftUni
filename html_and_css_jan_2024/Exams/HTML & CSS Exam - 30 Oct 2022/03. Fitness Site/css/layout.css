@@ -1,0 +1,12 @@
+body {
+	padding: 2em;
+}
+
+.site {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+	max-width: 1600px;
+	margin: 0 auto;
+}
+

@@ -1,0 +1,153 @@
+.hero-section {
+    background-image: url("../image/fitness-main.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 500px;
+    background-position: top 50% right;
+    color: #EDFFFD;   
+}
+
+.hero-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-section h1 {
+    text-transform: uppercase;
+    padding-top: 3em;
+    padding-bottom: 0.5em;
+    letter-spacing: 0.2em;
+    margin-bottom: 0;
+}
+
+.hero-section p:first-of-type {
+    width: 53ch;
+    padding-bottom: 2em;
+    text-align: center;
+}
+
+.hero-section p:last-of-type {
+    padding: 0.5em 1em;
+    background-color: #D01919;
+    border-radius: 0.3em;
+}
+
+.hero-section p:last-of-type a {
+    color: #EDFFFD;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0 1em;
+}
+
+.site-main {
+    display: flex;
+    flex-direction: column;
+}
+
+.site-main .welcome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+    margin: 2em 10em 3em 10em;
+}
+
+.site-main .welcome h3,
+.site-main .coaches h3 {
+    position: relative;
+    padding-bottom: 1em;
+}
+
+.site-main .welcome h3::after,
+.site-main .coaches h3::after {
+    content: '';
+    position: absolute;
+    margin: auto;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 50%;
+    height: 0.1em;
+    background-color: #D01919;
+}
+
+.welcome-cards {
+    display: flex;
+    justify-content: space-between;
+}
+
+.welcome-cards .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 0 1 20%;
+    gap: 1em;
+    text-align: center;
+}
+
+.welcome-cards .card h5 {
+    color: #D01919;
+}
+
+.welcome-cards .card p {
+    text-align: center;
+}
+
+.welcome-cards .card img {
+    width: 50px;
+}
+
+.site-main .coaches {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #EFEFEF;
+    padding: 2em 5em 3em 5em;
+    gap: 2em;
+}
+
+.coaches-cards {
+    display: flex;
+    justify-content: space-between;
+}
+
+.coach-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    flex: 0 1 20%;
+}
+
+.coach-card img {
+    object-fit: cover;
+    border-radius: 0.3em;
+}
+
+.coach-card p,
+.coach-card h5 {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.coach-card p:first-of-type {
+    color: #D01919;
+    font-weight: bold;
+}
+
+.coach-card p:last-of-type {
+    color: #A3A5BB;
+}
+
+.site-footer {
+    background-color: #D01919;
+    text-align: center;
+    padding: 0.5em 0;
+}
+
+.site-footer p {
+    padding: 0;
+}

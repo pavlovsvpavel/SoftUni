@@ -1,0 +1,56 @@
+@import url("https://use.fontawesome.com/releases/v6.5.1/css/all.css");
+
+.site-header {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.site-contacts {
+    display: flex;
+    justify-content: space-between;
+    background-color: #D01919;
+    align-items: center;
+    padding: 0.5em 3em;
+}
+
+.site-contacts p > i {
+    padding-right: 0.5em;
+}
+
+.site-contacts p,
+.site-contacts ul {
+    padding: 0;
+    color: #EDFFFD
+}
+
+.site-contacts a {
+    text-decoration: none;
+    color: #EDFFFD;
+}
+
+.site-contacts .socials {
+    display: flex;
+    gap: 1em;
+}
+
+.site-contacts .socials li {
+    display: inline-block;
+}
+
+.site-navigation ul {
+    display: flex;
+    justify-content: flex-end;
+    gap: 6em;
+    padding: 1em 3em;
+}
+
+.site-navigation ul li {
+    display: inline-block;
+    text-transform: uppercase;
+}
+
+.site-navigation ul li a {
+    text-decoration: none;
+    color: #EDFFFD;
+}

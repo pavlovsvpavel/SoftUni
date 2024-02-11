@@ -38,7 +38,8 @@ article {
     align-items: center;
     justify-content: space-between;
     padding: 20px 30px 20px 30px;
-    min-height: 300px;
+    /* min-height: 300px; */
+    flex: 1 0 auto;
 }
 
 main {
@@ -55,8 +56,6 @@ main {
     justify-content: space-between;
     
 }
-
-
 
 .image img {
     width: 192px;
