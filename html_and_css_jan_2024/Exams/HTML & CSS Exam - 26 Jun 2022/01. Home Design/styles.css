@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+@import url("https://use.fontawesome.com/releases/v6.5.1/css/all.css");
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font: 16px/1.2 'Courgette';
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.page {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ece9e9;
+    gap: 2em;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    letter-spacing: 0.2em;
+    align-items: flex-end;
+}
+
+.header h1 {
+    font-size: 3.3em;
+    font-weight:lighter;
+    padding-right: 0.3em;
+}
+
+.header p {
+    color: #AA3326;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.cards {
+    display: flex;
+    gap: 1.2em;
+    justify-content: center;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 0.5em;
+    background-color: #fff;
+    flex: 0 0 30%;
+    overflow: hidden;
+}
+
+.card-media img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.card-text {
+    margin: 0 1em;
+    flex: 0 1 50%;
+}
+
+.card-text h3, .card-text p {
+    padding: 0.5em 0;
+    text-align: center;
+}
+
+.card-text p {
+    border-top: 1px solid #AA3326;
+}
+
+.card-link {
+    padding-bottom: 1em;
+    padding-top: 2em;
+}
+
+.card-link a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.card-link i {
+    color: #AA3326;
+    padding-left: 0.5em;
+}
