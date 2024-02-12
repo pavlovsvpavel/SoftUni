@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: "Mulish";
+}
+
+body {
+    background-image: url("images/background.png");
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.page {
+    display: flex;
+    background-image: url("images/form-background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 1em;
+    box-shadow: 10px 10px 10px 5px rgb(0, 0, 0, 0.5);
+    flex-basis: 40vw;
+    padding: 3em 3em;
+}
+
+article {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1em;
+}
+
+header {
+    text-transform: uppercase;
+    text-align: center;
+    padding-bottom: 2em;
+    letter-spacing: 0.1em;
+}
+
+section {
+    color: rgb(72, 71, 71);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    padding-bottom: 0.5em;
+}
+
+input {
+    display: inline-block;
+    border-radius: 1em;
+    padding: 0.5em 0;
+    border: 1px solid gray;
+}
+
+section:first-of-type {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+section:last-of-type {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+section:last-of-type form:last-of-type {
+    display: inline-block;
+}
+
+section:last-of-type form:last-of-type label {
+    font-size: 0.8em;
+    padding-bottom: 0;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    padding-top: 1em;
+}
+
+footer p {
+    background-color: brown;
+    display: inline-block;
+    padding: 0.7em 1em;
+    border-radius: 1.2em;
+}
+
+footer a {
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+}

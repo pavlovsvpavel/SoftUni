@@ -1,0 +1,157 @@
+@import url("https://use.fontawesome.com/releases/v6.5.1/css/all.css");
+
+.site-header {
+    background-image: url(../image/image.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    height: 900px;
+    flex-basis: 100%;
+}
+
+.site-header .left-article {
+    display: flex;
+    flex-direction: column;
+    max-width: 200px;
+    box-shadow: 5px 5px 10px 1px rgb(0, 0, 0, 0.5);
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    padding: 1em 3em 1em 1em;
+}
+
+.site-header .left-article p {
+    border-top: 0.2em solid #fff;
+    padding: 0.5em 0;
+}
+
+.site-header .right-article {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    position: absolute;
+    bottom: 350px;
+    right: 40px;
+    text-align: end;
+    background: linear-gradient(90deg, rgba(160,151,143,1) 25%, rgba(213,209,206,1) 100%);
+    box-shadow: 5px 5px 10px 1px rgb(0, 0, 0, 0.5);
+    padding: 1em 1em;
+}
+
+.site-header .right-article p {
+    padding: 0;
+    color: #fff;
+    text-shadow: 1px 1px #000;
+}
+
+.site-header .right-article p:first-of-type {
+    font-size: 4em;
+    color: #8D8581;
+    line-height: 0.5;
+}
+
+.main-footer-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 70%;
+    background-color: #F2F0F3; 
+}
+
+.site-main {
+    padding: 2em 5em;
+}
+
+.site-main h2 {
+    text-transform: uppercase;
+}
+
+.site-main i {
+    padding-right: 0.7em;
+}
+
+.site-main span {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.site-aside {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: #BAB1AD;
+    flex: 1 0 auto;
+}
+
+.site-aside .card {
+    display: flex;
+    flex-direction: column;
+    padding: 0 1em;
+}
+
+.site-aside .card p {
+    padding: 0;
+    line-height: 1;
+}
+
+.site-aside .card p:first-of-type {
+    font-size: 3em;
+    color: #fff;
+    font-weight: 200;
+}
+
+.site-aside .card p:last-of-type {
+    text-transform: uppercase;
+}
+
+.site-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding-bottom: 2em;
+}
+
+.site-footer h2 {
+    text-transform: uppercase;
+    border-bottom: 1px solid #000;
+    padding-left: 2.3em;
+    margin-bottom: 0;
+}
+
+.site-footer .contacts {
+    display: flex;
+    gap: 0.7em;
+    flex-wrap: wrap;
+    padding: 0 5em;
+}
+
+.site-footer .contacts p {
+    padding: 0;
+}
+
+.site-footer form {
+    display: flex;
+    gap: 1em;
+    padding: 0 5em;
+}
+
+.site-footer form input {
+    padding-left: 1em;
+    border-radius: 0.3em;
+    border: none;
+    background-color: #BAB1AD;
+    flex: 0 1 40%;
+}
+
+.site-footer button {
+    background-color: #67784D;
+    color: #fff;
+    padding: 0.5em 1em;
+    border-radius: 0.3em;
+    border: none;
+    flex: 0 1 auto;
+}
+
+::placeholder {
+    color: #fff;
+}

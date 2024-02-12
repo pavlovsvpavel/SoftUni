@@ -1,0 +1,91 @@
+@media (width<=600px) {
+    header nav {
+        flex-direction: column;
+        gap: 1em;
+    }
+
+    header nav ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5em;
+    }
+
+    header nav ul li {
+        padding: 0;
+    }
+
+    .header-title {
+        padding: 1em 0;
+        font-size: 0.5em;
+    }
+
+    .header-title h1 {
+        font-size: 4.5em;
+        padding: 0 1em 1em 1em;
+    }
+
+    .header-title p {
+        font-size: 2em;
+    }
+
+    .team-description-wrapper {
+        width: 100%;
+    }
+
+    .about-us p:nth-child(2) {
+        padding-bottom: 2em;
+    }
+
+    .about-us p:nth-child(3) {
+        font-size: 0.8em;
+        width: 100%;
+        padding: 0 4em;
+    }
+
+    .team-description ul {
+        flex-wrap: wrap;
+        gap: 2em;
+        align-items: center;
+        padding: 0 2em;
+        justify-content: center;
+    }
+
+    .team-description ul li img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .choose-us ul {
+        flex-direction: column;
+        padding: 0 6em;
+    }
+
+    .blog-news {
+        width: 100%;
+    }
+
+    .blog-news ul {
+        flex-direction: column;
+        gap: 2em;
+        align-items: center;
+    }
+
+    .blog-news ul .item {
+        flex: 0 0 auto;
+    }
+
+    .blog-news ul .item .avatar img {
+        display: block;
+        object-fit: cover;
+        height: 100%;
+    }
+
+    .blog-news ul .item .avatar::before {
+        display: none;
+    }
+    .blog-news .content {
+        padding: 2em;
+    }
+    
+}
