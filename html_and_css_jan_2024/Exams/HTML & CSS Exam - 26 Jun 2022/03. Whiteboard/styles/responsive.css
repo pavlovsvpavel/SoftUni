@@ -1,0 +1,30 @@
+@media (width<=600px) {
+    .navigation {
+        padding: 2em;
+    }
+
+    .hero-section h1 {
+        text-align: center;
+    }
+
+    .hero-section p:first-of-type {
+        padding: 0 1em;
+    }
+
+    .site-main .card {
+        flex-direction: column;
+    }
+
+    .info {
+        order: -1;
+    }
+
+    .icons {
+        padding-bottom: 1em;
+    }
+
+    .site-footer .footer-cards {
+        flex-direction: column;
+        padding: 2em;
+    }
+}

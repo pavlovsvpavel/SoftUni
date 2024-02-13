@@ -1,0 +1,19 @@
+.navigation {
+    padding: 2em 12em;
+}
+
+.navigation ul {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    padding: 0;
+}
+
+.navigation ul li a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.navigation i {
+    padding-right: 0.2em;
+}

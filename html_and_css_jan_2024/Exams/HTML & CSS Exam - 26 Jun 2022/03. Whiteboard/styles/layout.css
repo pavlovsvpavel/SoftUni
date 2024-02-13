@@ -1,0 +1,22 @@
+body {
+	padding: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.site {
+	max-width: 1200px;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.site-header {
+    text-shadow: 0px 1px #000;
+}
+
+.site-header, .site-main, .site-footer {
+    flex: 0 0 100%;
+}
