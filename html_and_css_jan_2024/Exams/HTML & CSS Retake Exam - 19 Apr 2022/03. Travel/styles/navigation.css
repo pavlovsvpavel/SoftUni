@@ -1,0 +1,57 @@
+.site-header {
+    position: relative;
+}
+
+.nav-icons ul, .nav-buttons ul {
+    display: flex;
+    justify-content: flex-end;
+    list-style-type: none;
+    gap: 0.5em;
+    padding-right: 5em;
+    padding-bottom: 0;
+}
+
+.site-navigation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+.site-navigation .nav-icons ul li {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 100px;
+    text-align: center;
+    gap: 0.5em;
+    font-size: 0.8em;
+    padding: 0.3em 0;
+}
+
+.site-navigation .nav-icons ul li a {
+    text-decoration: none;
+    color: inherit;
+    order: 2;
+}
+
+.site-navigation .nav-icons li:hover {
+    background-color: #9C7011;
+    color: #fff;
+}
+
+.site-navigation .nav-icons ul li i {
+    font-size: 1.7em;
+}
+
+.site-navigation .nav-buttons a {
+    text-decoration: none;
+    color: inherit;
+    padding: 0.7em;
+}
+
+.site-navigation .nav-buttons a:hover {
+    background-color: #9C7011;
+    color: #fff;
+}
+

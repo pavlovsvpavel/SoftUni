@@ -1,0 +1,185 @@
+@import url("https://use.fontawesome.com/releases/v6.5.1/css/all.css");
+
+html {
+    color: #4F5774;
+}
+
+.hero-section {
+    background-color: #9C7011;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-media {
+    flex: 0 1 400px;
+    width: 100%;
+    background-image: url("../image/slider.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.hero-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    width: 40%;
+    padding: 1em 2em;
+    gap: 1em;
+}
+
+.hero-card h3 {
+    margin: 0;
+}
+
+.hero-card ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    list-style-type: none;
+}
+
+.hero-card ul i {
+    padding-right: 0.5em;
+}
+
+.hero-card p,
+.hero-card ul {
+    padding: 0;
+}
+
+.hero-card p {
+    font-weight: bold;
+    padding: 0.5em 1em;
+    border: 2px solid #fff;
+    border-radius: 0.2em;
+    text-align: center;
+}
+
+.hero-card p a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.hero-card-left {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    position: absolute;
+    width: 500px;
+    top: 120px;
+    left: 50px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 2em;
+}
+
+.hero-card-left h3 {
+    margin: 0;
+}
+
+.hero-card-left p {
+    padding: 0;
+}
+
+.hero-card-left .btn {
+    font-weight: bold;
+    padding: 0.5em 1em;
+    border: 2px solid #fff;
+    border-radius: 0.2em;
+    text-align: center;
+    text-decoration: none;
+    color: #F6A30D;
+    align-self: flex-start;
+}
+
+.hero-card-left .btn:hover {
+    background-color: #fff;
+}
+
+.main-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-section h2 {
+    font-weight: normal;
+    margin-top: 1em;
+    width: 65%;
+    text-align: center;
+}
+
+.main-cards {
+    display: flex;
+    justify-content: center;
+    gap: 0.5em;
+
+}
+
+.main-cards .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 0 1 150px;
+    gap: 0.5em;
+}
+
+.main-cards .card img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #4F5774;
+    padding: 2px;
+}
+
+.main-cards .card p {
+    font-size: 0.8em;
+    text-align: center;
+}
+
+.site-footer {
+    display: flex;
+    flex-direction: column;
+}
+
+.subscription {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #9C7011;
+    color: #fff;
+    padding: 1em 2em 0.5em 2em;
+}
+
+.newsletter h6 {
+    margin: 0;
+}
+
+.newsletter p {
+    padding: 0;
+}
+
+.footer-btn {
+    font-weight: bold;
+    padding: 0.5em 1em;
+    border: 2px solid #fff;
+    border-radius: 0.2em;
+    text-align: center;
+}
+
+.footer-btn a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.copy p {
+    padding: 1em 0;
+    text-align: center;
+}
+

@@ -1,0 +1,128 @@
+@media (width<=800px) {
+    header .menu {
+        flex-direction: column;
+    }
+
+    header .menu .nav-options {
+        flex-direction: column;
+        align-items: center;
+        padding: 1em 0 0 0;
+    }
+
+    header div h1 {
+        font-size: 3em;
+    }
+
+    .trainings {
+        flex-direction: column;
+    }
+
+    .trainings div {
+        width: 60%;
+    }
+
+    .instructors {
+        width: 100%;
+        padding: 4em 0;
+    }
+
+    hr {
+        width: 7%;
+    }
+
+    .instructors > p {
+        width: 100%;
+        padding: 2em 3em;
+        font-size: 0.9em;
+    }
+
+    
+    .instructors-pic {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .classes {
+        padding: 4em 0;
+    }
+
+    .classes ul {
+        width: 100%;
+        padding: 0 1em;
+        align-items: center;
+        gap: 2em;
+        justify-content: center;
+    }
+
+    .classes ul li {
+        flex: 0 1 45%;
+        width: 100%;
+        padding-bottom: 0;
+    }
+
+    .classes ul li p {
+        padding-right: 0.5em;
+        font-size: 3em;
+    }
+
+    .classes ul li div p {
+        font-size: 0.9em;
+    }
+
+    .classes ul li div h3 {
+        font-size: 1.3em;
+    }
+
+    .getInTouch {
+        flex-direction: column;
+        padding: 1em 0;
+    }
+
+    .getInTouch .form {
+        width: 70%;
+        padding: 2em 0;
+    }
+
+    .form hr {
+        width: 15%;
+    }
+
+    .form h2 {
+        font-size: 1.5em;
+    }
+
+    .getInTouch form input,
+    .getInTouch form textarea {
+        width: 100%;
+    }
+
+    .getInTouch button {
+        margin: 0;
+    }
+
+    .map {
+        width: 100%;
+    }
+
+    .map img {
+        position: static;
+        transform: none;
+    }
+
+    .map::after {
+        display: none;
+    }
+
+    .site-footer {
+        font-size: 0.8em;
+    }
+
+    .site-footer .about {
+        flex: 0 0 100%;
+    }
+
+    .site-footer .wrapper {
+        flex-wrap: wrap;
+        width: 90%;
+    }
+}

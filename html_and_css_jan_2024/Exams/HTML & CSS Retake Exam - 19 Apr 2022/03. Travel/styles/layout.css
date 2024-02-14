@@ -1,0 +1,22 @@
+body {
+	padding: 2em;
+}
+
+.site {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.site-logo {
+    background: linear-gradient(90deg, rgba(187,135,21,1) 50%, rgba(156,112,17,1) 100%);
+    width: 150px;
+    height: auto;
+	position: absolute;
+	top: 0;
+	left: 120px;
+	z-index: 100;
+}
+
+.site-logo img {
+    padding: 2em 1.5em;
+}
