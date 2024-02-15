@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font: 16px/1.5 "PT Sans";
+}
+
+body {
+    padding: 2em;
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.page {
+    max-width: 900px;
+    display: flex;
+    margin: 0 auto;
+    gap: 1.5em;
+    box-shadow: 1px 1px 10px 3px rgb(0, 0, 0, 0.5);
+    padding: 1.5em;
+    background-image: url("image/image1.png");
+    background-size: auto;
+    background-repeat: repeat-y;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1 1 auto;
+}
+
+
+.text h2 {
+    text-align: center;
+    font-size: 1.5em;
+}
+
+article .header .subtitle {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px dotted #008000;
+    font-style: italic;
+    padding-top: 0.5em;
+}
+
+article .ingredients ul {
+    list-style: none outside;
+}
+
+article .ingredients span {
+    color: #008000;
+    font-weight: bold;
+}
+
+.nutrition-info {
+    display: flex;
+}
+
+.nutrition-info table {
+    text-align: center;
+    border-collapse: collapse;
+    flex: 1 1 100%;
+}
+
+.nutrition-info table th,
+.nutrition-info table td {
+    border: 1px solid #008000;
+}
+
+.media {
+    flex: 0 0 50%;
+}
+
+.media img {
+    object-fit: cover;
+}

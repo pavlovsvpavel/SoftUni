@@ -1,0 +1,38 @@
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2em 0;
+}
+
+.navigation nav ul {
+    display: flex;
+    list-style: none outside;
+    padding-right: 1em;
+    gap: 2em;
+}
+
+.navigation a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.navigation .site-logo {
+    font-size: 1.5em;
+}
+
+.navigation .site-logo span {
+    color: #43A4B5;
+}
+
+.navigation nav ul li {
+    border-bottom: 3px solid transparent;
+    display: block;
+    margin: 0 auto;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.navigation nav ul li:hover {
+    border-color: #43A4B5;
+}
+
