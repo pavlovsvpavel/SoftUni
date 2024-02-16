@@ -1,0 +1,19 @@
+.site-container.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5em 0;
+}
+
+.site-container.header .site-nav ul {
+    display: flex;
+    list-style: none outside;
+    gap: 2em;
+}
+
+.site-container.header .site-nav ul a {
+    text-decoration: none;
+    color: #102955;
+    font-weight: bold;
+}
+
