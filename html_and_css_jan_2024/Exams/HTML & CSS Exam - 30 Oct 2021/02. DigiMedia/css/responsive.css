@@ -1,0 +1,141 @@
+@media (max-width:600px) {
+    .navbar {
+        justify-content: center;
+        text-align: center;
+        padding-top: 20px;
+        padding-bottom: 40px;
+    }
+
+    .navbar-collapse {
+        display: none;
+    }
+
+    .navbar-light .navbar-brand {
+        margin: 0;
+    }
+
+    .container-fluid {
+        padding: 0;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 2em;
+        align-items: center;
+        text-align: center;
+        padding: 0;
+        max-width: 100%;
+        padding: 0 3em;
+    }
+
+    .col-12 {
+        padding: 0;
+    }
+
+    .hero img {
+        display: none;
+    }
+    
+    .container h1 {
+        margin: 0;
+        font-size: 4em;
+    }
+
+    .container p {
+        margin: 0;
+    }
+
+    .container .hero-btns {
+        display: flex;
+        flex-direction: column;
+        width: 70%;
+        margin: 0;
+        padding-top: 2em;
+    }
+
+    .row {
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+        gap: 2em;
+    }
+
+    .service-btn a {
+        font-size: 16px!important;
+    }
+
+    .col-12.col-sm-12.col-lg-4.service-txt {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        padding-bottom: 40px;
+    }
+
+    .services {
+        padding-top: 100px;
+    }
+
+    .service-box {
+        padding: 30px;
+        margin: 0;
+        text-align: left;
+    }
+
+    .contact-nav {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.5;
+    }
+
+    .hero-btns.contact-btn a:last-child {
+        display: none;
+    }
+
+    .row h5 {
+        padding-top: 70px;
+        font-size: 1.5rem;
+    }
+
+    .about {
+        margin-bottom: 0;
+    }
+
+    .about .container {
+        padding: 1em;
+    }
+
+    .contact .container {
+        align-items: stretch;
+    }
+
+    #contact-us h2 {
+        margin-bottom: 30px;
+    }
+
+    #contact-us .container {
+        padding: 2em;
+    }
+
+    .contact {
+        max-height: 100%;
+    }
+
+    footer {
+        padding: 0;
+    }
+
+    footer h5 {
+        font-size: 1.7em;
+    }
+
+    footer h3 {
+        line-height: 1;
+    }
+
+    footer h6 {
+        font-size: 1.7em;
+        padding-bottom: 30px;
+    }
+}
