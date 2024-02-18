@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font: 18px/1.5 "Karla", sans-serif;
+    background-color: #F8F0E9;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Cormorant Infant", sans-serif;
+}
+
+h1 { font-size: 2.8em; }
+h2 { font-size: 2.2em; }
+h3 { font-size: 1.8em; }
+h4 { font-size: 1.6em; }
+h5 { font-size: 1.2em; }
+h6 { font-size: 1.0em; }
+
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+body {
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    justify-content: center;
+    align-items: center;
+}
+
+.site-header {
+    height: 870px;
+    color: #fff; 
+    background-image: url("images/poster.jpg");
+    background-repeat: no-repeat;
+    background-position: top -90px center;
+    background-size: cover;
+    position: relative;
+}
+
+.gradient {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    z-index: 0;
+  }
+
+.site-navigation {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding: 2em 5.6em;
+    z-index: 1;
+}
+
+.site-navigation img {
+    width: 100px;
+    height: auto;
+}
+
+.site-navigation ul {
+    display: flex;
+    list-style: none outside;
+    gap: 2em;
+    font-size: 1.4em;
+}
+
+.site-navigation ul a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.site-heading {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.site-heading h1 {
+    margin-top: 3em;
+    font-size: 90px;
+}
+
+.site-heading p {
+    width: 60%;
+}
+
+.site-heading .container {
+    gap: 3em;
+}
+
+.site-section.testimonial {
+    padding: 2em 0 6em 0;
+}
+
+.site-section.testimonial h2 {
+    font-size: 3.5em;
+    line-height: 0.8;
+    transform: skewX(-10deg);
+}
+
+.site-section.testimonial p {
+    align-self: flex-start;
+}
+
+.site-section.support {
+    background-color: #E14747;
+}
+
+.site-section.support .container {
+    padding: 3em 0;
+    color: #fff;
+}
+
+.site-section.support .container p:first-of-type {
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.site-section.support .container p {
+    text-align: center;
+    width: 30%;
+}
+
+.site-section.home-article .container {
+    flex-direction: row;
+}
+
+.site-section.home-article article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 0 1 650px;
+    padding: 4em 0;
+    gap: 3em;
+}
+
+.site-section.home-article article .article-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+    align-items: center;
+}
+
+.site-section.home-article article .article-info h3 {
+    font-size: 4em;
+    text-align: center;
+    line-height: 1;
+}
+
+.site-section.home-article article a {
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid #000;
+    padding: 0.5em 1.5em;
+    background-color: #fff;
+    border-radius: 0.3em;
+}
+
+.site-section.home-article article .article-info a {
+    align-self: flex-start;
+    display: block;
+}
+
+.site-section.home-article article .article-info a::after {
+    display: inline-block;
+    content: ">";
+    padding-left: 5px;  
+}
+
+.site-section.home-article article .media img {
+    width: 650px;
+}
+
+.site-section.home-article article .all-articles a {
+    display: block;
+}
+
+.site-section.local-guide {
+    background-color: #E14747;
+    color: #fff;
+    padding: 4em;
+}
+
+.site-section.local-guide .container {
+    gap: 3em;
+    text-align: center;
+}
+
+.site-section.local-guide .container h2 {
+    font-size: 3.3em;
+    padding-bottom: 0.3em;
+}
+
+.site-section.local-guide .container p {
+    width: 80%;
+}
+
+.site-section.local-guide .container a {
+    display: block;
+    text-decoration: none;
+    color: #000;
+    background-color: #FAD87A;
+    padding: 1em 1.5em;
+    border-radius: 2em;
+}
+
+.site-footer {
+    display: flex;
+    flex-direction: column;
+    background-color: #352B2A;
+    padding: 3em 0 3em 9em;
+    color: #fff;
+    gap: 2em;
+}
+
+.site-footer p {
+    width: 30%;
+}
+
+.site-footer img {
+    width: 80px;
+    height: auto;
+    padding-bottom: 1em;
+}
+
+.site-footer .copy {
+    font-size: 0.8em;
+    opacity: 0.3;
+}
+
