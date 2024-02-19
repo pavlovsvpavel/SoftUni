@@ -22,6 +22,7 @@ class Comment(models.Model):
         on_delete=models.DO_NOTHING,
         null=True,
         blank=True,
+        related_name='comments'
     )
 
     class Meta:

@@ -80,12 +80,16 @@
                 </p>
             </a>
         {% endfor %}
-        
+
         <!-- Link to Photo Details Page -->
         {% if request.path == '/' or '/pets/' in request.path %}
             <a href={% url "photos_details" pk=photo.pk %}>
                 <h4 class="details">See details</h4>
             </a>
+            
+        {% else %}
+            <!-- Photo description -->
+            <p class="pet-details">{{ photo.description }}</p>
         {% endif %}
         <!-- Date of Publication -->
         <h5 class="postTime">{{ photo.created_at|date:'d/m/Y' }}</h5>

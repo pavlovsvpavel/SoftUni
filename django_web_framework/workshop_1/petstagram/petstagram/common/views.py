@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, resolve_url
+from django.views import generic as views
 from pyperclip import copy
 
 from petstagram.common.models import PhotoLike
@@ -6,23 +7,42 @@ from petstagram.photos.models import PetPhoto
 from petstagram.common.forms import CommentForm, SearchForm
 
 
-def index(request):
-    all_photos = PetPhoto.objects.all()
+# def index(request):
+#     all_photos = PetPhoto.objects.all()
+#     comment_form = CommentForm()
+#     search_form = SearchForm(request.GET or None)
+#
+#     if search_form.is_valid():
+#         all_photos = all_photos.filter(
+#             pets__name__icontains=search_form.cleaned_data['pet_name']
+#         )
+#
+#     context = {
+#         'all_photos': all_photos,
+#         'comment_form': comment_form,
+#         'search_form': search_form,
+#     }
+#
+#     return render(request, 'common/home-page.html', context)
+
+
+class IndexView(views.ListView):
+    queryset = PetPhoto.objects.all() \
+        .prefetch_related("pets") \
+        .prefetch_related("photolike_set")
+
+    context_object_name = 'all_photos'
+    template_name = 'common/home-page.html'
     comment_form = CommentForm()
-    search_form = SearchForm(request.GET or None)
+    search_form = SearchForm()
 
-    if search_form.is_valid():
-        all_photos = all_photos.filter(
-            pets__name__icontains=search_form.cleaned_data['pet_name']
-        )
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
 
-    context = {
-        'all_photos': all_photos,
-        'comment_form': comment_form,
-        'search_form': search_form,
-    }
+        context['comment_form'] = self.comment_form
+        context['search_form'] = self.search_form
 
-    return render(request, 'common/home-page.html', context)
+        return context
 
 
 def like_functionality(request, pk):
