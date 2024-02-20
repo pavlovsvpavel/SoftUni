@@ -1,6 +1,6 @@
 from django.urls import path
 
-from ExamPrep.web.views import IndexView
+from Music_App.web.views import IndexView
 
 urlpatterns = (
     path("", IndexView.as_view(), name="index"),

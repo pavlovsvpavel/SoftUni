@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class AlbumsConfig(AppConfig):
+class ProfilesConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'ExamPrep.albums'
+    name = 'Music_App.profiles'

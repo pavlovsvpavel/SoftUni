@@ -1,6 +1,6 @@
 from django.urls import path, include
 
-from ExamPrep.albums.views import AlbumCreateView, AlbumDetailsView, AlbumEditView, AlbumDeleteView
+from Music_App.albums.views import AlbumCreateView, AlbumDetailsView, AlbumEditView, AlbumDeleteView
 
 urlpatterns = (
     path("add/", AlbumCreateView.as_view(), name="create-album"),

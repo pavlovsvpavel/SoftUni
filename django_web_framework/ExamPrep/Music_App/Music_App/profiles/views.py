@@ -1,7 +1,7 @@
 from django.urls import reverse_lazy
 from django.views import generic as views
-from ExamPrep.profiles.models import Profile
-from ExamPrep.profiles.mixins import IsProfileMixin
+from Music_App.profiles.models import Profile
+from Music_App.profiles.mixins import IsProfileMixin
 
 
 class ProfileDetailsView(IsProfileMixin, views.DetailView):

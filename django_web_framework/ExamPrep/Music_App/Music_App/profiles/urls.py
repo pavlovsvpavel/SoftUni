@@ -1,6 +1,6 @@
 from django.urls import path
 
-from ExamPrep.profiles.views import ProfileDetailsView, ProfileDeleteView
+from Music_App.profiles.views import ProfileDetailsView, ProfileDeleteView
 
 urlpatterns = (
     path("details/", ProfileDetailsView.as_view(), name="details_profile"),

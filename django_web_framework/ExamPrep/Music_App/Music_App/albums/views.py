@@ -1,9 +1,9 @@
 from django.forms import modelform_factory
 from django.urls import reverse_lazy
 from django.views import generic as views
-from ExamPrep.albums.mixins import ReadonlyViewMixin
-from ExamPrep.albums.models import Album
-from ExamPrep.profiles.mixins import IsProfileMixin
+from Music_App.albums.mixins import ReadonlyViewMixin
+from Music_App.albums.models import Album
+from Music_App.profiles.mixins import IsProfileMixin
 
 
 class AlbumCreateView(IsProfileMixin, views.CreateView):

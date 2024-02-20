@@ -1,6 +1,6 @@
 from django import forms
 
-from ExamPrep.profiles.models import Profile
+from Music_App.profiles.models import Profile
 
 
 class ProfileCreateForm(forms.ModelForm):

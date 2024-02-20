@@ -1,4 +1,4 @@
-from ExamPrep.profiles.models import Profile
+from Music_App.profiles.models import Profile
 
 
 class IsProfileMixin:

@@ -1,8 +1,8 @@
 from django.shortcuts import redirect, render
 from django.views import generic as views
-from ExamPrep.web.forms import ProfileCreateForm
-from ExamPrep.albums.models import Album
-from ExamPrep.profiles.mixins import IsProfileMixin
+from Music_App.web.forms import ProfileCreateForm
+from Music_App.albums.models import Album
+from Music_App.profiles.mixins import IsProfileMixin
 
 
 class IndexView(IsProfileMixin, views.TemplateView):
