@@ -3,12 +3,17 @@ function solve(words, sentence) {
     sentence = sentence.split(" ")
 
     for (const word of words) {
-        for (const sentenceWord of sentence) {
+        // for (const sentenceWord of sentence) {
+        //     if (sentenceWord.length === word.length && sentenceWord.startsWith("*")) {
+        //         let index = sentence.indexOf(sentenceWord);
+        //         sentence[index] = word;
+        //     }
+        // }
+        sentence.forEach((sentenceWord, index) => {
             if (sentenceWord.length === word.length && sentenceWord.startsWith("*")) {
-                let index = sentence.indexOf(sentenceWord);
                 sentence[index] = word;
             }
-        }
+        });
     }
 
     console.log(sentence.join(" "));
