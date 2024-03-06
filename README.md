@@ -1,3 +1,4 @@
+#### :green_circle: [Django Basics Certificate](https://softuni.bg/certificates/details/207376/e99e39a5)
 #### :green_circle: [HTML&CSS Certificate](https://softuni.bg/certificates/details/205194/fe6e999f)
 #### :green_circle: [Python ORM Certificate](https://softuni.bg/certificates/details/193771/beb381be)
 #### :green_circle: [PostgreSQL Certificate](https://softuni.bg/certificates/details/185963/6b802353)
