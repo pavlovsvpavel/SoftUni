@@ -1,3 +1,4 @@
+#### :green_circle: [DevOps Certificate](https://softuni.bg/certificates/details/219664/3f446559)
 #### :green_circle: [Django Advanced Certificate](https://softuni.bg/certificates/details/212668/bc5706e2)
 #### :green_circle: [Django Basics Certificate](https://softuni.bg/certificates/details/207376/e99e39a5)
 #### :green_circle: [JavaScript Front-End Certificate](https://softuni.bg/certificates/details/212320/f803a9de)
