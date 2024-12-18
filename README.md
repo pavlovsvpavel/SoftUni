@@ -1,3 +1,5 @@
+#### :green_circle: [Python Full-Stack Developer](https://softuni.bg/certificates/details/225671/575a9325)
+#### :green_circle: [Python Web Developer](https://softuni.bg/certificates/details/216031/4fa986b3)
 #### :green_circle: [Containers and Cloud Certificate](https://softuni.bg/certificates/details/224707/3f695f4d)
 #### :green_circle: [DevOps Certificate](https://softuni.bg/certificates/details/219664/3f446559)
 #### :green_circle: [Django Advanced Certificate](https://softuni.bg/certificates/details/212668/bc5706e2)
